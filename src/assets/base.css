@@ -1,5 +1,5 @@
 /* color palette from <https://github.com/vuejs/theme> */
-:root {
+/* :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -22,54 +22,92 @@
 }
 
 /* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-white);
-
-  --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
-
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   position: relative;
   font-weight: normal;
+} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Octosquares-Regular";
+  src: url("../public/fonts/TTOctosquares-Regular.eot");
+  src: url("../public/fonts/TTOctosquares-Regular.eot?#iefix") format("embedded-opentype"), 
+        url("../public/fonts/TTOctosquares-Regular.woff2") format("woff2"), 
+        url("../public/fonts/TTOctosquares-Regular.woff") format("woff"), 
+        url("../public/fonts/TTOctosquares-Regular.ttf") format("truetype")
+}
+@font-face {
+  font-family: "Octosquares-Medium";
+  src: url("../public/fonts/TTOctosquares-Medium.eot");
+  src: url("../public/fonts/TTOctosquares-Medium.eot?#iefix") format("embedded-opentype"), 
+        url("../public/fonts/TTOctosquares-Medium.woff2") format("woff2"), 
+        url("../public/fonts/TTOctosquares-Medium.woff") format("woff"), 
+        url("../public/fonts/TTOctosquares-Medium.ttf") format("truetype")
+}
+@font-face {
+  font-family: "Octosquares-Light";
+  src: url("../public/fonts/TTOctosquares-Light.eot");
+  src: url("../public/fonts/TTOctosquares-Light.eot?#iefix") format("embedded-opentype"), 
+        url("../public/fonts/TTOctosquares-Light.woff2") format("woff2"), 
+        url("../public/fonts/TTOctosquares-Light.woff") format("woff"), 
+        url("../public/fonts/TTOctosquares-Light.ttf") format("truetype")
+}
+@font-face {
+  font-family: "Octosquares-Bold";
+  src: url("../public/fonts/TTOctosquares-Bold.eot");
+  src: url("../public/fonts/TTOctosquares-Bold.eot?#iefix") format("embedded-opentype"), 
+        url("../public/fonts/TTOctosquares-Bold.woff2") format("woff2"), 
+        url("../public/fonts/TTOctosquares-Bold.woff") format("woff"), 
+        url("../public/fonts/TTOctosquares-Bold.ttf") format("truetype")
+}
+@font-face {
+  font-family: "Octosquares-DBold";
+  src: url("../public/fonts/TTOctosquares-DBold.eot");
+  src: url("../public/fonts/TTOctosquares-DBold.eot?#iefix") format("embedded-opentype"), 
+        url("../public/fonts/TTOctosquares-DBold.woff2") format("woff2"), 
+        url("../public/fonts/TTOctosquares-DBold.woff") format("woff"), 
+        url("../public/fonts/TTOctosquares-DBold.ttf") format("truetype")
 }
 
 body {
   background: url('./background.jpg') no-repeat center center / cover;
-  min-height: 100vh;
-  width: 2540px;
-  color: var(--color-text);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* min-height: 100vh; */
+  /* width: 2540px; */
+  width: 100%;
+  height: 100vh;
+  font-family: "Octosquares-Regular";
+  
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+  background: #832896CC;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #832896CC;
 }
