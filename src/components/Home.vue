@@ -42,7 +42,7 @@
         </div>
         <div class="category">
           <img src="@/assets/category-4.png" alt="" />
-          <div class="name">Play2Earn</div>
+          <div class="name">Play2Earn1</div>
         </div>
       </div>
     </div>
