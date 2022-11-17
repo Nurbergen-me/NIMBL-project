@@ -2,7 +2,13 @@
   <div class="home">
     <div class="sidebar">
       <div class="sidebar_video">
-        <img class="video" src="@/assets/video-1.jpg" alt="" />
+        <div class="sidebar_video_wrap">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/Wsdx1P_T-WM"
+          ></iframe>
+        </div>
         <div class="name">GarryVee's Page</div>
       </div>
       <template v-if="showSubscribers === false">
@@ -50,9 +56,9 @@
                   />
                   <div class="name">@BlueWard2</div>
                 </td>
-                <td class="table_subs">100k</td>
-                <td class="table_floor">134 NMBL</td>
-                <td class="table_floor">238 NMBL</td>
+                <td class="table_subs gradient-number">100k</td>
+                <td class="table_floor gradient-number">134 NMBL</td>
+                <td class="table_floor gradient-number">238 NMBL</td>
               </tr>
             </table>
           </div>
@@ -147,7 +153,7 @@
               />
               <div class="nikname">@BlueWard2</div>
             </div>
-            <div class="prices">
+            <div class="prices gradient-number">
               <div class="price_title">Floor Price:</div>
               <div class="price_value">140 NMBL</div>
             </div>
@@ -202,6 +208,10 @@ export default {
 
   &_video {
     width: 100%;
+    &_wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
     .video {
       height: 420px;
       width: 100%;
@@ -557,6 +567,18 @@ export default {
   }
 }
 
+.gradient-number {
+  font-family: "Octosquares-Bold";
+  background: linear-gradient(
+    90.24deg,
+    #01eaf2 0.21%,
+    #3b65ff 57.08%,
+    #d70bda 102.91%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .videos_content {
   height: calc(100vh - 400px);
   overflow: scroll;
@@ -615,14 +637,6 @@ export default {
           font-weight: 400;
           font-size: 20px;
           line-height: 22px;
-          background: linear-gradient(
-            90.24deg,
-            #01eaf2 0.21%,
-            #3b65ff 57.08%,
-            #d70bda 102.91%
-          );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
         }
       }
     }
