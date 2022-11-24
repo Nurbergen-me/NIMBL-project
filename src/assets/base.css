@@ -89,7 +89,16 @@ body {
   /* width: 2540px; */
   width: 100%;
   font-family: "Octosquares-Regular";
+  color: #fff;
 
+}
+
+input, a, select, button {
+  font-family: "Octosquares-Medium";
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  font-size: 24px;
 }
 
 ::-webkit-scrollbar {

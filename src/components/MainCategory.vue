@@ -1,4 +1,5 @@
 <script>
+import MarketplaceViewVue from '../views/MarketplaceView.vue';
 export default {
   name: "MainCategory",
   data() {
@@ -9,10 +10,50 @@ export default {
   methods: {
     toggleCategory(id) {
       this.mainCategory = id;
+      if (id == 3) {
+          this.$router.push({name: 'marketplace'})
+      }
     },
   },
 };
 </script>
+
+<template>
+  <div class="list_content">
+    <div
+      class="list_buttons"
+      :class="{ active: mainCategory === 1 }"
+      @click="toggleCategory(1)"
+    >
+      <img src="../assets/lines/content-icon.svg" alt="" />
+      <div class="list_name">Content</div>
+    </div>
+    <div
+      class="list_buttons"
+      :class="{ active: mainCategory === 2 }"
+      @click="toggleCategory(2)"
+    >
+      <img src="../assets/lines/community-icon.svg" alt="" />
+      <div class="list_name">Community</div>
+    </div>
+    <div
+      class="list_buttons"
+      :class="{ active: mainCategory === 3 }"
+      @click="toggleCategory(3)"
+    >
+      <img src="../assets/lines/marketplace-icon.svg" alt="" />
+      <div class="list_name">Marketplace</div>
+    </div>
+    <div
+      class="list_buttons"
+      :class="{ active: mainCategory === 4 }"
+      @click="toggleCategory(4)"
+    >
+      <img src="../assets/lines/settings-icon.svg" alt="" />
+      <div class="list_name">Settings</div>
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 .list_content {
@@ -51,41 +92,4 @@ export default {
   }
 }
 </style>
-
-<template>
-  <div class="list_content">
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 1 }"
-      @click="toggleCategory(1)"
-    >
-      <img src="../assets/lines/content-icon.svg" alt="" />
-      <div class="list_name">Content</div>
-    </div>
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 2 }"
-      @click="toggleCategory(2)"
-    >
-      <img src="../assets/lines/community-icon.svg" alt="" />
-      <div class="list_name">Community</div>
-    </div>
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 3 }"
-      @click="toggleCategory(3)"
-    >
-      <img src="../assets/lines/marketplace-icon.svg" alt="" />
-      <div class="list_name">Marketplace</div>
-    </div>
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 4 }"
-      @click="toggleCategory(4)"
-    >
-      <img src="../assets/lines/settings-icon.svg" alt="" />
-      <div class="list_name">Settings</div>
-    </div>
-  </div>
-</template>
 
