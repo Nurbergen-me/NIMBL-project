@@ -75,8 +75,11 @@
         </div>
     </div>
 </template>
-<script setup>
 
+<script>
+export default {
+    name: 'MarketPlaceView'
+}
 </script>
 
 <style lang="scss">

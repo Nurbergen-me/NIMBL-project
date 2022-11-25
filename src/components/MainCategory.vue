@@ -1,5 +1,42 @@
+<template>
+    <div class="list_content">
+      <div
+        class="list_buttons"
+        :class="{ active: mainCategory === 1 }"
+        @click="toggleCategory(1, 'home')"
+      >
+        <img src="../assets/lines/content-icon.svg" alt="" />
+        <div class="list_name">Content</div>
+      </div>
+      <div
+        class="list_buttons"
+        :class="{ active: mainCategory === 2 }"
+        @click="toggleCategory(2)"
+      >
+        <img src="../assets/lines/community-icon.svg" alt="" />
+        <div class="list_name">Community</div>
+      </div>
+      <div
+        class="list_buttons"
+        :class="{ active: mainCategory === 3 }"
+        @click="toggleCategory(3, 'marketplace')"
+      >
+        <img src="../assets/lines/marketplace-icon.svg" alt="" />
+        <div class="list_name">Marketplace</div>
+      </div>
+      <div
+        class="list_buttons"
+        :class="{ active: mainCategory === 4 }"
+        @click="toggleCategory(4)"
+      >
+        <img src="../assets/lines/settings-icon.svg" alt="" />
+        <div class="list_name">Settings</div>
+      </div>
+    </div>
+</template>
+
 <script>
-import MarketplaceViewVue from '../views/MarketplaceView.vue';
+// import MarketplaceViewVue from '../views/MarketplaceView.vue';
 export default {
   name: "MainCategory",
   data() {
@@ -8,52 +45,16 @@ export default {
     };
   },
   methods: {
-    toggleCategory(id) {
+    toggleCategory(id, route) {
       this.mainCategory = id;
       if (id == 3) {
-          this.$router.push({name: 'marketplace'})
+          // this.$router.push({name: ''})
       }
+      this.$router.push({name: route})
     },
   },
 };
 </script>
-
-<template>
-  <div class="list_content">
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 1 }"
-      @click="toggleCategory(1)"
-    >
-      <img src="../assets/lines/content-icon.svg" alt="" />
-      <div class="list_name">Content</div>
-    </div>
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 2 }"
-      @click="toggleCategory(2)"
-    >
-      <img src="../assets/lines/community-icon.svg" alt="" />
-      <div class="list_name">Community</div>
-    </div>
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 3 }"
-      @click="toggleCategory(3)"
-    >
-      <img src="../assets/lines/marketplace-icon.svg" alt="" />
-      <div class="list_name">Marketplace</div>
-    </div>
-    <div
-      class="list_buttons"
-      :class="{ active: mainCategory === 4 }"
-      @click="toggleCategory(4)"
-    >
-      <img src="../assets/lines/settings-icon.svg" alt="" />
-      <div class="list_name">Settings</div>
-    </div>
-  </div>
-</template>
 
 <style scoped lang="scss">
 .list_content {
@@ -73,6 +74,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
     &.active {
       background: linear-gradient(
         273.52deg,
@@ -80,6 +82,10 @@ export default {
         rgba(234, 0, 213, 0.2) 110.67%
       );
       backdrop-filter: blur(10px);
+      border: 1px solid #ea00d5;
+      border-bottom: 2px solid #00eaf2;
+    }
+    &:hover {
       border: 1px solid #ea00d5;
       border-bottom: 2px solid #00eaf2;
     }
@@ -92,4 +98,3 @@ export default {
   }
 }
 </style>
-
