@@ -103,11 +103,20 @@ button {
 }
 
 input, a, select, button {
+  background: transparent;
   font-family: "Octosquares-Medium";
   cursor: pointer;
   border: none;
   color: #fff;
   font-size: 24px;
+}
+
+.gradient-number {
+  font-family: "Octosquares-Bold";
+  background: linear-gradient(90.24deg, #03E9F2, #D90CDA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
 }
 
 .container {

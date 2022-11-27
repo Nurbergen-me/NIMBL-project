@@ -73,6 +73,108 @@
                 </div>
             </div>
         </div>
+        <div class="shop">
+            <div class="shop_header">
+                <div class="option active">
+                    Buy
+                </div>
+                <div class="option">
+                    Bid
+                </div>
+                <div class="option">
+                    Sweep
+                </div>
+            </div>
+            <div class="shop_card">
+                <div class="name">
+                    Bulk Buy
+                </div>
+                <div class="shop_item">
+                    <div class="item_img_wrap">
+                        <img src="../assets/video-1.jpg" alt="product" class="item_img">
+                    </div>
+                    <div class="item_name">
+                        @BlueWard2
+                    </div>
+                    <div class="item_price">
+                        Floor Price: <span class="gradient-number">44 NMBL</span> 
+                    </div>
+                </div>
+                <div class="shop_button">
+                    Buy now
+                </div>
+            </div>
+            <div class="shop_reccomendations reccom">
+                <div class="reccom_category">
+                    <div class="reccom_header">
+                        <div class="name">
+                            Sales
+                        </div>
+                        <div class="live">
+                            Live
+                        </div>
+                        <select class="select">
+                            <option value="Recent">Recent</option>
+                            <option value="Recent">Recent</option>
+                            <option value="Recent">Recent</option>
+                        </select>
+                    </div>
+                    <div class="reccom_body">
+                        <div class="reccom_card card" v-for="card in 20">
+                             <img src="../assets/marketplace/channel-img.png" alt="channel" class="card_img">
+                             <div class="card_info">
+                                <div class="name">
+                                    #1209
+                                </div>
+                                <div class="date">
+                                    4 minutes
+                                </div>
+                                <div class="creator">
+                                    by <span>@BlueWard2</span>
+                                </div>
+                             </div>
+                             <div class="card_price gradient-number">
+                                44 NMBL
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reccom_category">
+                    <div class="reccom_header">
+                        <div class="name">
+                            Listings
+                        </div>
+                        <div class="live">
+                            Live
+                        </div>
+                        <select class="select">
+                            <option value="Recent">Recent</option>
+                            <option value="Recent">Recent</option>
+                            <option value="Recent">Recent</option>
+                        </select>
+                    </div>
+                    <div class="reccom_body">
+                        <div class="reccom_card card" v-for="card in 20">
+                             <img src="../assets/marketplace/channel-img.png" alt="channel" class="card_img">
+                             <div class="card_info">
+                                <div class="name">
+                                    #1209
+                                </div>
+                                <div class="date">
+                                    4 minutes
+                                </div>
+                                <div class="creator">
+                                    by <span>@BlueWard2</span>
+                                </div>
+                             </div>
+                             <div class="card_price gradient-number">
+                                44 NMBL
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -82,7 +184,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 input {
     border: none;
@@ -98,9 +200,9 @@ input {
 }
 
 .market {
-    min-height: 100vh;
     padding-top: 27px;
     display: flex;
+    justify-content: space-between;
     .sidebar {
         margin-left: 2px;
         width: 360px;
@@ -228,22 +330,24 @@ input {
     }
 
     .products {
-        width: 1405px;
+        height: calc(100vh - 220px);
+        overflow-y: scroll;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        padding: 10px;
 
         .product {
             background: rgba(26, 25, 25, 0.8);
             box-shadow: 0px 0px 12px #473F9E;
-            width: calc(33.3% - 27px);
+            width: calc(33.33% - 18px);
             margin-bottom: 18px;
             cursor: pointer;
             overflow: hidden;
             transition: 0.3s ease;
 
             &:hover {
-                transform: scale(1.07);
+                transform: scale(1.03);
             }
 
             &_header {
@@ -287,6 +391,197 @@ input {
                         height: 50px;
                         border-radius: 50%;
                         margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .shop {
+        background: rgba(33, 35, 52, 0.45);
+        box-shadow: inset 4px 4px 27px rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(51.863px);
+        min-width: 708px;
+        margin-left: 23px;
+        border-radius: 1px;
+
+        &_header {
+            background: #1A1B1C;
+            display: flex;
+            align-items: center;
+
+            .option {
+                width: 33.3%;
+                font-size: 24px;
+                padding: 14px 0 20px;
+                position: relative;
+                text-align: center;
+                cursor: pointer;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 3px;
+                    border-radius: 3px;
+                    background: linear-gradient(to left,rgba(33, 141, 159, 1), rgba(92, 99, 163, 1), rgba(131, 40, 150, 0.8));
+                    opacity: 0;
+                }
+
+                &.active:after {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &_card {
+            background: #1A1B1C;
+            padding: 37px 44px;
+
+            .name {
+                font-size: 30px;
+                margin-bottom: 28px;
+            }
+        }
+
+        &_item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .item_img {
+                width: 80px;
+                height: 68px;
+                object-fit: cover;
+                border-radius: 10px;
+
+                &_wrap {
+                    position: relative;
+
+                    &:after {
+                        content: '';
+                        background:  #1A1B1C url('../assets/icons/close_icon.svg') no-repeat center;
+                        position: absolute;
+                        display: block;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        top: -8px;
+                        right: -8px;
+                        cursor: pointer;
+
+                    }
+                }
+            }
+
+            .item_name {
+                font-size: 24px;
+                margin-left: 30px;
+                margin-right: auto;
+            }
+
+            .item_price {
+                color: #BFBFBF;
+                font-size: 20px;
+
+                span {
+                }
+            }
+        }
+        &_button {
+            background: #D70BDA;
+            width: 100%;
+            border-radius: 10px;
+            padding: 12px 0 17px;
+            font-family: "Octosquares-Bold";
+            font-size: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        &_reccomendations {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 24px;
+
+            .reccom {
+                &_category {
+                    width: calc(50% - 6px);
+                }
+
+                &_header {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 18px;
+                    
+                    .name {
+                        font-family: "Octosquares-Medium";
+                        font-size: 20px;
+                    }
+
+                    .live {
+                        background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
+                        backdrop-filter: blur(7px);
+                        width: 60px;
+                        border: 1px solid;
+                        font-size: 14px;
+                        padding: 3px 0;
+                        text-align: center;
+                        margin: 0 15px 0 20px;
+                    }
+
+                    .select {
+                        border: 1px solid #3F2D5A;
+                        padding: 10px 0;
+                        width: 125px;
+                        font-size: 15px;
+                        padding-left: 20px;
+                    }
+                }
+
+                &_body {
+                    height: calc( 100vh - 600px );
+                    overflow-y: scroll;
+                    .card {
+                        background: #171C2D;
+                        display: flex;
+                        align-items: flex-start;
+                        padding: 20px 7px;
+                        margin-bottom: 10px;
+
+                        &_img {
+                            width: 60px;
+                            height: 60px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            margin-right: 14px;
+                        }
+
+                        &_info {
+                            .name {
+                                margin-bottom: 8px;
+                            }
+                            .date {
+                                font-size: 14px;
+                                color: #707791;
+                                margin-bottom: 13px;
+                            }
+                            .creator {
+                                font-size: 14px;
+                                color: #707791;
+
+                                span {
+                                    font-family: "Octosquares-Bold";
+                                    color: #00EAF2;
+                                }
+                            }
+                        }
+                        &_price {
+
+                        }
                     }
                 }
             }
