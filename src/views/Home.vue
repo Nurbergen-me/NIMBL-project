@@ -70,7 +70,7 @@
             <div class="subs_header_head">
               <img
                 class="back_btn"
-                src="../assets/icons/back.svg"
+                src="@/assets/icons/back.svg"
                 alt=""
                 @click="toogleSubscribers()"
               />

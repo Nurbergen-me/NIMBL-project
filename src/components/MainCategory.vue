@@ -1,5 +1,9 @@
 <template>
-    <div class="list_content">
+    <div class="list_content" 
+      v-if="this.$route.name !== 'test-page' 
+      && this.$route.name !== 'test-page2'
+      && this.$route.name !== 'test-detail'"
+    >
       <div
         class="list_buttons"
         :class="{ active: mainCategory === 1 }"

@@ -8,7 +8,7 @@ import MainCategory from '@/components/MainCategory.vue';
         <component :is="Navbar" />
         <div class="app">
             <router-view></router-view>
-            <!-- <component :is="MainCategory" /> -->
+            <component :is="MainCategory" />
         </div>
     </div>
 </template>

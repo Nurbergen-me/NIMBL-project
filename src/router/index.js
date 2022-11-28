@@ -5,7 +5,8 @@ import DetailVideo from '@/views/DetailVideo.vue'
 
 import MarketPlaceView from '@/views/MarketplaceView.vue'
 import TestPage from '@/views/TestPage.vue'
-// import MarketPlace from '@/views/Marketplace.vue'
+import TestPage2 from '@/views/TestPage2.vue'
+import TestPageDetail from '@/views/TestPageDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,11 +31,16 @@ const router = createRouter({
       name: 'test-page',
       component: TestPage
     },
-    // {
-    //   path: '/market-place',
-    //   name: 'market-place',
-    //   component: MarketPlace
-    // },
+    {
+      path: '/test-page2',
+      name: 'test-page2',
+      component: TestPage2
+    },
+    {
+      path: '/test-detail',
+      name: 'test-detail',
+      component: TestPageDetail
+    }
   ]
 })
 

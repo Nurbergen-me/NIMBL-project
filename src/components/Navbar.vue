@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" v-if="this.$route.name !== 'test-detail'">
     <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" />
     <div class="navbar_search">
       <input
@@ -19,8 +19,13 @@
   </div>
 </template>
   
-  <script>
-export default {};
+<script>
+export default {
+  name: 'Navbar',
+  mounted() {
+    console.log(this.$route.name)
+  }
+};
 </script>
   
   <style lang="scss" scoped>
@@ -77,7 +82,7 @@ export default {};
   position: relative;
 }
 .navbar_search::before {
-  content: url("../assets/icons/search.svg");
+  content: url("@/assets/icons/search.svg");
   position: absolute;
   margin-top: 9px;
   margin-left: 8px;
