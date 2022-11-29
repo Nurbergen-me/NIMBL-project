@@ -2,7 +2,7 @@
     <div class="marketplace_detail">
         <div class="header">
             <div class="header_head">
-                <img class="head_back" src="@/assets/icons/back.svg" alt="">
+                <img @click="$router.push({name: 'test-page'})" class="head_back" src="@/assets/icons/back.svg" alt="">
                 <img class="head_logo" src="@/assets/marketplace/detail/chanel_logo.svg" alt="">
             </div>
             <div class="header_footer">
@@ -95,14 +95,18 @@
                     </div>
                 </div>
             </div>
-            <div class="body_channels"></div>
+            <MarketBuy></MarketBuy>
         </div>
     </div>
 </template>
 
 <script>
+import MarketBuy from '@/components/marketplace/MarketBuy.vue'
 export default {
     name: 'TestPageDetail',
+    components: {
+        MarketBuy
+    },
     data() {
         return {
             priceDropdown: true
@@ -112,12 +116,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// input {
-//     width: 50px;
-// }
+
 .marketplace_detail {
     height: 100%;
     .header {
+        width: 100%;
         padding-top: 80px;
         margin-bottom: 3%;
         &_head {
@@ -151,7 +154,7 @@ export default {
             .header_footer_titles {
                 .header_footer_title {
                     font-weight: 400;
-                    font-size: 45px;
+                    font-size: 40px;
                     line-height: 63px;
                     margin-bottom: 10px;
                 }
@@ -167,6 +170,7 @@ export default {
                 grid-template-rows: 1fr 1fr;
                 gap: 20px;
                 justify-content: center;
+                
                 .header_footer_box {
                     cursor: pointer;
                     padding: 10px 30px;
@@ -174,6 +178,11 @@ export default {
                     box-shadow: inset 3.5875px 3.5875px 24.2156px rgba(255, 255, 255, 0.04);
                     backdrop-filter: blur(46.5146px);
                     text-align: center;
+                    opacity: 0.8;
+                    transition: all 0.3s;
+                    &:hover {
+                        opacity: 1;
+                    }
                     &_title {
                         font-weight: 600;
                         font-size: 22px;
@@ -191,6 +200,11 @@ export default {
                 cursor: pointer;
                 .header_footer_btn:first-child {
                     margin-right: 20px;
+                    &.hover {
+                        filter: invert(87%) sepia(3%) saturate(2964%) hue-rotate(289deg) brightness(101%) contrast(86%);
+                        // filter: invert(100%) sepia(0%) saturate(7481%) hue-rotate(78deg) brightness(99%) contrast(106%);
+                        // filter: none;
+                    }
                 }
             }
             &_line {
@@ -200,10 +214,10 @@ export default {
         }
     }
     .body {
-        // background: linear-gradient(7.94deg, rgba(234, 0, 213, 0.7) -12.58%, rgba(61, 94, 255, 0.7) 39.47%, rgba(0, 234, 242, 0.7) 103.12%);
         display: grid;
-        grid-template-columns: 1fr 4fr 2fr;
+        grid-template-columns: 430px 4fr 2fr;
         gap: 20px;
+        align-items: flex-start;
         &_filters {
             cursor: pointer;
             .filter_search {
@@ -226,7 +240,8 @@ export default {
                 }
             }
             .filter {
-                width: 505px;
+                width: 100%;
+                // width: 505px;
                 background: rgba(33, 35, 52, 0.45);
                 box-shadow: inset 4.66412px 4.66412px 31.4828px rgba(255, 255, 255, 0.04);
                 backdrop-filter: blur(60.4738px);
@@ -326,7 +341,7 @@ export default {
                         align-items: center;
                         gap: 10px;
                         .select {
-                            width: 120px;
+                            width: 100px;
                             height: 100%;
                             padding: 10px;
                             display: flex;
@@ -423,7 +438,6 @@ export default {
                     cursor: pointer;
                     border: 1px solid rgba(61, 94, 255, 0.7);
                     border-radius: 6px;
-                    // background: linear-gradient(7.94deg, rgba(234, 0, 213, 0.7) -12.58%, rgba(61, 94, 255, 0.7) 39.47%, rgba(0, 234, 242, 0.7) 103.12%);
                     padding: 10px;
                     .content_box_header {
                         margin-bottom: 10px;
@@ -450,12 +464,12 @@ export default {
                                     margin-right: 5px;
                                 }
                                 .content_title {
-                                    font-size: 24.9505px;
+                                    font-size: 24px;
                                     line-height: 32px;
                                 }
                             }
                             .content_money {
-                                text-align: staend;
+                                white-space: nowrap;
                                 .content_price {
                                     font-size: 19px;
                                     line-height: 26px;
@@ -493,6 +507,112 @@ export default {
                         opacity: 0.85;
                         &:hover {
                             opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 2000px) {
+    .marketplace_detail {
+        .header {
+            &_footer {
+                grid-template-columns: 2fr 3fr 0fr;
+                .header_footer_titles {
+                    font-size: 25px;
+                    .header_footer_title {
+                        font-size: 25px;
+                    }
+                    .header_footer_text {
+
+                        font-size: 20px;
+                    }
+                }
+                .header_footer_boxs {
+                    display: grid;
+                    grid-template-columns: 200px 200px 200px 200px;
+                    .header_footer_box {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        &_title {
+                            font-size: 18px;
+                        }
+                        &_text {
+                            font-weight: 400;
+                            font-size: 16px;
+                            opacity: 0.86;
+                        }
+                    }
+                }
+            }
+        }
+        .body {
+            // margin: 0 auto;
+            // width: 100%;
+            display: grid;
+            grid-template-columns: 380px 2fr 480px;
+            
+            &_filters {
+                .filter_search {
+                    .search {
+                        font-size: 18px;
+                    }
+                }
+                .filter {
+                    .filter_buy {
+                        padding: 10px 20px;
+                        font-size: 20px;
+                    }
+                    .filter_price {
+                        .filter_price_title {
+                            font-size: 20px;
+                        }
+                        &_select {
+                            .select {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+            &_contents {
+                .content_header {
+                    .header_items {
+                        .header_item {
+                            padding: 18px 30px;
+                            &_text {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+                .content_main {
+                    display: grid;
+                    grid-template-columns: 300px 300px 300px;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    .content_box {
+                        .content_box_body {
+                            .content_titles {
+                                gap: 10px;
+                                .content_title_left {
+                                    .content_title {
+                                        font-size: 20px;
+                                    }
+                                }
+                                .content_money {
+                                    font-style: 16px;
+                                    .content_price, .content_value {
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                        .content_button {
+                            font-size: 20px;
+                            padding: 7px 15px;
                         }
                     }
                 }
