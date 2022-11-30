@@ -18,7 +18,7 @@
 
         <div class="launchpad_boxs" v-if="type === 1">
             <div class="video_box" v-for="item in 6">
-                <img class="video_box_img" src="@/assets/marketplace/combinator 1.jpg" alt="">
+                <img class="video_box_img" src="@/assets/marketplace/combinator-1.jpg" alt="">
                 <div class="video_box_headers">
                     <img
                         class="video_img"

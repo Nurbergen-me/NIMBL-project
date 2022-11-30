@@ -92,6 +92,11 @@ body {
   color: #fff;
 }
 
+#app {
+  max-width: 3000px;
+  margin: 0 auto;
+}
+
 button {
 	background: none;
 	color: inherit;

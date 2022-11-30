@@ -97,7 +97,10 @@
                         @BlueWard2
                     </div>
                     <div class="item_price">
-                        Floor Price: <span class="gradient-number">44 NMBL</span> 
+                        <div class="text">
+                            Floor Price: 
+                        </div>
+                        <span class="gradient-number">44 NMBL</span> 
                     </div>
                 </div>
                 <div class="shop_button">
@@ -105,7 +108,7 @@
                 </div>
             </div>
             <div class="shop_reccomendations reccom">
-                <div class="reccom_category">
+                <div class="reccom_category collapsed">
                     <div class="reccom_header">
                         <div class="name">
                             Sales
@@ -401,7 +404,7 @@ input {
         background: rgba(33, 35, 52, 0.45);
         box-shadow: inset 4px 4px 27px rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(51.863px);
-        min-width: 708px;
+        min-width: 680px;
         margin-left: 23px;
         border-radius: 1px;
 
@@ -500,6 +503,7 @@ input {
             font-size: 30px;
             text-align: center;
             margin-top: 30px;
+            cursor: pointer;
         }
 
         &_reccomendations {
@@ -558,6 +562,7 @@ input {
                             object-fit: cover;
                             border-radius: 50%;
                             margin-right: 14px;
+                            margin-left: 7px;
                         }
 
                         &_info {
@@ -588,4 +593,184 @@ input {
         }
     }
 }
+
+@media (max-width: 2200px) {
+    .market {
+        .shop {
+            min-width: 500px;
+
+            &_reccomendations {
+                flex-direction: column;
+            }
+            .reccom {
+                &_header {
+                    justify-content: space-between;
+
+                    .live {
+                        margin-left: auto;
+                        margin-right: 40px;
+                    }
+                }
+                &_category {
+                    width: 100%;
+                    .reccom_body {
+                        height: calc(100vh - 640px);
+                    }
+
+                    &.collapsed {
+                        .reccom_header {
+                            opacity: 0.7;
+                        }
+                        .reccom_body {
+                            height: 0px;
+                        }
+                    }
+
+                }
+                .card_price {
+                    margin: auto;
+                }
+            }
+        }
+        
+    }
+}
+
+@media (max-width: 1800px) {
+    .market {
+        .sidebar {
+            width: 320px;
+        }
+
+        &_body {
+            margin-left: 20px;
+        }
+
+        .products {
+            .product_footer {
+                padding: 6px 8px;
+                .channel_img {
+                    height: 35px;
+                    width: 35px;
+                }
+            }
+        }
+
+        .shop {
+            min-width: 400px;
+
+            &_header {
+                .option {
+                    font-size: 18px;
+                }
+            }
+
+            &_card {
+                padding: 25px;
+
+                .name {
+                    font-size: 24px;
+                    margin-bottom: 15px;
+                }
+            }
+            &_item {
+                .item_img {
+                    width: 60px;
+                    height: 52px;
+                }
+
+                .item_name {
+                    font-size: 18px;
+                    margin-left: 16px;
+                }
+
+                .item_price {
+                    font-size: 18px;
+                }
+            }
+            &_button {
+                font-size: 20px;
+                padding: 8px 0;
+                margin-top: 20px;
+            }
+            .reccom_category .reccom_body {
+                height: calc(100vh - 550px);
+            }
+        }
+    }
+}
+
+@media (max-width: 1600px) {
+    .market {
+        .sidebar {
+            width: 260px;
+            .search {
+                padding-left: 20px;
+                margin-bottom: 20px;
+
+                &_icon {
+                    margin-right: 20px;
+                }
+
+                &_input {
+                    line-height: 50px;
+                    font-size: 18px;
+                }
+            }
+            .filter {
+                font-size: 18px;
+                padding-bottom: 25px;
+
+                &_header {
+                    height: 50px;
+                }
+                &_buy {
+                    height: 55px;
+                }
+                &_prices {
+                    font-size: 18px;
+
+                    &_header {
+                        padding: 15px 10px 15px 0;
+
+                        img {
+                            width: 18px;
+                        }
+                    }
+
+                    select, input {
+                        width: 68px;
+                        height: 30px;
+                        font-size: 14px;
+                    }
+                }
+                &_params {
+                    margin-top: 25px;
+                }
+            }
+        }
+
+        .topmenu {
+            margin-bottom: 20px;
+            &_btn {
+                width: 200px;
+                height: 46px;
+                font-size: 20px;
+            }
+
+            img {
+                height: 20px;
+            }
+        }
+        .products {
+            .product {
+                width: calc(50% - 15px);
+            }
+        }
+        .shop {
+            min-width: 360px;
+        }
+    }
+}
+
 </style>
