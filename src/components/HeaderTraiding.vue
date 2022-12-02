@@ -30,7 +30,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content_categories {
+@media (max-width: 5000px) {
+  .content_categories {
     margin-top: 40px;
     display: flex;
     justify-content: space-between;
@@ -95,5 +96,35 @@ export default {
         }
       }
     }
+  }
 }
+
+// @media (max-width: 2200px) {
+//     .content_categories {
+//         margin-bottom: 20px;
+//         width: fit-content;
+//         // width: calc(100% - 20%);
+//         .category {
+//             width: calc(25% - 22px);
+//             margin: 0 11px;
+//             .name {
+//                 font-size: 29px;
+//             }
+//         }
+        
+//     }
+// }
+
+// @media (max-width: 1800px) {
+//     .content_categories {
+//         margin-bottom: 20px;
+//         width: calc(100% - 150px);
+//         .category {
+//             .name {
+//                 font-size: 29px;
+//             }
+//         }
+        
+//     }
+// }
 </style>

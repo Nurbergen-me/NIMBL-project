@@ -116,7 +116,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@media (max-width: 5000px) {
 .marketplace_detail {
     height: 100%;
     .header {
@@ -127,6 +127,7 @@ export default {
             position: relative;
             padding: 0 90px;
             height: 400px;
+            width: 100%;
             background: url('@/assets/marketplace/detail/navbar_market.png') no-repeat;
             background-position: center;
             background-size: cover;
@@ -214,6 +215,7 @@ export default {
         }
     }
     .body {
+        width: 100%;
         display: grid;
         grid-template-columns: 430px 4fr 2fr;
         gap: 20px;
@@ -514,6 +516,7 @@ export default {
         }
     }
 }
+}
 @media (max-width: 2000px) {
     .marketplace_detail {
         .header {
@@ -531,7 +534,7 @@ export default {
                 }
                 .header_footer_boxs {
                     display: grid;
-                    grid-template-columns: 200px 200px 200px 200px;
+                    grid-template-columns: 1fr 1fr 1fr 1fr; // 200px 200px 200px 200px;
                     .header_footer_box {
                         display: flex;
                         flex-direction: column;
@@ -591,7 +594,7 @@ export default {
                 }
                 .content_main {
                     display: grid;
-                    grid-template-columns: 300px 300px 300px;
+                    grid-template-columns: 350px 350px 350px;
                     grid-template-rows: 1fr 1fr 1fr;
                     .content_box {
                         .content_box_body {

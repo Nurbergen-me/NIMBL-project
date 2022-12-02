@@ -1,7 +1,7 @@
 <template>
     <div class="gainer_content">
         <div class="gainer_title">
-            <div>Top Gainers</div>
+            <div style="margin-right: 70px;">Top Gainers</div>
             <div>Top Losers</div>
         </div>
         
@@ -59,60 +59,78 @@
 <script></script>
 
 <style lang="scss" scoped>
-.gainer_content {
-    .gainer_title {
-        font-weight: 400;
-        font-size: 64px;
-        line-height: 90px;
-        display: grid;
-        grid-template-columns: 0.5fr 1.5fr;
-        margin-bottom: 50px;
-    }
-    .gainer_tables {
-        border-radius: 12px;
-        .gainer_table {
-            cursor: pointer;
+@media (max-width: 5000px) {
+    .gainer_content {
+        .gainer_title {
+            white-space: nowrap;
+            font-weight: 400;
+            font-size: 60px;
+            line-height: 90px;
+            display: flex;
             align-items: center;
-            background: #000000;
-            display: grid;
-            grid-template-columns: 0.3fr 2.5fr 2fr 3fr 2fr;
-            gap: 15px;
-            transition: all 0.5s ease;
-            .table_name {
+            // display: grid;
+            // grid-template-columns: 0.5fr 1.5fr;
+            margin-bottom: 50px;
+        }
+        .gainer_tables {
+            border-radius: 12px;
+            .gainer_table {
+                cursor: pointer;
                 align-items: center;
+                background: #000000;
                 display: grid;
-                grid-template-columns: 1fr 3fr;
+                grid-template-columns: 0.3fr 2.5fr 2fr 3fr 2fr;
+                gap: 15px;
+                transition: all 0.5s ease;
+                .table_name {
+                    align-items: center;
+                    display: grid;
+                    grid-template-columns: 1fr 3fr;
+                }
+                .table_avg {
+                    display: grid;
+                    grid-template-columns: 0.6fr 2fr;
+                    &_line {
+                        justify-content: center;
+                        height: 100%;
+                        width: 300px;
+                        object-fit: contain;
+                    }
+                }
             }
-            .table_avg {
-                display: grid;
-                grid-template-columns: 0.6fr 2fr;
-                &_line {
-                    justify-content: center;
-                    height: 100%;
-                    width: 300px;
-                    object-fit: contain;
+            .header {
+                border-radius: 12px;
+                height: 64px;
+                padding: 20px 50px;
+                margin-bottom: 30px;
+                color: #A9A9B7;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 21px;
+            }
+            .body {
+                border-radius: 12px;
+                // height: 160px;
+                padding: 30px 40px;
+                font-weight: 400;
+                font-size: 38px;
+                line-height: 63px;
+                &:hover {
+                    transform: scale(1.02);
                 }
             }
         }
-        .header {
-            border-radius: 12px;
-            height: 64px;
-            padding: 20px 50px;
-            margin-bottom: 30px;
-            color: #A9A9B7;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 21px;
+    }
+}
+
+@media (max-width: 1800px) {
+    .gainer_content {
+        .gainer_title {
+            font-size: 50px;
         }
-        .body {
-            border-radius: 12px;
-            height: 160px;
-            padding: 50px 50px;
-            font-weight: 400;
-            font-size: 45px;
-            line-height: 63px;
-            &:hover {
-                transform: scale(1.02);
+        .gainer_tables {
+            .body {
+                font-size: 30px;
             }
         }
     }

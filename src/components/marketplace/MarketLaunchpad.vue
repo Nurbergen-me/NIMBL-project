@@ -108,6 +108,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media (max-width: 5000px) {
     .launchpad_content {
         margin-bottom: 100px;
         .launchpad_title {
@@ -383,4 +384,57 @@ export default {
             }
         }
     }
+} 
+@media (max-width: 1800px) {
+    .launchpad_content {
+        .launchpad_title {
+            font-size: 60px;
+        }
+        .launchpad_select {
+            &_item {
+                padding: 20px 30px;
+                .title {
+                    font-size: 22px;
+                }
+            }
+        }
+        .launchpad_boxs {
+            grid-gap: 50px;
+            .video_box {
+                .video_img {
+                    margin-right: 10px;
+                }
+                &_headers {
+                    .video_chanel_titles {
+                        .chanel_name {
+                            font-size: 28px;
+                        }
+                    }
+                    .video_chanel_cost {
+                        .chanel_minting {
+                            font-size: 22px;
+                        }
+                        .chanel_nfts {
+                            font-size: 25px;
+                        }
+                    }
+                }
+                &_body {
+                    padding: 30px 20px;
+                    .text {
+                        font-size: 24px;
+                    }
+                    .raises {
+                        .raise {
+                            font-size: 25px;
+                        }
+                        .money {
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 
 </style>
