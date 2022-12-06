@@ -17,7 +17,7 @@
         <div class="body_content">
             <HeaderTraiding></HeaderTraiding>  
             <MarketTable></MarketTable>
-            <MarketLaunchpad :type="1"></MarketLaunchpad>
+            <MarketLaunchpad :type="2"></MarketLaunchpad>
             <MarketOpportunities :type="2"></MarketOpportunities>
             <MarketGainer></MarketGainer>
         </div>
@@ -32,17 +32,17 @@ import MarketOpportunities from '@/components/marketplace/MarketOpportunities.vu
 import MarketGainer from '@/components/marketplace/MarketGainer.vue'
 export default {
     name: 'TestPage2',
-    data() {
-        return {
-            headerButton: 1
-        }
-    },
     components: {
         MarketTable,
         MarketLaunchpad,
         HeaderTraiding,
         MarketOpportunities,
         MarketGainer
+    },
+    data() {
+        return {
+            headerButton: 1
+        }
     }
 }
 </script>

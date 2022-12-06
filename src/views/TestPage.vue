@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <HeaderTraiding style="width: 100%;"></HeaderTraiding>
                 <MarketTable style="width: 100%;"></MarketTable>
                 <MarketLaunchpad style="width: 100%;" :type="1"></MarketLaunchpad>

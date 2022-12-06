@@ -23,7 +23,7 @@ function openPopup() {
         <component :is="Navbar" />
         <div class="app">
             <router-view></router-view>
-            <component :is="MainCategory" />
+            <!-- <component :is="MainCategory" /> -->
         </div>
     </div>
 </template>

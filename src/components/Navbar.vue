@@ -33,7 +33,6 @@
 export default {
   name: 'Navbar',
   mounted() {
-    console.log(this.$route.name)
   }
 };
 </script>
