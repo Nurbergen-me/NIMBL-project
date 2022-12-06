@@ -54,8 +54,8 @@
             </div>
         </div>
 
-        <div class="launchpad_boxs" v-if="type === 2">
-            <div class="video_box_2">
+        <div class="launchpad_boxs_2" v-if="type === 2">
+            <div class="video_box_3">
                 <div class="box_header">
                     <img class="video_box_img" src="@/assets/marketplace/thumbnail.svg" alt="">
                     <div class="video_pause">
@@ -77,16 +77,13 @@
                             <div class="box_button_footer">floor price</div>
                         </div>
                     </div>
+
                     <div class="box_text">Brief description of the channel - dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</div>
-                    <div class="box_line">
+                    <!-- <div class="box_line">
                         <div class="box_line active"></div>
-                    </div>
-                    <div class="box_footer">
-                        <div class="footer_title">Number of spots</div>
-                        <div class="footer_percentage">2%</div>
-                        <div class="footer_value">(50/2000)</div>
-                    </div>
-                    <div class="box_foot">02d 06h 22m</div>
+                    </div> -->
+                    <div class="box_number">09</div>
+                    <div class="box_number_text">CREATOR LEVEL</div>
                 </div>
             </div>
         </div>
@@ -261,8 +258,17 @@ export default {
                     box-shadow: 0 0 11px rgba(33,33,33,.5); 
                 }
             }
-            .video_box_2 {
-                // clip-path: polygon(50% 0%, 100% 17%, 100% 81%, 49% 100%, 0 79%, 0 14%);
+        }
+
+        .launchpad_boxs_2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 60px;
+            height: 700px;
+            .video_box_3 {
+                position: relative;
+                z-index: 1;
+                
                 cursor: pointer;
                 .box_header {
                     position: relative;
@@ -291,13 +297,23 @@ export default {
                     }
                 }
                 .box_body {
-                    // clip-path: polygon(50% 0%, 100% 18%, 100% 81%, 49% 100%, 0 79%, 0 18%);
-                    padding: 10px;
-                    text-align: center;
+                    height: 100%;
+                    position: absolute;
+                    top: 210px;
+                    z-index: 2;
+                    color: #FFFFFF;
+                    clip-path: polygon(50% 0, 100% 10%, 100% 90%, 50% 100%, 0 90%, 0 10%);
+                    background: rgba(85, 85, 85, 0.14);
+                    // background: rgba(13, 20, 41, 0.5);
+                    backdrop-filter: blur(100px);
+                    width: 100%;
+                    height: 600px;
+                    border: 1px solid #00EAF2;
                     .box_title {
+                        margin-top: 30px;
+                        text-align: center;
                         font-weight: 400;
-                        font-size: 50px;
-                        line-height: 50px;
+                        font-size: 40px;
                         margin-bottom: 30px;
                     }
                     .box_buttons {
@@ -310,7 +326,7 @@ export default {
                             flex-direction: column;
                             align-items: center;
                             justify-content: center;
-                            padding: 15px 50px;
+                            padding: 10px 25px;
                             background: rgba(0, 0, 0, 0.23);
                             backdrop-filter: blur(47.6218px);
                             &_header {
@@ -320,15 +336,13 @@ export default {
                                 .count {
                                     font-family: "Octosquares-Bold";
                                     font-weight: 400;
-                                    font-size: 25px;
-                                    line-height: 37px;
+                                    font-size: 18px;
                                 }
                             }
                             &_title {
                                 font-family: "Octosquares-Bold";
                                 font-weight: 400;
-                                font-size: 25px;
-                                line-height: 30px;
+                                font-size: 18px;
                                 background: linear-gradient(270deg, #EA00D5 -6.27%, #3D5EFF 60.51%, #00EAF2 109.84%);
                                 -webkit-background-clip: text;
                                 -webkit-text-fill-color: transparent;
@@ -336,7 +350,7 @@ export default {
                             }
                             &_footer {
                                 font-weight: 400;
-                                font-size: 28.6665px;
+                                font-size: 25px;
                                 line-height: 40px;
                             }
                         }
@@ -344,8 +358,8 @@ export default {
                     .box_text {
                         font-weight: 400;
                         font-size: 20px;
-                        line-height: 30px;
                         margin-bottom: 20px;
+                        padding: 10px 25px;
                     }
                     .box_line {
                         position: relative;
@@ -361,24 +375,29 @@ export default {
                             background: linear-gradient(273.27deg, #00EAF2 0.47%, #EA00D5 99.64%);
                         }
                     }
-                    .box_footer {
-                        font-weight: 400;
-                        font-size: 21px;
-                        line-height: 30px;
-                        display: grid;
-                        grid-template-columns: 2fr 0.2fr 0.5fr;
-                        align-items: flex-start;
-                        justify-items: flex-start;
-                        margin-bottom: 20px;
-                        .footer_value {
-                            opacity: 0.6;
-                        }
+                    .box_number {
+                        line-height: 90px;
+                        text-align: center;
+                        font-size: 80px;
+                        background: linear-gradient(89.62deg, #01EAF2 23.47%, #3B65FF 49.25%, #D70BDA 75.46%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
                     }
-
-                    .box_foot {
-                        font-weight: 400;
-                        font-size: 30px;
-                        line-height: 55px;
+                    .box_number_text {
+                        text-align: center;
+                        font-size: 25px;
+                    }
+                    &:before {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        bottom: 0;
+                        filter: blur(25px);
+                        transform: translateY(30px) scale(0.9);
+                        // background: #00c000;
+                        display: block;
+                        position: absolute;
                     }
                 }
             }
