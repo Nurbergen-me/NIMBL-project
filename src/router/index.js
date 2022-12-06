@@ -22,7 +22,7 @@ const router = createRouter({
       component: DetailVideo
     },
     {
-      path: '/marketplace-view',
+      path: '/marketplace-view', 
       name: 'marketplace-view',
       component: MarketPlaceView
     },

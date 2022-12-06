@@ -17,9 +17,26 @@ function openPopup() {
 
 <template>
     <div id="app">
-        <button class="open" @click="openPopup">
-            Open in full screen
-        </button>
+        <div class="top-links">
+            <button class="open" @click="openPopup">
+                Open in full screen
+            </button>
+            <div class="menu" @click="$router.push({'name': 'detail'})">
+                Video detail
+            </div>
+            <div class="menu" @click="$router.push({'name': 'marketplace-view'})">
+                Market
+            </div>
+            <div class="menu" @click="$router.push({'name': 'test-page'})">
+                Market 2
+            </div>
+            <div class="menu" @click="$router.push({'name': 'test-page2'})">
+                Market 3
+            </div>
+            <div class="menu" @click="$router.push({'name': 'test-detail'})">
+                Market 4
+            </div>
+        </div>
         <component :is="Navbar" />
         <div class="app">
             <router-view></router-view>
@@ -29,5 +46,12 @@ function openPopup() {
 </template>
 
 <style scoped>
-
+.top-links {
+    display: none;
+}
+.menu {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 40px;
+}
 </style>

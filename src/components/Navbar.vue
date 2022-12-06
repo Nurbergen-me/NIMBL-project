@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" />
+    <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" @click="$router.push({'name': 'home'})" />
     <div class="navbar_search">
       <input
         placeholder="Search Channels, Videos or NFTs"
@@ -88,6 +88,7 @@ export default {
 }
 .navbar_logo {
   height: 63px;
+  cursor: pointer;
 }
 .navbar_search {
   font-family: "Octosquares-Regular";
@@ -243,6 +244,27 @@ export default {
     }
     img {
       width: 16px;
+    }
+  }
+}
+@media (max-width: 1600px) { 
+  .navbar {
+    &_logo {
+      height: 45px;
+    }
+    .search {
+      max-width: 460px;
+    }
+    &_dropdown {
+      margin-right: 26px;
+
+      .name {
+        font-size: 14px;
+      }
+
+      img {
+        width: 14px;
+      }
     }
   }
 }

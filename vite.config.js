@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/web/nimbl/',
+  base: '/nimble-dist/',
   plugins: [vue()],
   resolve: {
     alias: {

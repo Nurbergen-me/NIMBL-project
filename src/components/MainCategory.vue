@@ -101,4 +101,32 @@ export default {
     line-height: 30px;
   }
 }
+@media (max-width: 2000px) {
+  .list_content {
+    height: 70px;
+
+    img {
+      max-height: 32px;
+    }
+
+    .list_name {
+      font-size: 22px;
+      margin-left: 12px;
+    }
+  }
+}
+@media (max-width: 2000px) {
+  .list_content {
+    height: 60px;
+
+    img {
+      max-height: 28px;
+    }
+
+    .list_name {
+      font-size: 18px;
+      margin-left: 8px;
+    }
+  }
+}
 </style>

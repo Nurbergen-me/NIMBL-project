@@ -4,6 +4,20 @@
           <img class="img" src="@/assets/category-1.png" alt="" />
           <div class="name">Trending Videos</div>
           <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
+          <div class="category_subcategories">
+            <div class="category">
+              <img class="img" src="@/assets/category-4.png" alt="" />
+              <div class="name">Play2Earn1</div>
+            </div>
+            <div class="category">
+              <img class="img" src="@/assets/category-3.png" alt="" />
+              <div class="name">ETH NFTs</div>
+            </div>
+            <div class="category">
+              <img class="img" src="@/assets/category-2.png" alt="" />
+              <div class="name">Crypto News</div>
+            </div>
+          </div>
         </div>
         <div class="category">
           <img class="img" src="@/assets/category-2.png" alt="" />
@@ -15,7 +29,7 @@
           <div class="name">ETH NFTs</div>
           <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
         </div>
-        <div class="category">
+        <div class="category last">
           <img class="img" src="@/assets/category-4.png" alt="" />
           <div class="name">Play2Earn1</div>
           <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
@@ -31,27 +45,63 @@ export default {
 
 <style lang="scss" scoped>
 @media (max-width: 5000px) {
-  .content_categories {
+
+::-webkit-scrollbar {
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 4px;
+  background: rgba(92, 99, 163, 1);
+}
+
+.content_categories {
     margin-top: 40px;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 213px;
     margin-bottom: 55px;
     font-family: "Octosquares-Bold";
     .category {
-      min-width: 300px;
       width: calc(25% - 22px);
       margin: 0 11px;
       // height: 213px;
       aspect-ratio: 16 / 9;
       position: relative;
       cursor: pointer;
-      overflow: hidden;
 
       &:hover {
-        .img {
-          transform: scale(1.2);
+        // .img {
+        //   transform: scale(1.2);
+        //   overflow: hidden;
+        // }
+        .category_subcategories {
+          max-height: 600px;
+        }
+
+        .add_icon {
+          transform: rotate(-90deg);
+        }
+      }
+
+      &_subcategories {
+        background: #131236;
+        left: 0;
+        max-height: 0;
+        transition: 0.5s ease;
+        position: absolute;
+        z-index: 2;
+        overflow: hidden;
+
+        .category {
+          width: 100%;
         }
       }
       .img {
@@ -99,32 +149,56 @@ export default {
   }
 }
 
-// @media (max-width: 2200px) {
-//     .content_categories {
-//         margin-bottom: 20px;
-//         width: fit-content;
-//         // width: calc(100% - 20%);
-//         .category {
-//             width: calc(25% - 22px);
-//             margin: 0 11px;
-//             .name {
-//                 font-size: 29px;
-//             }
-//         }
-        
-//     }
-// }
 
-// @media (max-width: 1800px) {
-//     .content_categories {
-//         margin-bottom: 20px;
-//         width: calc(100% - 150px);
-//         .category {
-//             .name {
-//                 font-size: 29px;
-//             }
-//         }
-        
-//     }
-// }
+@media (max-width: 2400px) {
+  .content_categories {
+    .category {
+      .name {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+@media (max-width: 2000px) {
+  .content {
+    width: 65%;
+
+    &_categories {
+      // overflow-x: scroll;
+      padding-bottom: 10px;
+      margin-top: 26px;
+      margin-bottom: 20px;
+
+      .category {
+        width: calc(25% - 10px);
+        margin: 0 5px;
+        .name {
+          font-size: 20px;
+        }
+
+        .add_icon {
+          width: 35px;
+          height: 35px;
+          padding: 10px;
+          bottom: 8px;
+          right: 8px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1600px)  {
+  .content_categories {
+    padding-bottom: 6px;
+    .category {
+      width: calc(33% - 9px);
+      min-width: calc(33% - 9px);
+
+      &.last {
+        display: none;
+      }
+    }
+  }
+}
 </style>

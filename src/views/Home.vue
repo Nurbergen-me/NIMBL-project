@@ -89,7 +89,7 @@
           </div>
           <div class="subs_videos">
             <div class="subs_videos_header">Trending Videos</div>
-            <div class="subs_video_video">
+            <div class="subs_videos_video">f
               <div class="subs_videos_box" v-for="item in 3">
                 <div class="subs_videos_main">
                   <div class="subs_img">
@@ -180,10 +180,11 @@ export default {
   display: flex;
 }
 .sidebar {
-  width: 40%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   color: #fff;
+  height: calc(100vh - 170px);
 
   &_video {
     width: 100%;
@@ -206,7 +207,7 @@ export default {
       font-size: 23px;
       font-weight: 700;
       text-align: center;
-      height: 43px;
+      line-height: 43px;
       position: relative;
       border: 1px solid rgba(234, 0, 213, 0.5);
     }
@@ -246,7 +247,6 @@ export default {
       display: flex;
       background: #141c25;
       border: 1px solid rgba(234, 0, 213, 0.5);
-      height: 54px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -292,6 +292,7 @@ export default {
     }
   }
   .channels {
+    overflow-y: scroll;
     padding: 35px 22px;
   }
   table {
@@ -301,8 +302,7 @@ export default {
       height: 116px;
       th {
         font-weight: 400;
-        font-size: 19.7313px;
-        line-height: 28px;
+        font-size: 19px;
       }
       td {
         cursor: pointer;
@@ -313,12 +313,10 @@ export default {
       .table_channel {
         display: flex;
         align-items: center;
-        margin-right: 50px;
         height: 116px;
         .id {
           font-weight: 400;
-          font-size: 18.8344px;
-          line-height: 26px;
+          font-size: 18px;
           margin-right: 26px;
         }
         .img {
@@ -336,13 +334,11 @@ export default {
       .table_subs {
         font-weight: 400;
         font-size: 22px;
-        line-height: 31px;
         margin-right: 69px;
       }
       .table_floor {
         font-weight: 400;
         font-size: 22px;
-        line-height: 31px;
         background-color: linear-gradient(
           270deg,
           #ea00d5 -6.27%,
@@ -381,17 +377,16 @@ export default {
       }
     }
     .go_to_channel {
-      cursor: pointer;
       padding: 22px 30px;
       font-weight: 400;
       font-size: 22.32px;
-      line-height: 31px;
+      cursor: pointer;
       background: linear-gradient(
         273.52deg,
         rgba(0, 234, 242, 0.2) -54.44%,
         rgba(234, 0, 213, 0.2) 110.67%
       );
-      backdrop-filter: blur(8.96875px);
+      backdrop-filter: blur(9px);
     }
   }
   .about_channel {
@@ -410,7 +405,6 @@ export default {
       .value {
         font-weight: 400;
         font-size: 26px;
-        line-height: 36px;
         margin-bottom: 10px;
         &:hover {
           color: #ea00d5;
@@ -419,44 +413,49 @@ export default {
       .key {
         font-weight: 400;
         font-size: 20px;
-        line-height: 118%;
       }
     }
   }
   .subs_videos {
-    .subs_videos_box {
+
+    .subs_img {
+        aspect-ratio: 16/9;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    &_box {
       position: relative;
       width: 267px;
       border-radius: 12px;
       margin: 0 7px 0 7px;
       cursor: pointer;
-      .subs_videos_main {
-        border-radius: 12px;
-        .subs_img {
-        }
-        .videos_timeline {
-          position: absolute;
-          z-index: 2;
-          background: rgba(31, 26, 33, 0.11);
-          backdrop-filter: blur(10.2876px);
-          border-radius: 6px;
-          bottom: 75px;
-          left: 15px;
-          padding: 3px;
-          background: rgba(31, 26, 33, 0.11);
-          backdrop-filter: blur(10.2876px);
-          border: 1px solid rgba(31, 26, 33, 0.11);
-          cursor: pointer;
-        }
-      }
-      .subs_videos_names {
-        font-weight: 400;
-        font-size: 21px;
-        line-height: 29px;
+    }
+    &_main {
+      border-radius: 12px;
+      .videos_timeline {
+        position: absolute;
+        z-index: 2;
+        background: rgba(31, 26, 33, 0.11);
+        backdrop-filter: blur(10.2876px);
+        border-radius: 6px;
+        bottom: 75px;
+        left: 15px;
+        padding: 3px;
+        background: rgba(31, 26, 33, 0.11);
+        backdrop-filter: blur(10.2876px);
+        border: 1px solid rgba(31, 26, 33, 0.11);
+        cursor: pointer;
       }
     }
-    .subs_video_video {
+    &_names {
+      font-weight: 400;
+      font-size: 21px;
+    }
+    &_video {
       display: flex;
+      width: 100%;
+      overflow-x: scroll;
       // & > *:not(:last-child) {
       //     margin-right: 15px;
       // }
@@ -472,11 +471,10 @@ export default {
 }
 
 .content {
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   color: #fff;
-  width: 100%;
   padding: 0 16px;
 }
 
@@ -493,7 +491,7 @@ export default {
 }
 
 .videos_content {
-  height: calc(100vh - 400px);
+  height: calc(100vh - 480px);
   overflow: scroll;
   display: flex;
   flex-wrap: wrap;
@@ -535,21 +533,19 @@ export default {
       .nikname {
         font-weight: 400;
         font-size: 24px;
-        line-height: 33px;
-        margin-right: 24px;
         overflow: hidden;
       }
       .price {
+        margin-left: auto;
         &_title {
           font-weight: 400;
           font-size: 18px;
-          line-height: 25px;
         }
         &_value {
           font-family: "Octosquares-Bold";
           font-weight: 400;
           font-size: 20px;
-          line-height: 22px;
+          white-space: nowrap;
         }
       }
     }
@@ -558,7 +554,6 @@ export default {
       &_title {
         font-weight: 400;
         font-size: 20px;
-        line-height: 28px;
         margin-bottom: 16px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -579,13 +574,308 @@ export default {
             margin-left: 8px;
             font-weight: 400;
             font-size: 16px;
-            line-height: 23px;
           }
         }
         & > *:not(:last-child) {
           margin-right: 31px;
         }
       }
+    }
+  }
+}
+@media (max-width: 2400px) {
+  .sidebar {
+    .subs_header {
+      .go_to_channel {
+          padding: 16px 22px;
+          font-weight: 400;
+
+          .value {
+            font-size: 20px;
+            margin-bottom: 8px;
+          }
+          .key {
+            font-size: 18px;
+          }
+      }
+      &_head {
+        .subs_titles {
+          img {
+            width: 60px;
+          }
+          .subs_title {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+    .about_channel {
+      &_box {
+        padding: 16px 20px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .sidebar_tabs {
+    .tab {
+      font-size: 20px;
+    }
+  }
+  .videos_content {
+    .video_box {
+      &_title {
+        .video_img {
+          width: 26px;
+          height: 26px;
+        }
+        .nikname {
+          font-size: 18px;
+        }
+      }
+      .video_header {
+        &_title {
+          font-size: 18px;
+          line-height: 1.2em;
+        }
+      }
+    }
+    .prices {
+      .price_title {
+        font-size: 16px;
+      }
+      .price_value {
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media (max-width: 2000px) {
+  .sidebar {
+    width: 35%;
+
+    &_video {
+      .name {
+        font-size: 18px;
+        line-height: 36px;
+      }
+    }
+
+    &_tabs {
+      .tab {
+        font-size: 18px;
+        height: 46px;
+      }
+    }
+    &_sort {
+      .byDate {
+        .date {
+          height: 40px;
+          width: 40px;
+          font-size: 18px;
+        }
+      }
+      .sort {
+        &.byCategory, &.all {
+          font-size: 16px;
+          padding: 0 12px;
+        }
+      }
+      
+    }
+
+    table {
+      tr {
+        height: 40px;
+
+        th {
+          font-size: 14px;
+        }
+
+        .table_channel {
+          height: 64px;
+          .id {
+            font-size: 16px;
+            margin-right: 16px;
+          }
+          .img {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+          }
+          .name {
+            font-size: 16px;
+          }
+        }
+        .gradient-number {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+
+  .videos_content {
+    height: calc(100vh - 365px);
+    .video_box {
+      width: calc(25% - 10px);
+      margin: 0 5px 16px;
+
+      &_title {
+        height: auto;
+        padding: 8px;
+        .video_img {
+          margin-right: 6px;
+          width: 24px;
+          height: 24px;
+        }
+        .nikname {
+          font-size: 14px;
+        }
+      }
+      .video_header {
+        padding: 8px 12px;
+        &_title {
+          font-size: 14px;
+        }
+        .video_views {
+          img {
+            height: 14px;
+          }
+          &_count {
+            font-size: 12px !important;
+          }
+        }
+
+      }
+    }
+    .prices {
+      .price_title {
+        display: none;
+      }
+      .price_value {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media (max-width: 1600px) {
+  .sidebar {
+    .subs_header {
+      .go_to_channel {
+          padding: 8px 12px;
+          font-size: 18px;
+          .value {
+            font-size: 16px;
+            margin-bottom: 8px;
+          }
+          .key {
+            font-size: 14px;
+          }
+      }
+      &_head {
+        .back_btn {
+          padding: 4px 6px;
+        }
+        .subs_titles {
+          img {
+            width: 40px;
+            height: 40px;
+          }
+          .subs_title {
+            font-size: 18px;
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+    .about_channel {
+      &_box {
+        padding: 12px;
+        width: calc(33.33% - 8px);
+        margin-bottom: 20px;
+        .value {
+          font-size: 18px;
+        }
+        .key {
+          font-size: 14px;
+        }
+      }
+    }
+    .subs_videos {
+      &_header {
+        font-size: 20px;
+      }
+      &_main {
+        .videos_timeline {
+          font-size: 12px;
+          bottom: 50px;
+          left: 10px;
+        }
+      }
+      &_box {
+        width: 180px;
+      }
+      &_names {
+        font-size: 14px;
+      }
+    }
+    &_video {
+      .name {
+        font-size: 16px;
+        line-height: 30px;
+      }
+    }
+    &_tabs {
+      .tab {
+        font-size: 14px;
+        height: 36px;
+      }
+    }
+    &_sort {
+      justify-content: space-between;
+      .byDate {
+        .date {
+            height: 30px;
+            width: 30px;
+            font-size: 14px;
+        }
+      }
+      .sort {
+        &.byCategory, &.all {
+          font-size: 14px;
+          padding: 0 10px;
+
+          img {
+            width: 12px;
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+    table {
+      tr {
+        .table_channel {
+          height: 54px;
+          .id, .name {
+            font-size: 14px;
+          }
+          .img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+        .gradient-number {
+          font-size: 14px;
+        }
+      }
+    }
+    .channels {
+      padding: 18px;
+    }
+  }
+  .videos_content {
+    .video_box {
+      width: calc(33% - 8px);
     }
   }
 }

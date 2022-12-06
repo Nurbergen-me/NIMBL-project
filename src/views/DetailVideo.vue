@@ -146,35 +146,55 @@
 
       <div class="playlist_content">
         <div class="lines_content">
-          <div class="line_btn active">
+          <div class="line_btn" :class="{'active': currentTab === 1}" @click="currentTab = 1">
             <img src="../assets/lines/videos-icon.svg" alt="" />
             <div class="line_title">Videos</div>
           </div>
-          <div class="line_btn">
+          <div class="line_btn" :class="{'active': currentTab === 2}" @click="currentTab = 2">
             <img src="../assets/lines/commments-icon.svg" alt="" />
             <div class="line_title">Comments</div>
           </div>
-          <div class="line_btn">
+          <div class="line_btn" :class="{'active': currentTab === 3}" @click="currentTab = 3">
             <img src="../assets/lines/clips-icon.svg" alt="" />
             <div class="line_title">Clips</div>
           </div>
         </div>
-        <div class="recomends_video" v-for="item in 10" :key="item">
-          <img src="../assets/icons/video1.svg" alt="" />
-          <div class="recomends_video_info">
-            <div class="recomend_title">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem
-            </div>
-            <div class="recomend_author">Jack Jackson</div>
-            <div class="video_views_box">
-              <div class="video_views">
-                <img src="../assets/video/likes.svg" alt="" />
-                <div class="video_views_count">100 345</div>
+        <div class="recomends_video_wrap" v-if="currentTab === 1">
+          <div class="recomends_video" v-for="item in 10" :key="item">
+            <img src="../assets/icons/video1.svg" alt="" />
+            <div class="recomends_video_info">
+              <div class="recomend_title">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem
               </div>
-              <div class="video_views">
-                <img src="../assets/video/viewers.svg" alt="" />
-                <div class="video_views_count">100 345</div>
+              <div class="recomend_author">Jack Jackson</div>
+              <div class="video_views_box">
+                <div class="video_views">
+                  <img src="../assets/video/likes.svg" alt="" />
+                  <div class="video_views_count">100 345</div>
+                </div>
+                <div class="video_views">
+                  <img src="../assets/video/viewers.svg" alt="" />
+                  <div class="video_views_count">100 345</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comments comments_main" v-if="currentTab === 2">
+          <div class="comments_comment comment">
+            <img src="../assets/comment-1.png" alt="comment" class="comment_img">
+            <div class="comment_info">
+              <div class="comment_info_header">
+                <div class="comment_name">
+                  name
+                </div>
+                <span class="comment_date">
+                  date
+                </span>
+              </div>
+              <div class="comment_text">
+
               </div>
             </div>
           </div>
@@ -184,11 +204,21 @@
   </div>
 </template>
   
-  <script>
-export default {};
+<script>
+export default {
+  name: "DetailVideo",
+  data() {
+    return {
+      currentTab: 1,
+    };
+  },
+  methods: {
+    
+  },
+};
 </script>
   
-  <style scoped>
+  <style scoped lang="scss">
 .detail {
   color: #ffffff;
   display: flex;
@@ -202,6 +232,8 @@ export default {};
 }
 /* Video Content */
 .video_content {
+  height: calc(100vh - 200px);
+  overflow-y: scroll;
   width: 60%;
   position: relative;
   /* background: url("../assets/icons/video_bg.jpg") no-repeat; */
@@ -241,6 +273,10 @@ export default {};
 .video_views {
   display: flex;
   align-items: center;
+
+  img {
+    aspect-ratio: auto !important;
+  }
 }
 .video_views:not(:last-child) {
   margin-right: 31px;
@@ -249,14 +285,12 @@ export default {};
   margin-left: 8px;
   font-weight: 400;
   font-size: 20px;
-  line-height: 28px;
 }
 
 .video_name {
-  width: 647px;
+  max-width: 650px;
   font-weight: 400;
   font-size: 30px;
-  line-height: 42px;
 }
 
 /* video rigth side */
@@ -271,13 +305,11 @@ export default {};
 }
 .channel_name {
   font-weight: 400;
-  font-size: 28.2353px;
-  line-height: 40px;
+  font-size: 28px;
 }
 .channel_subs {
   font-weight: 400;
   font-size: 24px;
-  line-height: 34px;
   color: #a9a9b7;
 }
 
@@ -322,7 +354,6 @@ export default {};
 .comment_name {
   font-weight: 400;
   font-size: 16px;
-  line-height: 22px;
   padding: 11px 24px;
   border-radius: 10px 10px 0px 10px;
   background: rgba(0, 0, 0, 0.5);
@@ -342,8 +373,7 @@ export default {};
 }
 .time {
   font-weight: 400;
-  font-size: 21.4676px;
-  line-height: 30px;
+  font-size: 21px;
   margin-right: 17px;
 }
 .timeline {
@@ -373,8 +403,7 @@ export default {};
   color: #6bb8ff;
   background: #15131c;
   font-weight: 400;
-  font-size: 19.2156px;
-  line-height: 19px;
+  font-size: 19px;
   margin-right: 7px;
 }
 /* Video Title */
@@ -384,7 +413,6 @@ export default {};
 .video_main_name {
   font-weight: 400;
   font-size: 30px;
-  line-height: 42px;
   margin-bottom: 13px;
 }
 
@@ -407,18 +435,15 @@ export default {};
 .channel_main_name {
   font-weight: 400;
   font-size: 38px;
-  line-height: 53px;
 }
 .channel_main_views {
   font-weight: 400;
   font-size: 26px;
-  line-height: 36px;
 }
 
 .channel_subscribe {
   font-weight: 400;
-  font-size: 23.0397px;
-  line-height: 32px;
+  font-size: 23px;
   background: linear-gradient(
     182.53deg,
     rgba(234, 0, 213, 0.3) 3.75%,
@@ -443,13 +468,11 @@ export default {};
 }
 .channel_value {
   font-weight: 400;
-  font-size: 23.6525px;
-  line-height: 33px;
+  font-size: 23px;
 }
 .channel_key {
   font-weight: 400;
-  font-size: 18.1942px;
-  line-height: 21px;
+  font-size: 18px;
 }
 .playlist_content {
   width: 40%;
@@ -487,27 +510,34 @@ export default {};
 .line_title {
   font-weight: 400;
   font-size: 27px;
-  line-height: 85px;
   margin-left: 25px;
 }
 
 .recomends_video {
   display: flex;
   margin-bottom: 25px;
+
+  &_wrap {
+    height: calc(100vh - 300px);
+    overflow-x: scroll;
+  }
+
+  img {
+    aspect-ratio: 16/9;
+  }
 }
 .recomends_video_info {
   margin-left: 27px;
 }
 .recomend_title {
   font-weight: 400;
-  font-size: 23.5433px;
-  line-height: 33px;
+  font-size: 23px;
   margin-bottom: 15px;
+  padding-right: 30px;
 }
 .recomend_author {
   font-weight: 400;
   font-size: 23.5433px;
-  line-height: 33px;
   color: #b1b1b1;
 }
 
@@ -517,7 +547,226 @@ export default {};
 .comments {
   font-weight: 400;
   font-size: 24px;
-  line-height: 34px;
+
+  &_main {
+    padding: 30px;
+  }
+
+  .comment {
+    display: flex;
+    align-items: flex-start;
+
+    &_img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+    &_info {
+      &_header {
+        display: flex;
+        align-items: center;
+      }
+      &_text {
+        font-size: 23px;
+      }
+    }
+    &_name {
+      color: #01EAF2;
+      font-size: 23px;
+      margin-right: 18px;
+    }
+    &_date {
+      color: #82868D;
+      font-size: 16px;
+    }
+  }
+
+  &_comment {
+    display: flex;
+  }
+}
+@media (max-width: 2400px) {
+  .video_name {
+    font-size: 24px;
+  }
+  .headers_content {
+    padding: 50px 30px 0 30px;
+  }
+  .lines_content {
+    height: 80px;
+    margin-bottom: 40px;
+
+    img {
+      width: 30px;
+    }
+  }
+  .line_title {
+    font-size: 24px;
+  }
+  .recomend_title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .recomends_video_info {
+    margin-left: 15px;
+  }
+  .video_box {
+    margin-bottom: 32px;
+  }
+  .video_info_box {
+    padding-left: 30px;
+  }
+  .channel_main_info {
+    margin-left: 20px;
+  }
+  .channel_main_name {
+    font-size: 32px;
+  }
+  .channel_main_views {
+    font-size: 18px;
+  }
+  .channel_content {
+    img {
+      width: 70px;
+    }
+  }
+}
+@media (max-width: 2000px) {
+  .video_name {
+    font-size: 20px;
+  }
+  .headers_content {
+    padding: 40px 20px 0 20px;
+  }
+  .lines_content {
+    height: 60px;
+    margin-bottom: 30px;
+
+    img {
+      width: 20px;
+    }
+  }
+  .line_title {
+    font-size: 20px;
+  }
+  .recomend_title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .recomends_video_info {
+    margin-left: 12px;
+  }
+  .video_box {
+    margin-bottom: 24px;
+  }
+  .video_info_box {
+    padding-left: 24px;
+  }
+  .comment_content {
+    bottom: 20px;
+    right: 16px;
+  }
+  .comment_name {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+  .recomends_video_wrap {
+    height: calc(100vh - 260px);
+  }
+  .recomends_video img {
+    max-width: 220px;
+  }
+  .recomend_author {
+    font-size: 18px;
+  }
+  .video_views_count {
+    font-size: 16px;
+  }
+}
+@media (max-width: 2000px) {
+  .video_content {
+    width: 55%;
+    height: calc(100vh - 160px);
+  }
+  .playlist_content {
+    width: 45%;
+  }
+  .recomends_video img {
+    max-width: 180px;
+  }
+  .video_name {
+    font-size: 18px;
+  }
+  .video_main_name {
+    font-size: 24px;
+  }
+  .recomend_title {
+    font-size: 16px;
+  }
+  .headers_content {
+    display: none;
+  }
+  .recomends_video {
+    margin-bottom: 8px;
+  }
+  .lines_content {
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  .line_title {
+    font-size: 18px;
+    margin-left: 12px;
+  }
+  .channel_main_info {
+    margin-left: 12px;
+  }
+  .channel_main_name {
+    font-size: 24px;
+  }
+  .channel_main_views {
+    font-size: 14px;
+  }
+  .channel_content {
+    img {
+      width: 50px;
+    }
+  }
+  .channel_subscribe {
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 20px;
+  }
+  .channel_base_info {
+    margin-right: 8px;
+    padding: 12px;
+
+    .channel_value {
+      font-size: 16px;
+    }
+    .channel_key {
+      font-size: 14px;
+    }
+  }
+  .channel_info {
+    margin-bottom: 20px;
+  }
+  .comments_content {
+    padding: 0 30px;
+  }
+  .comments {
+    font-size: 14px;
+  }
+  .recomends_video_wrap{
+    height: calc(100vh - 215px);
+  }
+}
+@media (max-width: 1600px) {
+  .recomends_video_wrap{
+    height: calc(100vh - 200px);
+  }
+  .video_content {
+    height: calc(100vh - 150px);
+  }
 }
 </style>
   
