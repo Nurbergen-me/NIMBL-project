@@ -1,6 +1,6 @@
 <template>
     <div class="table_content">
-        <div class="select_content">
+        <!-- <div class="select_content">
             <div class="select_item" :class="{active: tableSelect === 1}" @click="tableSelect = 1">
                 <img class="select_logo" src="@/assets/marketplace/select/creators.svg" alt="">
                 <div class="select_text">Top Creators</div>
@@ -14,11 +14,16 @@
                 <img class="select_logo" src="@/assets/marketplace/select/trending.svg" alt="">
                 <div class="select_text">Trending Creators</div>
             </div>
-        </div>
+        </div> -->
 
         <div class="table_inner">
-            <div class="table_content_2">
+            <div class="table_content_inner">
                 <div class="sidebar_sort">
+                    <div class="sort_byCategory" style="margin-right: 30px;">
+                        <img style="margin-right: 20px;" src="@/assets/icons/top-creator-icon.svg" alt="">
+                        <div class="byCategory_text">Top Creators</div>
+                        <img class="byCategory_icon" src="@/assets/icons/arrow_down.svg" alt="" />
+                    </div>
                     <div class="sort_byDate">
                         <div class="date" :class="{'active': sort === 1}" @click="sort = 1">1d</div>
                         <div class="date" :class="{'active': sort === 2}" @click="sort = 2">1w</div>
@@ -34,22 +39,33 @@
             </div>
 
             <div class="tables">
-                <div class="table" v-for="item in 5">
-                    <img src="@/assets/marketplace/chanel_logo.svg" alt="">
+                <div class="table header">
+                    <div class="table_img"></div>
+                    <div class="title_content">Ranking</div>
+                    <div class="tag_content">Level</div>
+                    <div class="level_content">Categories</div>
+                    <div class="listing_content">The # of Listings</div>
+                    <div class="price_content">Floor Price:</div>
+                    <div class="community_content">Community Size</div>
+                    <div class="total_content">Total Volume</div>
+                </div>
+                <div class="table table_body">
+                    <img class="table_img" src="@/assets/marketplace/chanel_logo.svg" alt="">
                     <div class="title_content">
                         <div class="rang">Rank 1</div>
                         <div class="nike">@Tim.Cooks</div>
-                        <div class="level">level 14 creator </div>
                     </div>
+                    <div class="level_content">level 14 creator</div>
                     <div class="tag_content">
-                        <div class="category">Categories:</div>
-                        <div class="tags">
-                            <div class="tag">#ETH-NFT</div>
-                            <div class="tag">#NFT-Trading</div>
-                            <div class="tag">#NFT-Trading</div>
-                        </div>
+                        <div class="tag">#ETH-NFT</div>
+                        <div class="tag">#NFT-Trading</div>
+                        <div class="tag">#NFT-Trading</div>
                     </div>
-                    <div class="nimbl_content">
+                    <div class="listing_content">480/4022</div>
+                    <div class="price_content">40 NMBL</div>
+                    <div class="listing_content">6700</div>
+                    <div class="price_content">144k NMBL</div>
+                    <!-- <div class="nimbl_content">
                         <div class="nimble_item">
                             <div class="nimble_subtitle">The # of Listings</div>
                             <div class="nimble_title">480/4022</div>
@@ -66,7 +82,7 @@
                             <div class="nimble_subtitle">The # of Listings</div>
                             <div class="nimble_title">480/4022</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -89,7 +105,7 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 5000px) {
     .table_content {
-        padding: 50px 30px;
+        // padding: 50px 30px;
     }
 
     .select_content {
@@ -134,7 +150,7 @@ export default {
 
     .table_inner {
         padding: 10px 20px;
-        .table_content_2 {
+        .table_content_inner {
             .sidebar_sort {
                 display: flex;
                 align-items: center;
@@ -143,10 +159,9 @@ export default {
                 cursor: pointer;
                     
                 .sort_byDate {
-
                     background: #141C25;
                     margin-right: 30px;
-                    width: 500px;
+                    width: 400px;
                     display: flex;
                     align-items: center;
                     border: 1px solid rgba(234, 0, 213, 0.5);
@@ -154,8 +169,7 @@ export default {
                         padding: 14px 25px;
                         width: 60%;
                         font-weight: 400;
-                        font-size: 25.4319px;
-                        line-height: 36px;
+                        font-size: 20px;
                         text-align: center;
                         &.active {
                             background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
@@ -176,8 +190,7 @@ export default {
                     border: 1px solid rgba(234, 0, 213, 0.5);
                     .byCategory_text {
                         font-weight: 400;
-                        font-size: 25.4319px;
-                        line-height: 36px;
+                        font-size: 20px;
                         text-align: center;
                         margin-right: 15px;
                     }
@@ -189,56 +202,54 @@ export default {
             .table {
                 cursor: pointer;
                 display: grid;
-                grid-template-columns: 1fr 1fr 1fr 2fr;
-                justify-items: center;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                justify-items: flex-start;
+                gap: 10px;
                 align-items: center;
                 transition: 0.3s ease;
-                .title_content {
-                    display: grid;
-                    grid-gap: 15px;
-                    .rang {
-                        font-weight: 400;
-                        font-size: 24.7747px;
-                        line-height: 30px;
-                        font-family: "Octosquares-Bold";
-                        background: linear-gradient(
-                            90.24deg,
-                            #01eaf2 0.21%,
-                            #3b65ff 57.08%,
-                            #d70bda 102.91%
-                        );
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
+                &.header {
+                    font-size: 20px;
+                    color: #979797;
+                    margin-bottom: 10px;
+                    .table_img {
+                        width: 250px;
+                        object-fit: cover;
                     }
-                    .nike {
-                        font-weight: 400;
-                        font-size: 28.2405px;
-                        line-height: 40px;
+                }
+                
+                &_body {
+                    .table_img {
+                        width: 250px;
+                        height: 120px;
+                        object-fit: cover;
                     }
-                    .level {
+                    .title_content {
+                        display: grid;
+                        grid-gap: 15px;
+                        .rang {
+                            font-weight: 400;
+                            font-size: 20px;
+                            font-family: "Octosquares-Bold";
+                            color: #00EAF2;
+                        }
+                        .nike {
+                            font-weight: 400;
+                            font-size: 25px;
+                        }
+                    }
+                    .level_content {
+                        white-space: nowrap;
+                        border: 1px solid #6BB8FF;
                         background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.1) -54.44%, rgba(234, 0, 213, 0.1) 110.67%);
                         backdrop-filter: blur(6.01991px);
                         border-radius: 3px;
-                        padding: 10px 30px;
+                        padding: 10px 25px;
 
                         font-weight: 400;
-                        font-size: 20.8458px;
-                        line-height: 17px;
+                        font-size: 20px;
                         opacity: 0.7;
                     }
-                }
-                .tag_content {
-                    .category {
-                        font-weight: 400;
-                        font-size: 24.7747px;
-                        line-height: 35px;
-                        color: #979797;
-                        margin-bottom: 10px;
-                    }
-                    .tags {
-                        display: flex;
-                        flex-wrap: wrap;
-                        align-items: center;
+                    .tag_content {
                         .tag {
                             padding: 3px 7px;
                             background: #131217;
@@ -252,35 +263,48 @@ export default {
                             }
                         }
                     }
-                }
-                .nimbl_content {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-rows: 1fr 1fr;
-                    gap: 20px 40px;
-                    .nimble_item {
-                        .nimble_subtitle {
-                            font-weight: 400;
-                            font-size: 24.7747px;
-                            line-height: 35px;
+                    .listing_content {
+                        font-family: Octosquares-Bold;
+                        font-size: 20px;
+                    }
+                    .price_content {
+                        font-family: Octosquares-Bold;
+                        font-size: 20px;
+                        background: linear-gradient(90.24deg, #01EAF2 0.21%, #3B65FF 57.08%, #D70BDA 102.91%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                    }
+                    
+                    .nimbl_content {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-rows: 1fr 1fr;
+                        gap: 20px 40px;
+                        .nimble_item {
+                            .nimble_subtitle {
+                                font-weight: 400;
+                                font-size: 24.7747px;
+                                line-height: 35px;
 
-                            color: #FFFFFF;
-                        }
-                        .nimble_title {
-                            font-weight: 400;
-                            font-size: 28.2432px;
-                            line-height: 34px;
+                                color: #FFFFFF;
+                            }
+                            .nimble_title {
+                                font-weight: 400;
+                                font-size: 28.2432px;
+                                line-height: 34px;
 
-                            background: linear-gradient(90.24deg, #01EAF2 0.21%, #3B65FF 57.08%, #D70BDA 102.91%);
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
+                                background: linear-gradient(90.24deg, #01EAF2 0.21%, #3B65FF 57.08%, #D70BDA 102.91%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            }
                         }
                     }
-                }
-                &:hover {
-                    background: #14161E;
-                    padding: 10px;
-                    transform: scale(1.02);
+                    &:hover {
+                        background: #14161E;
+                        padding: 10px;
+                        transform: scale(1.01);
+                    }
                 }
             }
         }

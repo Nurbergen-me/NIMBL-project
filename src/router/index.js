@@ -8,6 +8,7 @@ import TestPage from '@/views/TestPage.vue'
 import TestPage2 from '@/views/TestPage2.vue'
 import TestPageDetail from '@/views/TestPageDetail.vue'
 import ChartPage from '@/views/ChartPage.vue'
+import Market from '@/views/Market.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +47,11 @@ const router = createRouter({
       path: '/chart-page',
       name: 'chart-page',
       component: ChartPage
+    },
+    {
+      path: '/marketplace',
+      name: 'marketplace',
+      component: Market
     }
   ]
 })

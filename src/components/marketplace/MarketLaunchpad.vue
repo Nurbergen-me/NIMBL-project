@@ -1,23 +1,33 @@
 <template>
     <div class="launchpad_content">
-        <div class="launchpad_title">Launchpad</div>
-        <div class="launchpad_select">
-            <div class="launchpad_select_item" :class="{'active': select === 1}" @click="select = 1">
-                <img class="logo" src="@/assets/marketplace/launchpad/live.svg" alt="">
-                <div class="title">Live mints</div>
+
+        <div class="launchpad_header">
+            <div class="filter_box">
+                <img class="filter_icon" src="@/assets/chart/filter-icon.svg" alt="">
             </div>
-            <div class="launchpad_select_item" :class="{'active': select === 2}" @click="select = 2">
-                <img class="logo" src="@/assets/marketplace/launchpad/finished.svg" alt="">
-                <div class="title">Finished mints</div>
+            <div class="header_tabs">
+                <div class="header_tab">View as List</div>
+                <div class="header_tab">View as Grid</div>
             </div>
-            <div class="launchpad_select_item" :class="{'active': select === 3}" @click="select = 3">
-                <img class="logo" src="@/assets/marketplace/launchpad/upcoming.svg" alt="">
-                <div class="title">Upcoming mints</div>
+            <div class="header_btns">
+                <div class="header_btn" :class="{'active': time === 1}" @click="changeTime(1)">All</div>
+                <div class="header_btn" :class="{'active': time === 2}" @click="changeTime(2)">1y</div>
+                <div class="header_btn" :class="{'active': time === 3}" @click="changeTime(3)">1m</div>
+                <div class="header_btn" :class="{'active': time === 4}" @click="changeTime(4)">1w</div>
+                <div class="header_btn" :class="{'active': time === 5}" @click="changeTime(5)">1d</div>
+            </div>
+
+            <div class="header_sliders">
+                <div class="slider_page"> <span class="slider_page active">01</span> / 20</div>
+                <div class="slider_icons">
+                    <img class="slider_icon" src="@/assets/chart/slider-icon.svg" alt="">
+                    <img class="slider_icon second" src="@/assets/chart/slider-icon.svg" alt="">
+                </div>
             </div>
         </div>
 
         <div class="launchpad_boxs" v-if="type === 1">
-            <div class="video_box" v-for="item in 6">
+            <div class="video_box">
                 <img class="video_box_img" src="@/assets/marketplace/combinator-1.jpg" alt="">
                 <div class="video_box_headers">
                     <img
@@ -55,7 +65,7 @@
         </div>
 
         <div class="launchpad_boxs_2" v-if="type === 2">
-            <div class="video_box_3">
+            <div class="video_box_2" v-for="item in 5" :key="item">
                 <div class="box_header">
                     <img class="video_box_img" src="@/assets/marketplace/thumbnail.svg" alt="">
                     <div class="video_pause">
@@ -67,7 +77,7 @@
                     <div class="box_buttons">
                         <div class="box_button">
                             <div class="box_button_header">
-                                <img src="@/assets/marketplace/members.svg" alt="">
+                                <img class="member_icon" src="@/assets/marketplace/members.svg" alt="">
                                 <div class="count">500K</div>
                             </div>
                             <div class="box_button_footer">members</div>
@@ -79,14 +89,53 @@
                     </div>
 
                     <div class="box_text">Brief description of the channel - dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</div>
-                    <!-- <div class="box_line">
+                    <div class="box_line">
                         <div class="box_line active"></div>
-                    </div> -->
-                    <div class="box_number">09</div>
-                    <div class="box_number_text">CREATOR LEVEL</div>
+                    </div>
+                    <div class="sports">
+                        <div class="sports_text">Number of spots</div>
+                        <div class="sports_value">
+                            <div class="sports_percent">2%</div>
+                            <div class="sports_num">(50/2000)</div>
+                        </div>
+                    </div>
+                    <div class="box_hours">02d 06h 22m</div>
+                    <!-- <div class="box_number">09</div>
+                    <div class="box_number_text">CREATOR LEVEL</div> -->
                 </div>
             </div>
         </div>
+
+        <div class="launchpad_boxs_3" v-if="type === 3">
+            <!-- <div class="box"> -->
+                <div class="video_box_3" v-for="item in 1" :key="item">
+                    <div class="box_header">
+                        <img class="video_box_img" src="@/assets/icons/video-path-clip.svg" alt="">
+                        <div class="video_pause">
+                            <img class="video_box_pause" src="@/assets/marketplace/pause_2.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="box_body">
+                        <div class="box_title">@BlueWard2</div>
+                        <div class="box_buttons">
+                            <div class="box_button">
+                                <div class="count">500K</div>
+                                <div class="box_button_footer">members</div>
+                            </div>
+                            <div class="box_button">
+                                <div class="box_button_title">134 NMBL</div>
+                                <div class="box_button_footer">floor price</div>
+                            </div>
+                        </div>
+                        <div class="tag_content">
+                            <div class="tag">#ETH-NFT</div>
+                            <div class="tag">#NFT-Trading</div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+
     </div>
 </template>
 
@@ -95,11 +144,17 @@ export default {
     name: 'MarketLaunchpad',
     data() {
         return {
-            select: 1
+            select: 1,
+            time: 1
         }
     },
     props: {
         type: 1,
+    },
+    methods: {
+        changeTime(val) {
+            this.time = val
+        }
     }
 }
 </script>
@@ -107,41 +162,82 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 5000px) {
     .launchpad_content {
-        margin-bottom: 100px;
-        .launchpad_title {
-            font-weight: 400;
-            font-size: 65.589px;
-            line-height: 92px;
-            color: #FFFFFF;
+        height: 100%;
+        // margin-bottom: 100px;
+        .launchpad_header {
+            width: 100%;
+            display: flex;
+            align-items: center;
             margin-bottom: 30px;
-        }
-        .launchpad_select {
-            display: grid;
-            grid-template-columns: 400px 400px 400px;
-            text-align: center;
-            gap: 40px;
-            margin-bottom: 30px;
-            &_item {
+            .filter_box {
+                background: rgba(85, 85, 85, 0.14);
+                backdrop-filter: blur(14.7107px);
+                border-radius: 6px;
+                padding: 20px;
+                margin-right: 30px;
+                .filter_icon {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+            .header_tabs {
+                cursor: pointer;
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                padding: 20px 40px;
-                background: rgba(85, 85, 85, 0.14);
-                backdrop-filter: blur(17.0531px);
-                border-radius: 12px;
-                transition: 0.3s ease;
-                .logo {
-                    margin-right: 20px;
-                }
-                .title {
-                    font-weight: 400;
-                    font-size: 25px;
-                    line-height: 52px;
-                }
-                &.active, &:hover {
+                margin-right: 20px;
+                .header_tab {
+                    padding: 20px;
                     background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
-                    backdrop-filter: blur(16.8216px);
+                    backdrop-filter: blur(14.511px);
+                    border-radius: 6px;
+                    font-size: 25px;
+                    &:first-child {
+                        margin-right: 20px;
+                    }
+                }
+            }
+            .header_btns {
+                width: 500px;
+                cursor: pointer;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                background: #141C25;
+                border: 1px solid #141C25;
+                .header_btn {
+                    text-align: center;
+                    font-size: 24px;
+                    line-height: 34px;
+                    padding: 10px;
+                    &.active {
+                        background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
+                        backdrop-filter: blur(10px);
+                    }
+                }
+            }
+            .header_sliders {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                .slider_page {
+                    font-size: 20px;
+                    margin-right: 20px;
+                    &.active {
+                        margin: 0;
+                        border: 1px solid #3B65FF;
+                        padding: 1px 5px 7px 5px;
+                    }
+                }
+                .slider_icons {
+                    cursor: pointer;
+                    margin-top: 5px;
+                    .slider_icon {
+                        width: 20px;
+                        height: 20px;
+                        &.second {
+                            margin-left: 5px;
+                            transform: rotate(180deg);
+                        }
+                    }
                 }
             }
         }
@@ -262,17 +358,19 @@ export default {
 
         .launchpad_boxs_2 {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 60px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 20px;
             height: 700px;
-            .video_box_3 {
+            .video_box_2 {
+                // width: 430px;
+                height: 700px;
                 position: relative;
                 z-index: 1;
                 
                 cursor: pointer;
                 .box_header {
                     position: relative;
-                    z-index: 1;
+                    z-index: -1;
                     .video_box_img {
                         width: 100%;
                         height: 100%;
@@ -280,15 +378,17 @@ export default {
                     }
                     .video_pause {
                         border-radius: 50%;
-                        background: rgba(0, 0, 0, 0.4);
+                        background: #000000;
                         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                         backdrop-filter: blur(7px);
                         position: absolute;
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
-                        padding: 50px;
+                        
+                        padding: 35px;
                         .video_box_pause {
+                            height: 40px;
                             position: absolute;
                             top: 50%;
                             left: 55%;
@@ -297,36 +397,37 @@ export default {
                     }
                 }
                 .box_body {
+                    padding: 0 20px;
                     height: 100%;
                     position: absolute;
                     top: 210px;
-                    z-index: 2;
+                    z-index: 5;
                     color: #FFFFFF;
                     clip-path: polygon(50% 0, 100% 10%, 100% 90%, 50% 100%, 0 90%, 0 10%);
                     background: rgba(85, 85, 85, 0.14);
                     // background: rgba(13, 20, 41, 0.5);
                     backdrop-filter: blur(100px);
                     width: 100%;
-                    height: 600px;
+                    height: 520px;
                     border: 1px solid #00EAF2;
                     .box_title {
                         margin-top: 30px;
                         text-align: center;
                         font-weight: 400;
-                        font-size: 40px;
+                        font-size: 30px;
                         margin-bottom: 30px;
                     }
                     .box_buttons {
-                        padding: 10px;
                         display: grid;
                         grid-template-columns: 1fr 1fr;
                         gap: 10px;
+                        margin-bottom: 20px;
                         .box_button {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
                             justify-content: center;
-                            padding: 10px 25px;
+                            padding: 10px 20px;
                             background: rgba(0, 0, 0, 0.23);
                             backdrop-filter: blur(47.6218px);
                             &_header {
@@ -337,6 +438,11 @@ export default {
                                     font-family: "Octosquares-Bold";
                                     font-weight: 400;
                                     font-size: 18px;
+                                }
+                                .member_icon {
+                                    width: 30px;
+                                    height: 30px;
+                                    margin-right: 10px;
                                 }
                             }
                             &_title {
@@ -350,27 +456,25 @@ export default {
                             }
                             &_footer {
                                 font-weight: 400;
-                                font-size: 25px;
-                                line-height: 40px;
+                                font-size: 22px;
                             }
                         }
                     }
                     .box_text {
+                        text-align: center;
                         font-weight: 400;
                         font-size: 20px;
                         margin-bottom: 20px;
-                        padding: 10px 25px;
                     }
                     .box_line {
                         position: relative;
-                        height: 10px;
-                        width: 100%;
+                        height: 15px;
                         background: #2C2C35;
-                        border-radius: 6px;
                         margin-bottom: 10px;
                         &.active {
+                            margin: 0;
                             width: 100px;
-                            height: 10px;
+                            height: 15px;
                             position: absolute;
                             background: linear-gradient(273.27deg, #00EAF2 0.47%, #EA00D5 99.64%);
                         }
@@ -387,6 +491,30 @@ export default {
                         text-align: center;
                         font-size: 25px;
                     }
+                    .sports {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 15%;
+                        .sports_text {
+                            font-size: 15px;
+                        }
+                        .sports_value {
+                            display: flex;
+                            align-items: center;
+                            .sports_percent {
+                                font-size: 15px;
+                                margin-right: 10px;
+                            }
+                            .sports_num {
+                                color: rgba(255, 255, 255, 0.62);
+                            }
+                        }
+                    }
+                    .box_hours {
+                        text-align: center;
+                        font-size: 25px;
+                    }
                     &:before {
                         content: '';
                         width: 100%;
@@ -398,6 +526,154 @@ export default {
                         // background: #00c000;
                         display: block;
                         position: absolute;
+                    }
+                }
+            }
+        }
+
+        .launchpad_boxs_3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            height: 100%;
+            
+            // .box {
+            //     height: fit-content;
+            //     position: relative;
+            //     transition: all 0.5s ease;
+            //     clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+            //     &:before,
+            //     &:after {
+            //         clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+            //         content: '';
+            //         position: absolute;
+            //         inset: 0;
+            //         background: linear-gradient(95deg, rgba(1, 167, 255, 0.8) 0.4%, rgba(255, 0, 245, 0.8) 103.58%);
+            //         transition: 0.5s;
+            //         border-radius: 12px;
+            //     }
+
+            //     &:hover::before {
+            //         border-radius: 12px;
+            //         inset: -3px;
+            //     }
+            //     &:hover:after {
+            //         border-radius: 12px;
+            //         inset: -3px;
+            //         filter: blur(10px);
+            //     }
+            //     &:hover {
+            //         transform: scale(1.01);
+            //     }
+            // }
+            .video_box_3 {
+                position: relative;
+                z-index: 10;
+                cursor: pointer;
+                height: 100%;
+                clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+                background: rgba(85, 85, 85, 0.14);
+                backdrop-filter: blur(100px);
+                width: 100%;
+                min-height: 400px;
+                .box_header {
+                    clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+                    position: relative;
+                    z-index: 1;
+                    .video_box_img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                    .video_pause {
+                        border-radius: 50%;
+                        background: #000000;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                        backdrop-filter: blur(7px);
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        
+                        padding: 35px;
+                        .video_box_pause {
+                            height: 40px;
+                            position: absolute;
+                            top: 50%;
+                            left: 55%;
+                            transform: translate(-55%, -50%);
+                        }
+                    }
+                }
+                .box_body {
+                    position: relative;
+                    .box_title {
+                        text-align: center;
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .box_buttons {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 10px;
+                        margin-bottom: 5px;
+                        .box_button {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 5px;
+                            background: rgba(0, 0, 0, 0.23);
+                            backdrop-filter: blur(34.247px);
+                            &_header {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                .count {
+                                    font-family: "Octosquares-Bold";
+                                    font-weight: 400;
+                                    font-size: 15px;
+                                }
+                                .member_icon {
+                                    width: 30px;
+                                    height: 30px;
+                                    margin-right: 10px;
+                                }
+                            }
+                            &_title {
+                                font-family: "Octosquares-Bold";
+                                font-weight: 400;
+                                font-size: 15px;
+                                background: linear-gradient(270deg, #EA00D5 -6.27%, #3D5EFF 60.51%, #00EAF2 109.84%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                            }
+                            &_footer {
+                                font-weight: 400;
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                    .tag_content {
+                        display: inline-flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        // padding-bottom: 10px;
+                        .tag {
+                            padding: 3px 7px;
+                            // background: #131217;
+                            font-weight: 400;
+                            font-size: 15px;
+                            color: #6BB8FF;
+                            &:not(:last-child) {
+                                margin-bottom: 5px;
+                                margin-right: 5px;
+                            }
+                        }
                     }
                 }
             }

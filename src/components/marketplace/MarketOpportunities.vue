@@ -1,6 +1,21 @@
 <template>
     <div class="opportunities_content">
-        <div class="opportunities_title">Whitelist opportunities</div>
+        <!-- <div class="opportunities_title">Whitelist opportunities</div> -->
+
+        <div class="header_content">
+            <div class="filter_box">
+                <img class="filter_icon" src="@/assets/chart/filter-icon.svg" alt="">
+            </div>
+
+            <div class="header_sliders">
+                <div class="slider_page"> <span class="slider_page active">01</span> / 20</div>
+                <div class="slider_icons">
+                    <img class="slider_icon" src="@/assets/chart/slider-icon.svg" alt="">
+                    <img class="slider_icon second" src="@/assets/chart/slider-icon.svg" alt="">
+                </div>
+            </div>
+        </div>
+
         <div class="opportunities_boxs" v-if="type === 1">
             <div class="opportunities_box" v-for="item in 6">
                 <img class="opportunities_box_img" src="@/assets/marketplace/chanel_logo.svg" alt="">
@@ -21,33 +36,36 @@
             </div>
         </div>
 
-        <div class="opportunities_boxs_2"  v-if="type === 2">
-            <div class="opportunities_box_2">
-                <div class="video_header">
-                    <img class="video_header_logo" src="@/assets/marketplace/denziel-icon.svg" alt="">
-                    <div class="video_pause">
-                        <img class="video_box_pause" src="@/assets/marketplace/pause_2.svg" alt="">
-                    </div>
-                </div>
-                <div class="video_body">
-                    <div class="video_box_titles">
-                        <div class="video_box_titles_left">
-                            <img class="video_box_logo" src="@/assets/icons/avatar.svg" alt="">
-                            <div class="video_box_title">@Denziel</div>
+        <div class="opportunities_boxs_2" v-if="type === 2">
+            <div class="box" v-for="item in 5" :key="item">
+                <div class="opportunities_box_2">
+                    <div class="video_header">
+                        <img class="video_header_logo" src="@/assets/marketplace/denziel-icon.svg" alt="">
+                        <div class="video_pause">
+                            <img class="video_box_pause" src="@/assets/marketplace/pause_2.svg" alt="">
                         </div>
-                        <div class="video_box_titles_right">
-                            <div class="video_box_prices">
-                                <div class="price">floor price</div>
-                                <div class="value">65 NMBL</div>
+                    </div>
+                    <div class="video_body">
+                        <div class="video_box_titles">
+                            <div class="video_box_titles_left">
+                                <img class="video_box_logo" src="@/assets/icons/avatar.svg" alt="">
+                                <div class="video_box_title">@Denziel</div>
+                            </div>
+                            <div class="video_box_titles_right">
+                                <div class="video_box_prices">
+                                    <div class="price">floor price</div>
+                                    <div class="value">65 NMBL</div>
+                                </div>
                             </div>
                         </div>
+                        <div class="line"></div>
+                        <div class="video_text">Increase your income by joining us the most famous pixel arts.</div>
+                        <div class="video_button">Participate</div>
                     </div>
-                    <div class="line"></div>
-                    <div class="video_text">Increase your income by joining us the most famous pixel arts. You won’t regret it.</div>
-                    <div class="video_button">Participate</div>
                 </div>
             </div>
-            <div class="opportunities_box_2">
+            
+            <div class="opportunities_box_2" v-for="item in 0" :key="item">
                 <div class="video_header">
                     <img class="video_header_logo" src="@/assets/marketplace/james-icon.svg" alt="">
                     <div class="video_pause">
@@ -68,7 +86,7 @@
                         </div>
                     </div>
                     <div class="line"></div>
-                    <div class="video_text">Increase your income by joining us the most famous pixel arts. You won’t regret it.</div>
+                    <div class="video_text">Increase your income by joining us the most famous pixel arts.</div>
                     <div class="video_button">Participate</div>
                 </div>
             </div>
@@ -97,6 +115,85 @@ export default {
             line-height: 90px;
             margin-bottom: 50px;
         }
+
+        .header_content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            .filter_box {
+                background: rgba(85, 85, 85, 0.14);
+                backdrop-filter: blur(14.7107px);
+                border-radius: 6px;
+                padding: 20px;
+                margin-right: 30px;
+                .filter_icon {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+            .header_tabs {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+                .header_tab {
+                    padding: 20px;
+                    background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
+                    backdrop-filter: blur(14.511px);
+                    border-radius: 6px;
+                    font-size: 25px;
+                    &:first-child {
+                        margin-right: 20px;
+                    }
+                }
+            }
+            .header_btns {
+                width: 500px;
+                cursor: pointer;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                background: #141C25;
+                border: 1px solid #141C25;
+                .header_btn {
+                    text-align: center;
+                    font-size: 24px;
+                    line-height: 34px;
+                    padding: 10px;
+                    &.active {
+                        background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
+                        backdrop-filter: blur(10px);
+                    }
+                }
+            }
+            .header_sliders {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                .slider_page {
+                    font-size: 20px;
+                    margin-right: 20px;
+                    &.active {
+                        margin: 0;
+                        border: 1px solid #3B65FF;
+                        padding: 1px 5px 7px 5px;
+                    }
+                }
+                .slider_icons {
+                    cursor: pointer;
+                    margin-top: 5px;
+                    .slider_icon {
+                        width: 20px;
+                        height: 20px;
+                        &.second {
+                            margin-left: 5px;
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+
         .opportunities_boxs {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -183,21 +280,53 @@ export default {
             }
             
         }
+
         .opportunities_boxs_2 {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 60px;
-            .opportunities_box_2 {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 40px;
+            height: 100vh;
+            .box {
+                height: fit-content;
+                position: relative;
                 transition: all 0.5s ease;
+                &:before,
+                &:after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(95deg, rgba(1, 167, 255, 0.8) 0.4%, rgba(255, 0, 245, 0.8) 103.58%);
+                    transition: 0.5s;
+                    border-radius: 12px;
+                }
+
+                &:hover::before {
+                    border-radius: 12px;
+                    inset: -3px;
+                }
+                &:hover:after {
+                    border-radius: 12px;
+                    inset: -3px;
+                    filter: blur(10px);
+                }
+                &:hover {
+                    transform: scale(1.01);
+                }
+            }
+            .opportunities_box_2 {
+                position: relative;
+                z-index: 10;
+                height: fit-content;
                 width: 100%;
-                cursor: pointer;
-                padding: 10px;
-                background: rgba(13, 20, 41, 0.44);
-                border-radius: 12px;
+                background: #000000;
                 border: 2px solid rgba(234, 0, 213, 0.2);
+                padding: 10px;
+                border-radius: 12px;
+                cursor: pointer;
                 .video_header {
+                    cursor: pointer;
                     position: relative;
-                    margin-bottom: 30px;
+                    margin-bottom: 15px;
                     .video_header_logo {
                         width: 100%;  
                         object-fit: cover;
@@ -212,8 +341,10 @@ export default {
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
-                        padding: 50px;
+                        padding: 30px;
                         .video_box_pause {
+                            width: 30px;
+                            height: 30px;
                             position: absolute;
                             top: 50%;
                             left: 55%;
@@ -224,40 +355,36 @@ export default {
                 .video_body {
                     width: 100%;
                     .video_box_titles {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
+                        display: grid;
+                        grid-template-columns: 2fr 1fr;
+                        gap: 10px;
                         &_left {
                             display: flex;
                             align-items: center;
                         }
-                        &_right {
-                            margin-right: 10px;
-                        }
 
                         .video_box_logo {
-                            width: 50px;
-                            height: 50px;
+                            width: 40px;
+                            height: 40px;
                             object-fit: contain;
                             border-radius: 50%;
                             margin-right: 10px;
                         }
                         .video_box_title {
                             font-weight: 400;
-                            font-size: 35px;
-                            line-height: 50px;
+                            font-size: 22px;
                         }
                         .video_box_prices {
                             .price {
                                 font-weight: 400;
-                                font-size: 22px;
-                                line-height: 22px;
+                                font-size: 18px;
+                                white-space: nowrap;
                             }
                             .value {
+                                white-space: nowrap;
                                 font-family: "Octosquares-Bold";
                                 font-weight: 400;
                                 font-size: 22px;
-                                line-height: 25px;
 
                                 background: linear-gradient(270deg, #EA00D5 -6.27%, #3D5EFF 60.51%, #00EAF2 109.84%);
                                 -webkit-background-clip: text;
@@ -268,13 +395,13 @@ export default {
                         
                     }
                     .line {
-                        // margin-bottom: 10px;
-                        margin: 0 auto 15px auto;
+                        margin: 5px auto 15px auto;
                         width: 50px;
-                        height: 1px;
+                        height: 2px;
                         background: linear-gradient(270deg, #EA00D5 -6.27%, #3D5EFF 60.51%, #00EAF2 109.84%);
                     }
                     .video_text {
+                        padding: 0 10px;
                         font-weight: 400;
                         font-size: 18px;
                         text-align: center;
@@ -284,9 +411,9 @@ export default {
                         font-family: "Octosquares-Bold";
                         clip-path: polygon(10% 0, 100% 0, 100% 60%, 89.8% 100%, 0 100%, 0 40%);
                         font-size: 25px;
-                        line-height: 57px;
+                        line-height: 40px;
                         text-align: center;
-                        padding: 5px 30px;
+                        padding: 5px 25px;
                         background: linear-gradient(106.95deg, rgba(1, 167, 255, 0.8) 0.4%, rgba(255, 0, 245, 0.8) 103.58%);
                         box-shadow: inset 6.43931px 9.36627px 19.3179px rgba(255, 255, 255, 0.11);
                         backdrop-filter: blur(54.4415px);
@@ -296,9 +423,6 @@ export default {
                             opacity: 1;
                         }
                     }
-                }
-                &:hover {
-                    transform: scale(1.02);
                 }
             }
         }

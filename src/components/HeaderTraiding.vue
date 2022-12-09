@@ -83,7 +83,8 @@ export default {
         //   overflow: hidden;
         // }
         .category_subcategories {
-          max-height: 600px;
+          width: 100%;
+          max-height: 900px;
         }
 
         .add_icon {
@@ -92,6 +93,7 @@ export default {
       }
 
       &_subcategories {
+        width: 100%;
         background: #131236;
         left: 0;
         max-height: 0;
@@ -99,8 +101,8 @@ export default {
         position: absolute;
         z-index: 2;
         overflow: hidden;
-
         .category {
+          height: 250px;
           width: 100%;
         }
       }

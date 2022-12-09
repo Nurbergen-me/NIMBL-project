@@ -3,7 +3,6 @@ import Navbar from '@/components/Navbar.vue'
 import MainCategory from '@/components/MainCategory.vue';
 
 function openPopup() {
-
     var params = [
         'height='+screen.height,
         'width='+screen.width,
@@ -40,7 +39,7 @@ function openPopup() {
         <component :is="Navbar" />
         <div class="app">
             <router-view></router-view>
-            <!-- <component :is="MainCategory" /> -->
+            <component :is="MainCategory" />
         </div>
     </div>
 </template>
