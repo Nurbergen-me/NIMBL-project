@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="list_content" v-if="this.$route.name !== 'marketplace'" >
-            <div class="list_buttons" :class="{ active: mainCategory === 1 }" @click="toggleCategory(1, 'home')" >
+        <div class="list_content" v-if="mainCategory === 1">
+            <div class="list_buttons" :class="{ active: mainCategory === 1 && $route.name === 'home' }" @click="toggleCategory(1, 'home')" >
                 <img src="@/assets/lines/content-icon.svg" alt="" />
                 <div class="list_name">Content</div>
             </div>
@@ -9,7 +9,7 @@
                 <img src="@/assets/lines/community-icon.svg" alt="" />
                 <div class="list_name">Community</div>
             </div>
-            <div class="list_buttons" :class="{ active: mainCategory === 3 }" @click="toggleCategory(3, 'marketplace')" >
+            <div class="list_buttons" :class="{ active: mainCategory === 3 }" @click="toggleCategory(3, 'market-ranking')" >
                 <img src="@/assets/lines/marketplace-icon.svg" alt="" />
                 <div class="list_name">Marketplace</div>
             </div>
@@ -19,19 +19,19 @@
             </div>
         </div>
         <div class="list_content" v-else>
-            <div class="list_buttons" :class="{ active: marketCategory === 1 }" @click="toggleMarketCategory(1, 'ranking')" >
+            <div class="list_buttons" :class="{ active: marketCategory === 1 }" @click="toggleMarketCategory(1, 'market-ranking')" >
                 <img src="@/assets/marketplace/category/ranking-icon.svg" alt="" />
                 <div class="list_name">Rankings</div>
             </div>
-            <div class="list_buttons" :class="{ active: marketCategory === 2 }" @click="toggleMarketCategory(2, 'launchpad')" >
+            <div class="list_buttons" :class="{ active: marketCategory === 2 }" @click="toggleMarketCategory(2, 'market-launchpad')" >
                 <img src="@/assets/marketplace/category/launchpad-icon.svg" alt="" />
                 <div class="list_name">Launchpad</div>
             </div>
-            <div class="list_buttons" :class="{ active: marketCategory === 3 }" @click="toggleMarketCategory(3, 'opportunities')" >
+            <div class="list_buttons" :class="{ active: marketCategory === 3 }" @click="toggleMarketCategory(3, 'market-oppotunities')" >
                 <img src="@/assets/marketplace/category/opportunities-icon.svg" alt="" />
                 <div class="list_name">Opportunities</div>
             </div>
-            <div class="list_buttons" :class="{ active: marketCategory === 4 }" @click="toggleMarketCategory(4, 'gainer')" >
+            <div class="list_buttons" :class="{ active: marketCategory === 4 }" @click="toggleMarketCategory(4, 'market-gainer')" >
                 <img src="@/assets/marketplace/category/gainer-icon.svg" alt="" />
                 <div class="list_name">Gainers & Loosers</div>
             </div>
@@ -43,23 +43,42 @@
 <script>
 // import MarketplaceViewVue from '@/views/MarketplaceView.vue';
 export default {
-  name: "MainCategory",
-  data() {
-    return {
-        mainCategory: 1,
-        marketCategory: 1
-    };
-  },
-  methods: {
-    toggleCategory(id, route) {
-        this.mainCategory = id
-        this.$router.push({name: route})
-    },
-    toggleMarketCategory(id, route) {
-        this.marketCategory = id
-        this.$emit('category', route)
-    }
-  },
+	name: "MainCategory",
+	data() {
+		return {
+			mainCategory: 1,
+			marketCategory: 1,
+			currentPage: 'home'
+		};
+	},
+	watch:{
+        '$route' (to) {
+            this.currentPage = to.name
+            if (to.name === 'home') {
+                this.mainCategory = 1
+            } else {
+                this.mainCategory = 2
+            }
+        }
+	},
+	methods: {
+		toggleCategory(id, route) {
+			this.mainCategory = id
+			this.$router.push({name: route})
+		},
+		toggleMarketCategory(id, route) {
+			this.marketCategory = id
+			this.$router.push({name: route})
+		},
+		notMarket() {
+            if (this.$route.name !== 'market-ranking' || this.$route.name !== 'market-launchpad' || this.$route.name !== 'market-oppotunities' || this.$route.name !==  'market-gainer') {
+                return false
+            } else {
+                console.log('true')
+                return true
+            }
+		}
+	},
 };
 </script>
 

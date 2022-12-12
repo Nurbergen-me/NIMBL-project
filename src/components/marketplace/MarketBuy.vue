@@ -46,21 +46,26 @@
                     </select>
                 </div>
                 <div class="reccom_body">
-                    <div class="reccom_card card" v-for="item in 5">
-                        <img src="@/assets/marketplace/channel-img.png" alt="channel" class="card_img">
+                    <div class="reccom_card card" v-for="(item, index) in cards" :key="index">
+                        <!-- <img src="@/assets/marketplace/channel-img.png" alt="channel" class="card_img"> -->
+                        <img class="video_box_logo" v-if="index === 0" src="@/assets/community/com6-logo.svg" alt="" />
+                        <img class="video_box_logo" v-if="index === 1" src="@/assets/community/com7-logo.svg" alt="" />
+                        <img class="video_box_logo" v-if="index === 2" src="@/assets/community/com8-logo.svg" alt="" />
+                        <img class="video_box_logo" v-if="index === 3" src="@/assets/community/com9-logo.svg" alt="" />
+                        <img class="video_box_logo" v-if="index === 4" src="@/assets/community/com10-logo.svg" alt="" />
                         <div class="card_info">
                             <div class="name">
-                                #1209
+                                #{{item.name}}
                             </div>
                             <div class="date">
-                                4 minutes
+                                {{item.date}}
                             </div>
                             <div class="creator">
-                                by <span>@BlueWard2</span>
+                                by <span>@{{item.creator}}</span>
                             </div>
                         </div>
                         <div class="reccom_footer">
-                            <div class="reccom_footer_text">44 NMBL</div>
+                            <div class="reccom_footer_text">{{item.price}}</div>
                             <div class="reccom_footer_button">Quick Buy</div>
                         </div>
                     </div>
@@ -75,7 +80,15 @@ export default {
     name: 'MarketBuy',
     data() {
         return {
-            selectOption: 1
+            selectOption: 1,
+            cards: [
+                {name: '1209', date: '4 minutes', creator: 'BlueWard2', price: '44 NMBL'},
+                {name: '1244', date: '5 minutes', creator: 'Charlie', price: '45 NMBL'},
+                {name: '1315', date: '11 minutes', creator: 'Jielae25', price: '51 NMBL'},
+                {name: '1558', date: '28 minutes', creator: 'Kitaromo Si', price: '56 NMBL'},
+                {name: '1368', date: '52 minutes', creator: 'Budishwily Kan', price: '64 NMBL'},
+
+            ]
         }
     }
 }
@@ -97,7 +110,7 @@ export default {
         align-items: center;
 
         .option {
-            font-size: 24px;
+            font-size: 16px;
             padding: 14px 0 20px;
             position: relative;
             text-align: center;
@@ -131,7 +144,7 @@ export default {
         padding: 37px 44px;
 
         .name {
-            font-size: 30px;
+            font-size: 16px;
             margin-bottom: 28px;
         }
     }
@@ -165,17 +178,14 @@ export default {
         }
 
         .item_name {
-            font-size: 24px;
+            font-size: 16px;
             margin-left: 30px;
             margin-right: auto;
         }
 
         .item_price {
             color: #BFBFBF;
-            font-size: 20px;
-
-            span {
-            }
+            font-size: 16px;
         }
     }
 
@@ -186,7 +196,7 @@ export default {
         border-radius: 10px;
         padding: 12px 0 17px;
         font-family: "Octosquares-Bold";
-        font-size: 30px;
+        font-size: 16px;
         text-align: center;
         margin-top: 30px;
         opacity: 0.8;
@@ -212,7 +222,7 @@ export default {
             
             .name {
                 font-family: "Octosquares-Medium";
-                font-size: 25px;
+                font-size: 16px;
             }
 
             .live {
@@ -220,7 +230,7 @@ export default {
                 backdrop-filter: blur(7px);
                 width: 60px;
                 border: 1px solid;
-                font-size: 20px;
+                font-size: 16px;
                 padding: 3px 5px;
                 display: flex;
                 text-align: center;
@@ -232,7 +242,7 @@ export default {
                 border: 1px solid #3F2D5A;
                 // padding: 10px 5px;
                 width: 125px;
-                font-size: 15px;
+                font-size: 16px;
                 padding-left: 20px;
             }
         }
@@ -259,21 +269,21 @@ export default {
 
                 &_info {
                     .name {
-                        font-size: 20px;
+                        font-size: 16px;
                         margin-bottom: 5px;
                     }
                     .date {
-                        font-size: 20px;
+                        font-size: 16px;
                         color: #707791;
                         margin-bottom: 5px;
                     }
                     .creator {
                         white-space: nowrap;
-                        font-size: 20px;
+                        font-size: 16px;
                         color: #707791;
 
                         span {
-                            font-size: 20px;
+                            font-size: 16px;
                             font-family: "Octosquares-Bold";
                             color: #00EAF2;
                         }
@@ -286,8 +296,7 @@ export default {
                     align-items: flex-end;
                     &_text {
                         margin-bottom: 5px;
-                        font-size: 20.449px;
-                        line-height: 29px;
+                        font-size: 16px;
                         background: linear-gradient(89.76deg, #03E9F2 30.75%, #D90CDA 66.67%);
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
@@ -297,7 +306,7 @@ export default {
                         cursor: pointer;
                         text-align: center;
                         padding: 5px 10px;
-                        font-size: 25px;
+                        font-size: 16px;
                         background: linear-gradient(270deg, rgba(234, 0, 213, 0.4) 0.2%, rgba(61, 94, 255, 0.4) 53.17%, rgba(0, 234, 242, 0.4) 100%);
                         border-radius: 6px;
                     }
@@ -310,31 +319,31 @@ export default {
     .shop {
         &_header {
             .option {
-                font-size: 20px;
+                font-size: 16px;
             }
         }
         &_card {
             padding: 20px 25px;
             .name {
-                font-size: 20px;
+                font-size: 16px;
             }
         }
         &_item {
             .item_name {
-                font-size: 18px;
+                font-size: 16px;
                 margin-left: 10px;
             }
             .item_price {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
         &_button {
-            font-size: 24px;
+            font-size: 16px;
         }
         &_reccomendations {
             .reccom_header {
                 .name {
-                    font-size: 18px;
+                    font-size: 16px;
                 }
                 .live {
                     font-size: 16px;
@@ -346,21 +355,21 @@ export default {
                     grid-template-columns: 1fr 2fr 1.5fr;
                     &_info {
                         .name {
-                            font-size: 18px;
+                            font-size: 16px;
                         }
                         .date {
-                            font-size: 18px;
+                            font-size: 16px;
                         }
                         .creator {
-                            font-size: 18px;
+                            font-size: 16px;
                         }
                     }
                     .reccom_footer {
                         &_text {
-                            font-size: 18px;
+                            font-size: 16px;
                         }
                         &_button {
-                            font-size: 18px;
+                            font-size: 16px;
                         }
                     }
                 }

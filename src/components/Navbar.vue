@@ -1,31 +1,34 @@
 <template>
   <div class="navbar">
-    <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" @click="$router.push({'name': 'home'})" />
-    <div class="navbar_search">
-      <input
-        placeholder="Search Channels, Videos or NFTs"
-        class="search"
-        type="text"
-      />
-    </div>
-    <div class="navbar_content">
-      <div class="navbar_dropdown">
-        <div class="name">Wallet</div>
-        <img class="icon" src="@/assets/icons/arrow_down.svg" alt="" />
-      </div>
-      <div class="navbar_dropdown">
-        <div class="name">Wls</div>
-        <img class="icon" src="@/assets/icons/arrow_down.svg" alt="" />
-      </div>
-      <div class="navbar_dropdown">
-        <div class="name">Airdrop</div>
-        <img class="icon" src="@/assets/icons/arrow_down.svg" alt="" />
-      </div>
-      <div class="chat_wrap active">
-        <img class="chat_icon icon" src="@/assets/icons/chat.svg" alt="" />
-      </div>
-      <img class="icon person_icon" src="@/assets/icons/profile.svg" alt="" />
-    </div>
+        <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" @click="$router.push({'name': 'home'})" />
+        <div class="navbar_search">
+            <input
+                placeholder="Search Channels, Videos or NFTs"
+                class="search"
+                type="text"
+            />
+        </div>
+        <div class="back_main" @click="$router.push({name: 'home'})">
+            <div class="back_main_text">←  Back to Content</div>
+        </div>
+        <div class="navbar_content">
+            <div class="navbar_dropdown">
+                <div class="name">Wallet</div>
+                <img class="icon" src="@/assets/icons/arrow_down.svg" alt="" />
+            </div>
+            <div class="navbar_dropdown">
+                <div class="name">Wls</div>
+                <img class="icon" src="@/assets/icons/arrow_down.svg" alt="" />
+            </div>
+            <div class="navbar_dropdown">
+                <div class="name">Airdrop</div>
+                <img class="icon" src="@/assets/icons/arrow_down.svg" alt="" />
+            </div>
+            <div class="chat_wrap active">
+                <img class="chat_icon icon" src="@/assets/icons/chat.svg" alt="" />
+            </div>
+            <img class="icon person_icon" src="@/assets/icons/profile.svg" alt="" />
+        </div>
   </div>
 </template>
   
@@ -134,12 +137,23 @@ export default {
   height: 52px;
   z-index: 2;
   font-weight: 400;
-  font-size: 26px;
+  font-size: 18px;
   line-height: 37px;
 }
 .search::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
+
+.back_main {
+    cursor: pointer;
+    display: flex;
+}
+
+.back_icon {
+    width: 16px;
+    height: 16px;
+}
+
 .navbar_content {
   display: flex;
   align-items: center;
@@ -154,7 +168,7 @@ export default {
   text-transform: uppercase;
   font-family: "Octosquares-Bold";
   font-weight: 400;
-  font-size: 20.5635px;
+  font-size: 18px;
   color: rgba(255, 255, 255, 0.85);
   margin-right: 13px;
 }

@@ -16,7 +16,7 @@ function openPopup() {
 
 <template>
     <div id="app">
-        <div class="top-links">
+        <!-- <div class="top-links">
             <button class="open" @click="openPopup">
                 Open in full screen
             </button>
@@ -35,7 +35,7 @@ function openPopup() {
             <div class="menu" @click="$router.push({'name': 'test-detail'})">
                 Market 4
             </div>
-        </div>
+        </div> -->
         <component :is="Navbar" />
         <div class="app">
             <router-view></router-view>

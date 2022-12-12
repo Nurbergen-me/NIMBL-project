@@ -21,92 +21,40 @@
             </div>
 
             <div v-if="gainer">
-                <div class="gainer_table body">
-                    <div class="table_id">1</div>
+                <div class="gainer_table body" v-for="(item, index) in gainerTop" :key="index">
+                    <div class="table_id">{{index + 1}}</div>
                     <div class="table_name">
-                        <img class="table_name_logo" src="@/assets/marketplace/gainer/logo_vide_chanel.svg" alt="">
-                        <div class="table_name_title">Bankless</div>
+                        <img class="table_name_logo" v-if="index === 0" src="@/assets/community/com1-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 1" src="@/assets/community/com2-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 2" src="@/assets/community/com3-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 3" src="@/assets/community/com4-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 4" src="@/assets/community/com5-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 5" src="@/assets/community/com13-logo.svg" alt="" />
+                        <!-- <img class="table_name_logo" :src="`@/assets/marketplace/gainer/${item.logo}.svg`" alt=""> -->
+                        <div class="table_name_title">{{item.name}}</div>
                     </div>
-                    <div class="table_price active">158 NMBL</div>
-                    <div class="table_avg">
-                        +21.6%
-                        <!-- <div class=table_avg_title>AVG</div>
-                        <img class="table_avg_line" src="@/assets/marketplace/lines-chart/line_2-remove.png" alt=""> -->
-                    </div>
-                    <div class="table_volume">$7 123 422</div>
-                </div>
-                <div class="gainer_table body">
-                    <div class="table_id">2</div>
-                    <div class="table_name">
-                        <img class="table_name_logo" src="@/assets/marketplace/gainer/mary-logo.svg" alt="">
-                        <div class="table_name_title">Johnny Vnice</div>
-                    </div>
-                    <div class="table_price">177 NMBL</div>
-                    <div class="table_avg">
-                        +19.9%
-                        <!-- <div class=table_avg_title>AVG</div>
-                        <img class="table_avg_line" src="@/assets/marketplace/lines-chart/line-222.png" alt=""> -->
-                    </div>
-                    <div class="table_volume">$6 215 1632</div>
-                </div>
-                <div class="gainer_table body">
-                    <div class="table_id">3</div>
-                    <div class="table_name">
-                        <img class="table_name_logo" src="@/assets/marketplace/gainer/johnny-logo.svg" alt="">
-                        <div class="table_name_title">Impudent Jok</div>
-                    </div>
-                    <div class="table_price">146 NMBL</div>
-                    <div class="table_avg">
-                        +17.2%
-                        <!-- <div class=table_avg_title>AVG</div>
-                        <img class="table_avg_line" src="@/assets/marketplace/lines-chart/line-33.png" alt=""> -->
-                    </div>
-                    <div class="table_volume">$4 009 376</div>
+                    <div class="table_price active">{{item.price}}</div>
+                    <div class="table_avg">{{item.hours}}</div>
+                    <div class="table_volume">{{item.volume}}</div>
                 </div>
             </div>
 
             <div v-else>
-                <div class="gainer_table body">
-                    <div class="table_id">1</div>
+                <div class="gainer_table body"  v-for="(item, index) in gainerBottom" :key="index">
+                    <div class="table_id">{{index + 1}}</div>
                     <div class="table_name">
-                        <img class="table_name_logo" src="@/assets/marketplace/gainer/logo_vide_chanel.svg" alt="">
-                        <div class="table_name_title">Bankless</div>
+                        <img class="table_name_logo" v-if="index === 0" src="@/assets/community/com6-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 1" src="@/assets/community/com7-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 2" src="@/assets/community/com8-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 3" src="@/assets/community/com9-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 4" src="@/assets/community/com10-logo.svg" alt="" />
+                        <img class="table_name_logo" v-if="index === 5" src="@/assets/community/com11-logo.svg" alt="" />
+                        <!-- <img class="table_name_logo" :src="`@/assets/marketplace/gainer/${item.logo}.svg`" alt=""> -->
+                        <div class="table_name_title">{{item.name}}</div>
                     </div>
-                    <div class="table_price active">158 NMBL</div>
-                    <div class="table_avg loser">
-                        -21.6%
-                        <!-- <div class=table_avg_title>AVG</div>
-                        <img class="table_avg_line" src="@/assets/marketplace/lines-chart/line_2-remove.png" alt=""> -->
-                    </div>
-                    <div class="table_volume">$7 123 422</div>
-                </div>
-                <div class="gainer_table body">
-                    <div class="table_id">2</div>
-                    <div class="table_name">
-                        <img class="table_name_logo" src="@/assets/marketplace/gainer/mary-logo.svg" alt="">
-                        <div class="table_name_title">Johnny Vnice</div>
-                    </div>
-                    <div class="table_price">177 NMBL</div>
-                    <div class="table_avg  loser">
-                        -19.9%
-                        <!-- <div class=table_avg_title>AVG</div>
-                        <img class="table_avg_line" src="@/assets/marketplace/lines-chart/line-222.png" alt=""> -->
-                    </div>
-                    <div class="table_volume">$6 215 1632</div>
-                </div>
-                <div class="gainer_table body">
-                    <div class="table_id">3</div>
-                    <div class="table_name">
-                        <img class="table_name_logo" src="@/assets/marketplace/gainer/johnny-logo.svg" alt="">
-                        <div class="table_name_title">Impudent Jok</div>
-                    </div>
-                    <div class="table_price">146 NMBL</div>
-                    <div class="table_avg loser">
-                        -17.2%
-                        <!-- <div class=table_avg_title>AVG</div>
-                        <img class="table_avg_line" src="@/assets/marketplace/lines-chart/line-33.png" alt=""> -->
-                    </div>
-                    <div class="table_volume">$4 009 376</div>
+                    <div class="table_price active">{{item.price}}</div>
+                    <div class="table_avg loser">{{item.hours}}</div>
+                    <div class="table_volume">{{item.volume}}</div>
                 </div>
             </div>
         </div>
@@ -118,7 +66,23 @@ export default {
     name: 'MarketGainer',
     data() {
         return {
-            gainer: true
+            gainer: true,
+            gainerTop: [
+                {name: 'Bankless', logo: 'logo_vide_chanel', price: '204 NMBL', hours: '+21.6%', volume: '$7 123 422'},
+                {name: 'Johnny Vnice', logo: 'mary-logo', price: '177 NMBL', hours: '+19.9%', volume: '$6 215 163'},
+                {name: 'Thunder Mary', logo: 'johnny-logo', price: '150 NMBL', hours: '+17.2%', volume: '$5 817 010'},
+                {name: 'Impudent Jok', logo: 'jok-logo', price: '146 NMBL', hours: '+16.8%', volume: '$4 009 376'},
+                {name: 'Mr Hawk', logo: 'hawk-logo', price: '142 NMBL', hours: '+15.1%', volume: '$3 109 426'},
+                {name: 'Liam Evans', logo: 'evans-logo', price: '139 NMBL', hours: '+14.0%', volume: '$2 995 313'}
+            ],
+            gainerBottom: [
+                {name: 'Bankless', logo: '@/assets/marketplace/gainer/logo_vide_chanel.svg', price: '18 NMBL', hours: '-22%', volume: '$23 422'},
+                {name: 'Johnny Vnice', logo: 'mary-logo', price: '20 NMBL', hours: '-19.9%', volume: '$25 163'},
+                {name: 'Thunder Mary', logo: '@/assets/marketplace/gainer/johnny-logo.svg', price: '26 NMBL', hours: '-17.2%', volume: '$37 010'},
+                {name: 'Impudent Jok', logo: '@/assets/marketplace/gainer/jok-logo.svg', price: '27 NMBL', hours: '-16.8%', volume: '$38 376'},
+                {name: 'Mr Hawk', logo: '@/assets/marketplace/gainer/hawk-logo.svg', price: '30 NMBL', hours: '-14.1%', volume: '$40 006'},
+                {name: 'Liam Evans', logo: '@/assets/marketplace/gainer/evans-logo.svg', price: '33 NMBL', hours: '-11.5%', volume: '$43 313'}
+            ]
         }
     }
 }
@@ -127,6 +91,7 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 5000px) {
     .gainer_content {
+        margin-bottom: 100px;
         .gainer_headers {
             white-space: nowrap;
             display: flex;
@@ -138,7 +103,7 @@ export default {
                 background: rgba(85, 85, 85, 0.14);
                 backdrop-filter: blur(11.2278px);
                 border-radius: 8px;
-                padding: 10px 20px;
+                padding: 9px 20px;
                 cursor: pointer;
                 &.active {
                     background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
@@ -148,22 +113,22 @@ export default {
                     margin-right: 20px;
                 }
                 .gainer_icon {
-                    width: 20px;
-                    height: 20px;
-                    margin-right: 5px;
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 10px;
                     &.last {
                         transform: rotate(90deg);
                     }
                 }
             }
             .gainer_title {
-                font-weight: 400;
-                font-size: 25px;
+                font-size: 16px;
             }
         }
         .gainer_tables {
             border-radius: 12px;
             .gainer_table {
+                font-size: 16px;
                 padding: 10px 40px;
                 cursor: pointer;
                 align-items: center;
@@ -184,7 +149,13 @@ export default {
                 .table_name {
                     align-items: center;
                     display: grid;
-                    grid-template-columns: 1fr 3fr;
+                    grid-template-columns: 1fr 4.5fr;
+                    &_logo {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
                 }
                 
                 .table_avg {
@@ -208,13 +179,13 @@ export default {
                 margin-bottom: 20px;
                 color: #A9A9B7;
                 font-weight: 400;
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 21px;
             }
             .body {
                 border-radius: 12px;
                 font-weight: 400;
-                font-size: 25px;
+                font-size: 16px;
                 line-height: 63px;
                 
                 &:hover {
@@ -228,11 +199,11 @@ export default {
 @media (max-width: 1800px) {
     .gainer_content {
         .gainer_title {
-            font-size: 50px;
+            font-size: 16px;
         }
         .gainer_tables {
             .body {
-                font-size: 30px;
+                font-size: 16px;
             }
         }
     }

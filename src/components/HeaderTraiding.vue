@@ -45,17 +45,14 @@ export default {
 
 <style lang="scss" scoped>
 @media (max-width: 5000px) {
-
 ::-webkit-scrollbar {
   height: 4px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   border-radius: 0px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: red;
   border-radius: 4px;
@@ -63,6 +60,8 @@ export default {
 }
 
 .content_categories {
+    position: relative;
+    z-index: 99;
     margin-top: 40px;
     display: flex;
     justify-content: space-between;

@@ -14,7 +14,7 @@
                 <img src="@/assets/icons/arrow_down.svg" alt="">
             </div> 
         </div>
-        <div class="chart_history_body" >
+        <div class="chart_history_body">
             <canvas id="chart_history" class="chart_history"></canvas>
         </div>
     </div>
@@ -28,17 +28,6 @@ export default {
         return {
             chartHistory: null
         }
-    },
-    watch: {
-        '$route.params.name': function(val) {
-            console.log(val)
-            if (val === 'chart-page') {
-                this.initChartHistory()
-            }
-        }
-    },
-    mounted() {
-        this.initChartHistory()
     },
     methods: {
         initChartHistory() {
@@ -158,10 +147,6 @@ export default {
                 width = chartWidth
                 height = chartHeight
                 gradient = ctx.createLinearGradient( 0, chartArea.bottom, 0, chartArea.top )
-                
-                // gradient.addColorStop(1, "#EA00D520")
-                // gradient.addColorStop(0.2, "#7077E5")
-                // gradient.addColorStop(0, "#7077E510")
 
                 gradient.addColorStop(1, colors.purple.half);
                 gradient.addColorStop(0.5, colors.purple.own1);
@@ -188,8 +173,7 @@ export default {
         grid-template-columns: 200px 400px 120px;
         gap: 20px;
         .header_title {
-            font-size: 24px;
-            line-height: 34px;
+            font-size: 16px;
         }
         .header_btns {
             cursor: pointer;
@@ -199,8 +183,7 @@ export default {
             border: 1px solid #141C25;
             .header_btn {
                 text-align: center;
-                font-size: 24px;
-                line-height: 34px;
+                font-size: 16px;
                 padding: 10px;
                 &.active {
                     background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
@@ -216,49 +199,49 @@ export default {
             background: #141C25;
             border: 1px solid #141C25;
             &_text {
-                font-size: 22px;
+                font-size: 16px;
             }
         }
     }
     .chart_history_body {
-        width: 100%;
+        // width: 100%;
         height: 500px;
-        .chart_history {
-            height: 500px;
+        canvas {
+            width: 0
         }
     }
 }
-@media (max-width: 1900px) {
-    .chart_historing {
-        .chart_history_header {
-            .header_title {
-                font-size: 20px;
-            }
-            .header_btns {
-                .header_btn {
-                    font-size: 20px;
-                    padding: 8px;
-                }
-            }
-            .header_select {
-                &_text {
-                    font-size: 20px;
-                }
-            }
-        }
-        .chart_list_footer {
-            display: inline-grid;
-            grid-template-columns: 280px 280px 280px 280px;
-            gap: 15px;
-            .footer_tab {
-                &_title {
-                    font-size: 20px;
-                }
-                &_text {
-                    font-size: 20px;
-                }
-            }
-        }
-    }
-}
+// @media (max-width: 1900px) {
+//     .chart_historing {
+//         .chart_history_header {
+//             .header_title {
+//                 font-size: 16px;
+//             }
+//             .header_btns {
+//                 .header_btn {
+//                     font-size: 16px;
+//                     padding: 8px;
+//                 }
+//             }
+//             .header_select {
+//                 &_text {
+//                     font-size: 16px;
+//                 }
+//             }
+//         }
+//         .chart_list_footer {
+//             display: inline-grid;
+//             grid-template-columns: 280px 280px 280px 280px;
+//             gap: 15px;
+//             .footer_tab {
+//                 &_title {
+//                     font-size: 16px;
+//                 }
+//                 &_text {
+//                     font-size: 16px;
+//                 }
+//             }
+//         }
+//     }
+// }
 </style>

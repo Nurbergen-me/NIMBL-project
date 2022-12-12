@@ -4,54 +4,98 @@ import Home from '@/views/Home.vue'
 import DetailVideo from '@/views/DetailVideo.vue'
 
 import MarketPlaceView from '@/views/MarketplaceView.vue'
-import TestPage from '@/views/TestPage.vue'
-import TestPage2 from '@/views/TestPage2.vue'
-import TestPageDetail from '@/views/TestPageDetail.vue'
 import ChartPage from '@/views/ChartPage.vue'
 import Market from '@/views/Market.vue'
+
+// marketplace
+import MarketLaunchpad from '@/components/marketplace/MarketLaunchpad.vue'
+import MarketTable from '@/components/marketplace/MarketTable.vue'
+import MarketOpportunities from '@/components/marketplace/MarketOpportunities.vue'
+import MarketGainer from '@/components/marketplace/MarketGainer.vue'
+
+// buying
+import BuyingPage from '@/views/BuyingPage.vue'
+import CardBuying from '@/components/buying/CardBuying.vue'
+import ChartBuying from '@/components/buying/ChartBuying.vue'
+
+import TrendingPage from '@/views/TrendingPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+        path: '/',
+        name: 'home',
+        component: Home
     },
     {
-      path: '/detail',
-      name: 'detail',
-      component: DetailVideo
+        path: '/detail',
+        name: 'detail',
+        component: DetailVideo
     },
     {
-      path: '/marketplace-view', 
-      name: 'marketplace-view',
-      component: MarketPlaceView
+        path: '/marketplace-view', 
+        name: 'marketplace-view',
+        component: MarketPlaceView
     },
     {
-      path: '/test-page',
-      name: 'test-page',
-      component: TestPage
+        path: '/buy',
+        name: 'buy-page',
+        component: BuyingPage,
+        children: [
+            {
+                path: '/buy-page',
+                name: 'card-buying',
+                component: CardBuying,
+                props: true
+            },
+            {
+                path: '/chart-buying',
+                name: 'chart-buying',
+                component: ChartBuying,
+                props: true
+            }
+        ]
     },
     {
-      path: '/test-page2',
-      name: 'test-page2',
-      component: TestPage2
+        path: '/chart-page',
+        name: 'chart-page',
+        component: ChartPage
     },
     {
-      path: '/test-detail',
-      name: 'test-detail',
-      component: TestPageDetail
+        path: '/trending-page',
+        name: 'trending-page',
+        component: TrendingPage
     },
     {
-      path: '/chart-page',
-      name: 'chart-page',
-      component: ChartPage
-    },
-    {
-      path: '/marketplace',
-      name: 'marketplace',
-      component: Market
+        path: '/marketplace',
+        component: Market,
+        children: [
+            {
+                path: '/market-ranking',
+                name: 'market-ranking',
+                component: MarketTable,
+                props: true
+            },
+            {
+                path: '/market-launchpad',
+                name: 'market-launchpad',
+                component: MarketLaunchpad,
+                props: true
+            },
+            {
+                path: '/market-oppotunities',
+                name: 'market-oppotunities',
+                component: MarketOpportunities,
+                props: true
+            },
+            {
+                path: '/market-gainer',
+                name: 'market-gainer',
+                component: MarketGainer,
+                props: true
+            }
+        ]
     }
   ]
 })

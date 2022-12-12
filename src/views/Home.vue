@@ -115,7 +115,6 @@
       <div class="videos_content">
         <div
           class="video_box"
-          @click="$router.push({ name: 'detail' })"
           v-for="item in 26"
         >
           <img class="video_box_img" src="@/assets/icons/playlist-1.svg" alt="" />

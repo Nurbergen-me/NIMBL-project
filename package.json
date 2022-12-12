@@ -1,6 +1,7 @@
 {
   "name": "nimbl",
   "version": "0.0.0",
+  "requires": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,8 +10,10 @@
   "dependencies": {
     "apexcharts": "^3.36.3",
     "chart.js": "^4.0.1",
+    "lightweight-charts": "^3.8.0",
     "vue": "^3.2.41",
-    "vue-router": "^4.1.5"
+    "vue-router": "^4.1.5",
+    "vue-tradingview-widgets": "^1.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.2",
