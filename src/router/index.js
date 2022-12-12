@@ -6,6 +6,8 @@ import DetailVideo from '@/views/DetailVideo.vue'
 import MarketPlaceView from '@/views/MarketplaceView.vue'
 import ChartPage from '@/views/ChartPage.vue'
 import Market from '@/views/Market.vue'
+import Videos from '@/views/Videos.vue'
+import VideosDetail from '@/views/VideosDetail.vue'
 
 // marketplace
 import MarketLaunchpad from '@/components/marketplace/MarketLaunchpad.vue'
@@ -32,6 +34,21 @@ const router = createRouter({
         path: '/detail',
         name: 'detail',
         component: DetailVideo
+    },
+    {
+      path: '/videos',
+      name: 'videos',
+      component: Videos
+    },
+    {
+      path: '/videos/:id',
+      name: 'videosDetail',
+      component: VideosDetail
+    },
+    {
+      path: '/marketplace-view', 
+      name: 'marketplace-view',
+      component: MarketPlaceView
     },
     {
         path: '/marketplace-view', 

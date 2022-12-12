@@ -182,22 +182,7 @@
           </div>
         </div>
         <div class="comments comments_main" v-if="currentTab === 2">
-          <div class="comments_comment comment">
-            <img src="../assets/comment-1.png" alt="comment" class="comment_img">
-            <div class="comment_info">
-              <div class="comment_info_header">
-                <div class="comment_name">
-                  name
-                </div>
-                <span class="comment_date">
-                  date
-                </span>
-              </div>
-              <div class="comment_text">
-
-              </div>
-            </div>
-          </div>
+          <Comments/>
         </div>
       </div>
     </div>
@@ -205,8 +190,12 @@
 </template>
   
 <script>
+import Comments from '@/components/Comments.vue'
 export default {
   name: "DetailVideo",
+  components: {
+    Comments
+  },
   data() {
     return {
       currentTab: 1,
@@ -233,11 +222,9 @@ export default {
 /* Video Content */
 .video_content {
   height: calc(100vh - 200px);
-  overflow-y: scroll;
   width: 60%;
   position: relative;
-  /* background: url("../assets/icons/video_bg.jpg") no-repeat; */
-  opacity: 0.7;
+  overflow: scroll;
 }
 
 /* 1 - Video Box */
@@ -480,7 +467,6 @@ export default {
   flex-direction: column;
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(42px);
-  padding-left: 8px;
   /* overflow-y: scroll; */
 }
 .lines_content {
@@ -549,40 +535,8 @@ export default {
   font-size: 24px;
 
   &_main {
-    padding: 30px;
-  }
-
-  .comment {
-    display: flex;
-    align-items: flex-start;
-
-    &_img {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-    }
-    &_info {
-      &_header {
-        display: flex;
-        align-items: center;
-      }
-      &_text {
-        font-size: 23px;
-      }
-    }
-    &_name {
-      color: #01EAF2;
-      font-size: 23px;
-      margin-right: 18px;
-    }
-    &_date {
-      color: #82868D;
-      font-size: 16px;
-    }
-  }
-
-  &_comment {
-    display: flex;
+    height: calc(100vh - 330px);
+    overflow: hidden;
   }
 }
 @media (max-width: 2400px) {
@@ -628,6 +582,11 @@ export default {
   .channel_content {
     img {
       width: 70px;
+    }
+  }
+  .comments {
+    &_main {
+      height: calc(100vh - 290px);
     }
   }
 }
@@ -681,6 +640,11 @@ export default {
   }
   .video_views_count {
     font-size: 16px;
+  }
+  .comments {
+    &_main {
+      height: calc(100vh - 290px);
+    }
   }
 }
 @media (max-width: 2000px) {
@@ -759,6 +723,11 @@ export default {
   .recomends_video_wrap{
     height: calc(100vh - 215px);
   }
+  .comments {
+    &_main {
+      height: calc(100vh - 205px);
+    }
+  }
 }
 @media (max-width: 1600px) {
   .recomends_video_wrap{
@@ -766,6 +735,11 @@ export default {
   }
   .video_content {
     height: calc(100vh - 150px);
+  }
+  .comments {
+    &_main {
+      height: calc(100vh - 190px);
+    }
   }
 }
 </style>
