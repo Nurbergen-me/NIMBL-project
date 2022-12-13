@@ -115,7 +115,9 @@
       <div class="videos_content">
         <div
           class="video_box"
-          v-for="item in 26"
+          v-for="(item,index) in 26"
+          :key="'video-' + index"
+          @click="$router.push({name: 'detail'})"
         >
           <img class="video_box_img" src="@/assets/icons/playlist-1.svg" alt="" />
           <div class="video_box_title">
@@ -580,7 +582,7 @@ export default {
         }
       }
     }
-  }
+  } 
 }
 @media (max-width: 2400px) {
   .sidebar {

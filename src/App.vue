@@ -1,16 +1,36 @@
-<script setup>
+<script>
 import Navbar from '@/components/Navbar.vue'
 import MainCategory from '@/components/MainCategory.vue';
+import VideoPlayer from "@/components/VideoPlayer.vue";
+export default {
+  name: "App",
+  components: {
+    Navbar,
+    MainCategory,
+    VideoPlayer
+  },
+  
+  data() {
+    return {
+        isContinuesVideoPlayerShown: false
+    }
+  },
+  mounted() {
+    console.log(this.$store.state)
+    this.isContinuesVideoPlayerShown = this.$store.state.timeToContinue > 0;
+  },
+  methods: {
+    openPopup() {
+        var params = [
+            'height='+screen.height,
+            'width='+screen.width,
+            'fullscreen=yes' // only works in IE, but here for completeness
+        ].join(',');
 
-function openPopup() {
-    var params = [
-        'height='+screen.height,
-        'width='+screen.width,
-        'fullscreen=yes' // only works in IE, but here for completeness
-    ].join(',');
-
-    var popup = window.open(window.location.href, 'popup_window', params); 
-    popup.moveTo(0,0);
+        var popup = window.open(window.location.href, 'popup_window', params); 
+        popup.moveTo(0,0);
+    }
+  }
 }
 </script>
 
@@ -36,10 +56,11 @@ function openPopup() {
                 Market 4
             </div>
         </div> -->
-        <component :is="Navbar" />
+        <Navbar />
         <div class="app">
             <router-view></router-view>
-            <component :is="MainCategory" />
+            <MainCategory/>
+            <VideoPlayer class="video-player" v-if="isContinuesVideoPlayerShown"/>
         </div>
     </div>
 </template>
@@ -52,5 +73,13 @@ function openPopup() {
     cursor: pointer;
     display: inline-block;
     margin-left: 40px;
+}
+.video-player {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  margin-right: 12px;
+  margin-bottom: 12px;
 }
 </style>

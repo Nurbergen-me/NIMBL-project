@@ -1,6 +1,6 @@
 <template>
   <div class="comments" @click="currentCommentIndex = -1">
-    <div class="comments_body">
+    <div class="comments_body" :style="{'height': !canComment && '100%'}">
         <div class="comments_comment comment" v-for="(comment, index) in 10" :key="index" :class="{'active': index === currentCommentIndex}">
             <img src="../assets/comment-1.png" alt="comment" class="comment_img">
             <div class="comment_info">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="comments_create">
+    <div class="comments_create" v-if="canComment">
         <img class="emojies" src="../assets/icons/emoji_create_icon.svg" alt="reply" @click.stop="toggleEmojiPicker(1000)">
         <input v-model="message" type="text" class="comments_input" placeholder="Enter text">
         <button class="comments_button">
@@ -73,6 +73,12 @@
 import { createPicker } from 'picmo';
 export default {
     name: 'Comments',
+    props: {
+        canComment: {
+            type: Boolean,
+            default: true
+        }
+    },
     data() {
         return {
             currentCommentIndex: -1,
@@ -151,6 +157,7 @@ export default {
       margin-right: 28px;
     }
     &_info {
+        width: -webkit-fill-available;
       &_header {
         display: flex;
         align-items: center;
@@ -295,6 +302,112 @@ export default {
         align-items: center;
         justify-content: center;
         margin-left: auto;
+    }
+}
+@media (max-width: 2000px) {
+    .comments {
+        &_body {
+            height: calc(100% - 72px);
+        }
+        .comment {
+            padding: 16px 30px;
+
+            &_img {
+                width: 60px;
+                height: 60px;
+                margin-right: 20px;
+            }
+            &_name {
+                font-size: 20px;
+            }
+            &_info_header {
+                margin-bottom: 4px;
+            }
+            &_text {
+                font-size: 18px;
+            }
+            &_reactions {
+                .reaction {
+                    padding: 6px 14px;
+                    margin-right: 16px;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        &_create {
+            padding: 14px 28px;
+
+            #picker {
+                bottom: 76px;
+            }
+        }
+        &_input {
+            font-size: 20px;
+        }
+    }
+}
+@media (max-width: 1600px) {
+    .comments {
+        &_body {
+            height: calc(100% - 60px);
+        }
+        .comment {
+            padding: 12px 24px;
+
+            &_img {
+                width: 50px;
+                height: 50px;
+                margin-right: 14px;
+            }
+            &_name {
+                font-size: 16px;
+            }
+            &_text {
+                font-size: 14px;
+            }
+            &_info_header {
+                .comment_controls {
+                    .controls_icon {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+            &_info_footer {
+                 align-items: flex-start;
+                .reply {
+                    padding: 4px 12px;
+                    font-size: 16px;
+                }
+            }
+            &_reactions {
+                .reaction {
+                    padding: 4px 12px;
+                    margin-right: 12px;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        &_create {
+            padding: 10px 20px;
+
+            .emojies {
+                width: 28px;
+            }
+
+            #picker {
+                bottom: 55px;
+            }
+        }
+        &_input {
+            font-size: 18px;
+        }
+        &_button {
+            width: 36px;
+            height: 36px;
+        }
     }
 }
 </style>
