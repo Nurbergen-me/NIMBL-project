@@ -1,57 +1,42 @@
 <template>
     <div class="marketplace_detail">
         <div class="header">
-            <div class="header_head">
-                <img
-                    @click="$router.push({name: 'home'})"
-                    class="head_back"
-                    src="@/assets/icons/back.svg"
-                    alt=""
-                />
-                <img
-                    class="head_logo"
-                    src="@/assets/marketplace/detail/chanel_logo.svg"
-                    alt=""
-                />
-            </div>
-            <div class="header_footer">
-                <div class="header_footer_titles">
-                    <div class="header_footer_title">DandelionWist</div>
-                    <div class="header_footer_text">
-                        A collection of 10,000 zombies evolving through the
-                        sweet juicy brains their owners decide to feed them.
-                        Zombies are cute yet they'd crack your skull open and
-                        jam a straw through your cortex to sip on that sweet
-                        white matter.
+            <div class="head_content">
+                <div class="head_first">
+                    <img class="head_first_logo" src="@/assets/buy/dandel-logo.svg" />
+                    <div class="head_first_content">
+                        <div class="head_first_title">DandelionWist</div>
+                        <div class="head_first_line"></div>
+                        <div class="head_first_text">A collection of 10,000 zombies evolving through the sweet juicy brains their owners decide to feed them.</div>
+                    </div>
+                </div> 
+                <div class="head_second">
+                    <div class="head_second_content">
+                        <div class="header_footer_box" v-for="(item, index) in prices" :key="index">
+                            <div class="header_footer_box_title">{{item}}</div>
+                            <div class="header_footer_box_text">Floor Price</div>
+                        </div>
+                    </div>
+                    <div class="head_second_footer">
+                        <div class="head_second_socials">
+                            <div class="head_social_title">Socials</div>
+                            <div class="head_social_content">
+                                <img src="@/assets/buy/doknow-logo.svg" alt="">
+                                <img src="@/assets/buy/twitter-logo.svg" alt="">
+                                <img src="@/assets/buy/unknown-logo.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="head_btn">subscribe</div>
                     </div>
                 </div>
-                <div class="header_footer_boxs">
-                    <div class="header_footer_box" v-for="(item, index) in prices" :key="index">
-                        <div class="header_footer_box_title">{{item}}</div>
-                        <div class="header_footer_box_text">Floor Price</div>
-                    </div>
-                </div>
-                <div class="header_footer_btns">
-                    <img
-                        class="header_footer_btn"
-                        src="@/assets/icons/share-btn.svg"
-                        alt=""
-                    />
-                    <img
-                        class="header_footer_btn"
-                        src="@/assets/icons/mote-btn.svg"
-                        alt=""
-                    />
-                </div>
             </div>
-            <div class="header_footer_line"></div>
+            <div class="header_footer_btns">
+                <img src="@/assets/icons/share-btn.svg" />
+                <img src="@/assets/icons/mote-btn.svg" />
+            </div>
         </div>
         <div class="main">
             <div class="header_content">
-                <div class="filter_search">
-                    <input placeholder="Search items" class="search" type="text" />
-                </div>
-
                 <div class="content_header">
                     <div class="header_items">
                         <div class="header_item" :class="{'active': $route.name === 'card-buying'}" @click="$router.push({name: 'card-buying'})">
@@ -68,18 +53,20 @@
                                 src="@/assets/marketplace/detail/detail-stat.svg"
                                 alt=""
                             />
-                            <div class="header_item_text">Stats</div>
+                            <div class="header_item_text">Analytics</div>
+                        </div>
+                        <div class="header_item" :class="{'active': $route.name === 'table-buying'}" @click="$router.push({name: 'table-buying'})">
+                            <img
+                                class="header_item_icon"
+                                src="@/assets/marketplace/detail/detail-stat.svg"
+                                alt=""
+                            />
+                            <div class="header_item_text">Activity</div>
                         </div>
                     </div>
                     <div class="header_reverse">
-                        <img
-                            class="header_reverse_icon"
-                            src="@/assets/marketplace/detail/detail-reverse.svg"
-                            alt=""
-                        />
-                        <div class="header_reserve_text">
-                            Refreshed a while ago
-                        </div>
+                        <img class="header_reverse_icon" src="@/assets/marketplace/detail/detail-reverse.svg" alt="" />
+                        <div class="header_reserve_text"> Refreshed a while ago </div>
                     </div>
                 </div>
             </div>
@@ -94,7 +81,7 @@ export default {
     name: "TestPageDetail",
     data() {
         return {
-            prices: ['41 NMBL', '45 NMBL', '48 NMBL', '52 NMBL', '55 NMBL', '56 NMBL', '59 NMBL', '68 NMBL']
+            prices: ['41 NMBL', '45 NMBL', '48 NMBL', '52 NMBL', '55 NMBL', '56 NMBL']
         }
     }
     
@@ -109,100 +96,138 @@ input {
     .marketplace_detail {
         height: 100%;
         .header {
+            overflow: hidden;
             width: 100%;
-            padding-top: 80px;
             margin-bottom: 3%;
-            &_head {
-                position: relative;
-                padding: 0 90px;
-                height: 400px;
-                width: 100%;
-                background: url("@/assets/marketplace/detail/navbar_market.png")
-                    no-repeat;
-                background-position: center;
-                background-size: cover;
-                .head_back {
-                    position: absolute;
-                    top: 50px;
-                    padding: 10px 20px;
-                    background: rgba(255, 255, 255, 0.055);
-                    box-shadow: inset 3.5875px 3.5875px 24.2156px
-                        rgba(255, 255, 255, 0.04);
-                    backdrop-filter: blur(30%);
-                    cursor: pointer;
-                }
-                .head_logo {
-                    position: absolute;
-                    bottom: -30px;
-                }
-            }
-            &_footer {
-                position: relative;
-                display: grid;
-                grid-template-columns: 2fr 4fr 0fr;
-                gap: 20px;
-                align-items: flex-start;
-                padding: 60px 90px 0 90px;
-                .header_footer_titles {
-                    .header_footer_title {
-                        font-weight: 400;
-                        font-size: 20px;
-                        margin-bottom: 10px;
-                    }
-                    .header_footer_text {
-                        font-weight: 400;
-                        font-size: 16px;
-                    }
-                }
-                .header_footer_boxs {
-                    display: grid;
-                    grid-template-columns: 250px 250px 250px 250px;
-                    grid-template-rows: 1fr 1fr;
-                    gap: 20px;
-                    justify-content: center;
-
-                    .header_footer_box {
-                        cursor: pointer;
-                        padding: 10px 30px;
-                        background: rgba(255, 255, 255, 0.05);
-                        box-shadow: inset 3.5875px 3.5875px 24.2156px
-                            rgba(255, 255, 255, 0.04);
-                        backdrop-filter: blur(46.5146px);
-                        text-align: center;
-                        opacity: 0.8;
-                        transition: all 0.3s;
-                        &:hover {
-                            opacity: 1;
-                        }
-                        &_title {
-                            font-weight: 600;
-                            font-size: 16px;
-                        }
-                        &_text {
-                            font-weight: 400;
-                            font-size: 16px;
-                            opacity: 0.86;
-                        }
-                    }
-                }
-                .header_footer_btns {
+            position: relative;
+            height: 400px;
+            background: url("@/assets/marketplace/detail/navbar_market.png") no-repeat;
+            background-position: center;
+            background-size: cover;
+            .head_content {
+                padding: 0 10px;
+                width: 50%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.21);
+                box-shadow: inset 3.5875px 3.5875px 24.2156px rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(46.5146px);
+                overflow: hidden;
+                .head_first {
                     display: flex;
                     align-items: center;
-                    cursor: pointer;
-                    .header_footer_btn:first-child {
-                        margin-right: 20px;
-                        &.hover {
-                            filter: invert(87%) sepia(3%) saturate(2964%)
-                                hue-rotate(289deg) brightness(101%)
-                                contrast(86%);
-                            // filter: invert(100%) sepia(0%) saturate(7481%) hue-rotate(78deg) brightness(99%) contrast(106%);
-                            // filter: none;
+                    &_logo {
+                        width: 400px;
+                        height: 260px;
+                        margin-right: 10px;
+                    }
+                    &_title {
+                        font-family: "Octosquares-DBold";
+                        font-size: 24px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        background: linear-gradient(90.24deg, #01EAF2 0.21%, #3B65FF 57.08%, #D70BDA 102.91%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        margin-bottom: 10px;
+                    }
+                    &_line {
+                        width: 200px;
+                        height: 1px;
+                        background: #646464;
+                        margin-bottom: 10px;
+                    }
+                }
+                .head_second {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    width: 100%;
+                    .head_second_content {
+                        width: 100%;
+                        margin-right: 15px;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        grid-auto-rows: 1fr 1fr;
+                        grid-template-rows: 1fr 1fr;
+                        gap: 15px;
+                        justify-content: center;
+
+                        .header_footer_box {
+                            cursor: pointer;
+                            padding: 5px 7px;
+                            background: rgba(0, 0, 0, 0.63);
+                            box-shadow: inset 3.5875px 3.5875px 24.2156px rgba(255, 255, 255, 0.04);
+                            backdrop-filter: blur(46.5146px);
+                            text-align: center;
+                            opacity: 0.8;
+                            transition: all 0.3s;
+                            &:hover {
+                                opacity: 1;
+                            }
+                            &_title {
+                                font-weight: 600;
+                                font-size: 16px;
+                            }
+                            &_text {
+                                font-weight: 400;
+                                font-size: 16px;
+                                opacity: 0.86;
+                            }
+                        }
+                    }
+                    .head_second_footer {
+                        width: 40%;
+                        display: flex;
+                        flex-direction: column;
+                        .head_second_socials {
+                            margin-bottom: 15px;
+                            .head_social_title {
+                                margin-bottom: 10px;
+                            }
+                            .head_social_content {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                                img {
+                                    cursor: pointer;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-radius: 50%;
+                                    width: 32px;
+                                    height: 32px;
+                                    background: #222435;
+                                    padding: 4px;
+                                }
+                            }
+                        }
+                        .head_btn {
+                            cursor: pointer;
+                            text-transform: uppercase;
+                            background: linear-gradient(182.53deg, rgba(234, 0, 213, 0.3) 3.75%, rgba(61, 94, 255, 0.3) 56.09%, rgba(0, 234, 242, 0.3) 102.36%);
+                            border-radius: 6px;
+                            text-align: center;
+                            padding: 10px 20px;
+                            margin-bottom: auto;
                         }
                     }
                 }
-                &_line {
-                    margin: 30px 90px 0 90px;
-                    border: 1px solid #343959;
+            }
+                
+            .header_footer_btns {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                top: 15px;
+                right: 15px;
+                img {
+                    width: 24px;
+                    height: 24px;
+                    fill: white;
+                    &:first-child {
+                        margin-right: 30px;
+                    }
                 }
             }
         }
@@ -213,27 +238,6 @@ input {
                 display: flex;
                 align-items: center;
                 margin-bottom: 40px;
-                .filter_search {
-                    background: #1a1b1c;
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    padding: 5px 10px;
-                    margin-right: 30px;
-                    width: 380px;
-                    &::before {
-                        content: url("@/assets/icons/search.svg");
-                        margin-top: 9px;
-                        margin-left: 8px;
-                        margin-right: 8px;
-                    }
-                    .search {
-                        width: 100%;
-                        padding-left: 15px;
-                        font-weight: 400;
-                        font-size: 16px;
-                    }
-                }
                 .content_header {
                     display: flex;
                     align-items: center;
@@ -293,52 +297,52 @@ input {
         }
     }
 }
-@media (max-width: 2000px) {
-    .marketplace_detail {
-        .header {
-            &_footer {
-                grid-template-columns: 2fr 3fr 0fr;
-                .header_footer_titles {
-                    font-size: 16px;
-                    .header_footer_title {
-                        font-size: 16px;
-                    }
-                    .header_footer_text {
-                        font-size: 16px;
-                    }
-                }
-                .header_footer_boxs {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr; // 200px 200px 200px 200px;
-                    .header_footer_box {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        &_title {
-                            font-size: 16px;
-                        }
-                        &_text {
-                            font-weight: 400;
-                            font-size: 16px;
-                            opacity: 0.86;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-@media (max-width: 1700px) {
-    .marketplace_detail {
-        .header {
-            &_head {
-                padding: 0 40px;
-            }
-            &_footer {
-                padding: 60px 40px 0 40px;
-            }
-        }
-    }
-}
+// @media (max-width: 2000px) {
+//     .marketplace_detail {
+//         .header {
+//             &_footer {
+//                 grid-template-columns: 2fr 3fr 0fr;
+//                 .header_footer_titles {
+//                     font-size: 16px;
+//                     .header_footer_title {
+//                         font-size: 16px;
+//                     }
+//                     .header_footer_text {
+//                         font-size: 16px;
+//                     }
+//                 }
+//                 .header_footer_boxs {
+//                     display: grid;
+//                     grid-template-columns: 1fr 1fr 1fr 1fr; // 200px 200px 200px 200px;
+//                     .header_footer_box {
+//                         display: flex;
+//                         flex-direction: column;
+//                         align-items: center;
+//                         justify-content: center;
+//                         &_title {
+//                             font-size: 16px;
+//                         }
+//                         &_text {
+//                             font-weight: 400;
+//                             font-size: 16px;
+//                             opacity: 0.86;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// @media (max-width: 1700px) {
+//     .marketplace_detail {
+//         .header {
+//             &_head {
+//                 padding: 0 40px;
+//             }
+//             &_footer {
+//                 padding: 60px 40px 0 40px;
+//             }
+//         }
+//     }
+// }
 </style>

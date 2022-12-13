@@ -21,6 +21,7 @@ import MarketGainer from '@/components/marketplace/MarketGainer.vue'
 import BuyingPage from '@/views/BuyingPage.vue'
 import CardBuying from '@/components/buying/CardBuying.vue'
 import ChartBuying from '@/components/buying/ChartBuying.vue'
+import TableBuying from '@/components/buying/TableBuying.vue'
 
 import TrendingPage from '@/views/TrendingPage.vue'
 
@@ -77,6 +78,12 @@ const router = createRouter({
                 path: '/chart-buying',
                 name: 'chart-buying',
                 component: ChartBuying,
+                props: true
+            },
+            {
+                path: '/table-buying',
+                name: 'table-buying',
+                component: TableBuying,
                 props: true
             }
         ]

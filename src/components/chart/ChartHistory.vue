@@ -162,7 +162,7 @@ export default {
 <style lang="scss" scoped>
 .chart_historing {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     background: rgba(33, 35, 52, 0.45);
     box-shadow: inset 4px 4px 27px rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(51.863px);

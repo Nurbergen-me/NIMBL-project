@@ -1,28 +1,24 @@
 <template>
-    <div>
-        <ChartList></ChartList>
+    <div style="padding: 10px;">
         <ChartHistory></ChartHistory>
     </div>
 </template>
 
 <script>
 import Chart from "chart.js/auto"
-import ChartList from "@/components/chart/ChartList.vue"
 import ChartHistory from "@/components/chart/ChartHistory.vue"
 export default {
     name: 'ChartBuying',
     components: {
-        ChartList,
-        ChartHistory,
+        ChartHistory
     },
     mounted() {
         this.initChartHistory()
-                this.initChartList()
     },
     methods: {
         initChartHistory() {
             console.log('history')
-            const graph = [30,31,35,40,50,35,34,20,25,22,40,42,46,49,48,20,25,30,25,30,35,44,35]
+            const graph = [20, 55, 20, 45, 50, 20, 58, 60, 40,50, 20, 68, 60, 40, 20, 25, 30, 20, 50, 51]
             Chart.defaults.font.size = 25
             const ctx = document.getElementById("chart_history");
             this.chartHistory = new Chart(ctx.getContext("2d"), {
@@ -97,79 +93,6 @@ export default {
                 }
             })
             this.chartHistory.update();
-        },
-        initChartList() {
-            console.log('list')
-            const graph = [20, 55, 20, 45, 50, 20, 58, 60, 40,50, 20, 68, 60, 40, 20, 25, 30, 20, 50, 51]
-            Chart.defaults.font.size = 25
-            const ctx = document.getElementById("chart_list");
-            this.chartList = new Chart(ctx.getContext("2d"), {
-                type: "line",
-                data: {
-                    labels: graph,
-                    datasets: [
-                        {
-                            data: graph,
-                            fill: true,
-                            borderColor: (context) => {
-                                const chart = context.chart
-                                const { ctx, chartArea } = chart
-
-                                if (!chartArea) {
-                                    return
-                                }
-                                return this.getGradient(ctx, chartArea)
-                            },
-                            backgroundColor: (context) => {
-                                const chart = context.chart
-                                const { ctx, chartArea } = chart
-
-                                if (!chartArea) {
-                                    return
-                                }
-                                return this.getGradientBg(ctx, chartArea)
-                            }
-                        }
-                    ]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                    },
-                    scales: {
-                        x: {
-                            stacked: true,
-                            beginAtZero: true,
-                            grid: {
-                                display: false,
-                                drawBorder: false,
-                            },
-                            ticks: {
-                                display: false,
-                            }
-                        },
-                        y: {
-                            stacked: true,
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(val, index) {
-                                    return index % 2 === 0 ? this.getLabelForValue(val) : '';
-                                },
-                                color: '#8F8F8F',
-                                padding: 30
-                            },
-                            grid: {
-                                color: (context) => {
-                                    return "#2E3656";
-                                }
-                            }
-                        }
-                    }
-                }
-            })
-            this.chartList.update();
         },
         getGradient(ctx, chartArea) {
             let width, height, gradient;
