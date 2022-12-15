@@ -101,8 +101,8 @@ export default {
         z-index: 2;
         overflow: hidden;
         .category {
-          height: 250px;
           width: 100%;
+          aspect-ratio: 16/9;
         }
       }
       .img {

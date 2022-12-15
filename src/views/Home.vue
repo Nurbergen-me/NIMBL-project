@@ -3,11 +3,7 @@
     <div class="sidebar">
       <div class="sidebar_video">
         <div class="sidebar_video_wrap">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/Wsdx1P_T-WM"
-          ></iframe>
+          <video-player />
         </div>
         <div class="name">GarryVee's Page</div>
       </div>
@@ -158,10 +154,12 @@
 
 <script>
 import HeaderTraidingVue from '@/components/HeaderTraiding.vue';
+import VideoPlayer from "@/components/VideoPlayer.vue";
 export default {
   name: "Home",
   components: {
-    HeaderTraidingVue
+    HeaderTraidingVue,
+    VideoPlayer
   },
   data() {
     return {

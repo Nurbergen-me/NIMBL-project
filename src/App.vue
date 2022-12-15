@@ -16,8 +16,9 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.state)
-    this.isContinuesVideoPlayerShown = this.$store.state.timeToContinue > 0;
+    console.log(this.$route.path === '/')
+    // console.log(this.$store.state)
+    // this.isContinuesVideoPlayerShown = this.$store.state.timeToContinue > 0;
   },
   methods: {
     openPopup() {
@@ -29,6 +30,10 @@ export default {
 
         var popup = window.open(window.location.href, 'popup_window', params); 
         popup.moveTo(0,0);
+    },
+    checkCurrentVideo() {
+        console.log(this.$store.state)
+        return this.$store.state.timeToContinue > 0
     }
   }
 }
@@ -60,7 +65,7 @@ export default {
         <div class="app">
             <router-view></router-view>
             <MainCategory/>
-            <VideoPlayer class="video-player" v-if="isContinuesVideoPlayerShown"/>
+            <VideoPlayer class="video-player" v-if="checkCurrentVideo() && (this.$route.path !== '/' || this.$route.path !== '/detail')"/>
         </div>
     </div>
 </template>

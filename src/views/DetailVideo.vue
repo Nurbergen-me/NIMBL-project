@@ -3,11 +3,13 @@
     <div class="videos_content">
       <div class="video_content">
         <div class="video_box">
-          <iframe
+          <video-player />
+          <!-- <video :src="video" :poster="thumbnail" ref="video" controls v-on:playing="onPlay" v-on:pause="onPause" v-on:timeupdate="onTimeUpdate" v-bind:autoplay="isAutoPlay" /> -->
+          <!-- <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/Wsdx1P_T-WM"
-          ></iframe>
+            src="https://static.videezy.com/system/resources/previews/000/000/417/original/100_0126.mp4"
+          ></iframe> -->
           <div class="headers_content">
             <div class="video_left_side">
               <div class="video_views_box">
@@ -191,10 +193,12 @@
   
 <script>
 import Comments from '@/components/Comments.vue'
+import VideoPlayer from "@/components/VideoPlayer.vue";
 export default {
   name: "DetailVideo",
   components: {
-    Comments
+    Comments,
+    VideoPlayer
   },
   data() {
     return {

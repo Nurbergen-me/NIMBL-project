@@ -89,7 +89,7 @@ export default {
 .video-player {
     width: 100%;
     height: auto;
-    z-index: 12;
+    z-index: 112;
     border-radius: 16px;
     overflow: hidden;
 }
