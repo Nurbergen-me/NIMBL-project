@@ -37,7 +37,7 @@
                     <div class="community_content">Community Size</div>
                     <div class="total_content">Total Volume</div>
                 </div>
-                <div class="table table_body" v-for="(item, index) in tables" :key="index">
+                <div class="table table_body" v-for="(item, index) in tables" :key="index" @click="$router.push({name: 'card-buying'})">
                     <img class="table_img" src="@/assets/marketplace/chanel_logo.svg" alt="">
                     <div class="title_content">
                         <div class="rang">{{item.rank}}</div>

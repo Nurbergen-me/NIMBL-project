@@ -8,7 +8,7 @@
                 type="text"
             />
         </div>
-        <div class="back_main" @click="$router.push({name: 'home'})">
+        <div class="back_main" v-if="$route.name === 'market-ranking' || $route.name === 'market-launchpad' || $route.name === 'market-oppotunities' || $route.name === 'market-gainer' || $route.name === 'card-buying' || $route.name === 'chart-buying' || $route.name === 'table-buying'" @click="$router.push({name: 'home'})">
             <div class="back_main_text">←  Back to Content</div>
         </div>
         <div class="navbar_content">

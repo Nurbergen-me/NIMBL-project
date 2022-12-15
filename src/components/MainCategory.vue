@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="list_content" v-if="mainCategory === 1">
+        <div class="list_content" v-if="$route.name !== 'market-ranking' && $route.name !== 'market-launchpad' && $route.name !== 'market-oppotunities' && $route.name !== 'market-gainer' && $route.name !== 'card-buying' && $route.name !== 'chart-buying' && $route.name !== 'table-buying'">
             <div class="list_buttons" :class="{ active: mainCategory === 1 && $route.name === 'home' }" @click="toggleCategory(1, 'home')" >
                 <img src="@/assets/lines/content-icon.svg" alt="" />
                 <div class="list_name">Content</div>
             </div>
-            <div class="list_buttons" :class="{ active: mainCategory === 2 }" @click="toggleCategory(2)" >
+            <div class="list_buttons" :class="{ active: mainCategory === 2 }" @click="toggleCategory(2, 'community')" >
                 <img src="@/assets/lines/community-icon.svg" alt="" />
                 <div class="list_name">Community</div>
             </div>
