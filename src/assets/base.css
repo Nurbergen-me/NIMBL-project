@@ -93,10 +93,21 @@ body {
 }
 
 #app {
-  height: 100%;
-  outline: none;
-  max-width: 3000px;
-  margin: 0 auto;
+    position: relative;
+    height: 100%;
+    outline: none;
+    max-width: 3000px;
+    margin: 0 auto;
+}
+
+.navbar {
+    position: relative;
+    z-index: 99;
+}
+
+.app {
+    position: relative;
+    z-index: 10;
 }
 
 button {
