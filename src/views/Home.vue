@@ -37,19 +37,10 @@
                 <th class="col-3">Floor Price</th>
                 <th class="col-4">Total Volume</th>
               </tr>
-              <tr
-                class="table_value"
-                @click="toogleSubscribers()"
-                v-for="item in 2"
-                :key="item"
-              >
+              <tr class="table_value" @click="toogleSubscribers()" v-for="item in 2" :key="item" >
                 <td class="table_channel">
                   <div class="id">1</div>
-                  <img
-                    class="img"
-                    src="../assets/video/chanel_logo.svg"
-                    alt=""
-                  />
+                  <img class="img" src="../assets/video/chanel_logo.svg" alt="" />
                   <div class="name">@BlueWard2</div>
                 </td>
                 <td class="table_subs gradient-number">100k</td>
@@ -78,7 +69,7 @@
             <div class="go_to_channel">Go to channel</div>
           </div>
           <div class="about_channel">
-            <div class="about_channel_box" v-for="item in 6">
+            <div class="about_channel_box" v-for="item in 6" :key="item.id">
               <div class="value">100 132</div>
               <div class="key">Members</div>
             </div>
@@ -86,7 +77,7 @@
           <div class="subs_videos">
             <div class="subs_videos_header">Trending Videos</div>
             <div class="subs_videos_video">f
-              <div class="subs_videos_box" v-for="item in 3">
+              <div class="subs_videos_box" v-for="item in 3" :key="item.id">
                 <div class="subs_videos_main">
                   <div class="subs_img">
                     <img
@@ -107,7 +98,7 @@
       </template>
     </div>
     <div class="content">
-        <HeaderTraidingVue />
+    	<HeaderTraidingVue class="content_tranding" />
       <div class="videos_content">
         <div
           class="video_box"
@@ -226,7 +217,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      &.active {
+      &.active, &:hover {
         background: linear-gradient(
           273.52deg,
           rgba(0, 234, 242, 0.2) -54.44%,
@@ -279,7 +270,7 @@ export default {
         justify-content: center;
         font-size: 21px;
 
-        &.active {
+        &.active, &:hover {
           background: linear-gradient(
             273.52deg,
             rgba(0, 234, 242, 0.2) -54.44%,
@@ -466,6 +457,10 @@ export default {
       margin-bottom: 18px;
     }
   }
+
+  .table_value:hover {
+	background: #141c25;
+  }
   /* Show Detail */
 }
 
@@ -475,6 +470,10 @@ export default {
   flex-direction: column;
   color: #fff;
   padding: 0 16px;
+}
+
+.content_tranding {
+	height: 130px;
 }
 
 .gradient-number {
@@ -637,6 +636,9 @@ export default {
           line-height: 1.2em;
         }
       }
+	  	&:hover {
+			transform: scale(1.08);
+		}
     }
     .prices {
       .price_title {

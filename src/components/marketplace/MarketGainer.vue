@@ -188,9 +188,9 @@ export default {
                 font-size: 16px;
                 line-height: 63px;
                 
-                &:hover {
-                    transform: scale(1.02);
-                }
+                // &:hover {
+                //     transform: scale(1.02);
+                // }
             }
         }
     }

@@ -478,7 +478,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 99px;
-  margin-bottom: 65px;
+  margin-bottom: 0;
 }
 .line_btn {
   height: 100%;
@@ -552,7 +552,7 @@ export default {
   }
   .lines_content {
     height: 80px;
-    margin-bottom: 40px;
+    // margin-bottom: 40px;
 
     img {
       width: 30px;
@@ -603,7 +603,7 @@ export default {
   }
   .lines_content {
     height: 60px;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
 
     img {
       width: 20px;
@@ -679,7 +679,7 @@ export default {
   }
   .lines_content {
     height: 50px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
   .line_title {
     font-size: 18px;

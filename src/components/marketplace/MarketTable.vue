@@ -55,7 +55,7 @@
             </div>
 
             <div class="ranking_boxs" v-if="view === 2">
-                <div class="simple" v-for="item in 5" :key="item">
+                <div class="simple" v-for="item in 10" :key="item">
                     <div class="second">
                         <div class="box_header">
                             <img class="video_box_img" src="@/assets/icons/video-path-clip.svg" alt="">
@@ -301,7 +301,7 @@ export default {
                     }
                     &:hover {
                         background: #14161E;
-                        padding: 10px;
+                        // padding: 10px;
                         // transform: scale(1.01);
                     }
                 }
@@ -319,7 +319,7 @@ export default {
                 cursor: pointer;
                 clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
                 position: relative;
-                width: 350px;
+                width: 100%;
                 height: 430px;
                 background: #00EAF2;
                 transition: all 0.3s ease;
@@ -329,7 +329,7 @@ export default {
                     z-index: 10;
                     top: 2px;
                     left: 2px;
-                    width: 346px;
+                    width: calc(100% - 4px);
                     height: 426px;
                     background: #141C25;
                     .box_header {
@@ -444,6 +444,7 @@ export default {
 
     }
 }
+
 @media (max-width: 1850px) {
     .table_inner {
         .table_content_inner {
@@ -501,7 +502,7 @@ export default {
                 &:hover {
                     background: #14161E;
                     padding: 10px;
-                    transform: scale(1);
+                    // transform: scale(1);
                 }
             }
         }
@@ -535,6 +536,7 @@ export default {
         }
     }
 }
+
 @media (max-width: 1600px) {
     .table_inner {
         .table_content_inner {
@@ -602,7 +604,7 @@ export default {
                 &:hover {
                     background: #14161E;
                     padding: 10px;
-                    transform: scale(1);
+                    // transform: scale(1);
                 }
             }
         }
@@ -685,7 +687,7 @@ export default {
                 &:hover {
                     background: #14161E;
                     padding: 10px;
-                    transform: scale(1);
+                    // transform: scale(1);
                 }
             }
         }

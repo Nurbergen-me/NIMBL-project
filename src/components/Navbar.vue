@@ -1,15 +1,20 @@
 <template>
   <div class="navbar">
         <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" @click="$router.push({'name': 'home'})" />
+        <div class="navigators">
+            <div class="navigator" @click="$router.back()">
+                <img class="nav_icon" src="@/assets/icons/back.svg" alt="">
+            </div>
+            <div class="navigator">
+                <img class="nav_icon next" src="@/assets/icons/back.svg" alt="">
+            </div>
+        </div>
         <div class="navbar_search">
             <input
                 placeholder="Search Channels, Videos or NFTs"
                 class="search"
                 type="text"
             />
-        </div>
-        <div class="back_main" v-if="$route.name === 'market-ranking' || $route.name === 'market-launchpad' || $route.name === 'market-oppotunities' || $route.name === 'market-gainer' || $route.name === 'card-buying' || $route.name === 'chart-buying' || $route.name === 'table-buying'" @click="$router.push({name: 'home'})">
-            <div class="back_main_text">←  Back to Content</div>
         </div>
         <div class="navbar_content">
             <div class="navbar_dropdown">
@@ -92,6 +97,32 @@ export default {
   height: 63px;
   cursor: pointer;
 }
+
+.navigators {
+  display: flex;
+  .navigator {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 4px 4px 27px rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(51.863px);
+    margin-left: 10px;
+    cursor: pointer;
+    .nav_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.next {
+        opacity: 0.5;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
 .navbar_search {
   font-family: "Octosquares-Regular";
   position: relative;

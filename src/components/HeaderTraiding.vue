@@ -1,40 +1,82 @@
 <template>
     <div class="content_categories">
         <div class="category">
-          <img class="img" src="@/assets/category-1.png" alt="" />
-          <div class="name">Trending Videos</div>
-          <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
-          <div class="category_subcategories">
-            <div class="category">
-              <img class="img" src="@/assets/category-4.png" alt="" />
-              <div class="name">Play2Earn1</div>
+            <img class="img" src="@/assets/category-1.png" alt="" />
+            <div class="name">Trending Videos</div>
+            <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
+            <div class="category_subcategories">
+                <div class="category">
+                    <img class="img" src="@/assets/category-4.png" alt="" />
+                    <div class="name">Play2Earn1</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-3.png" alt="" />
+                    <div class="name">ETH NFTs</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-2.png" alt="" />
+                    <div class="name">Crypto News</div>
+                </div>
             </div>
-            <div class="category">
-              <img class="img" src="@/assets/category-3.png" alt="" />
-              <div class="name">ETH NFTs</div>
-            </div>
-            <div class="category">
-              <img class="img" src="@/assets/category-2.png" alt="" />
-              <div class="name">Crypto News</div>
-            </div>
-          </div>
         </div>
         <div class="category">
-          <img class="img" src="@/assets/category-2.png" alt="" />
-          <div class="name">Crypto News</div>
-          <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
+            <img class="img" src="@/assets/category-2.png" alt="" />
+            <div class="name">Crypto News</div>
+            <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
+            <div class="category_subcategories">
+                <div class="category">
+                    <img class="img" src="@/assets/category-4.png" alt="" />
+                    <div class="name">Play2Earn1</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-3.png" alt="" />
+                    <div class="name">ETH NFTs</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-1.png" alt="" />
+                <div class="name">Trending Videos</div>
+                </div>
+            </div>
         </div>
         <div class="category">
-          <img class="img" src="@/assets/category-3.png" alt="" />
-          <div class="name">ETH NFTs</div>
-          <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
+            <img class="img" src="@/assets/category-3.png" alt="" />
+            <div class="name">ETH NFTs</div>
+            <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
+            <div class="category_subcategories">
+                <div class="category">
+                    <img class="img" src="@/assets/category-4.png" alt="" />
+                    <div class="name">Play2Earn1</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-1.png" alt="" />
+                    <div class="name">Trending Videos</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-2.png" alt="" />
+                    <div class="name">Crypto News</div>
+                </div>
+            </div>
         </div>
         <div class="category last">
           <img class="img" src="@/assets/category-4.png" alt="" />
           <div class="name">Play2Earn1</div>
           <img class="add_icon" src="@/assets/icons/plus.svg" alt="" />
+          <div class="category_subcategories">
+                <div class="category">
+                    <img class="img" src="@/assets/category-1.png" alt="" />
+                    <div class="name">Trending Videos</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-3.png" alt="" />
+                    <div class="name">ETH NFTs</div>
+                </div>
+                <div class="category">
+                    <img class="img" src="@/assets/category-2.png" alt="" />
+                    <div class="name">Crypto News</div>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
 </template>
 
 <script>
@@ -69,6 +111,7 @@ export default {
     margin-bottom: 55px;
     font-family: "Octosquares-Bold";
     .category {
+      height: 130px;
       width: calc(25% - 22px);
       margin: 0 11px;
       // height: 213px;

@@ -43,6 +43,10 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
+    .header_content {
+        width: 80%;
+        margin: 0 auto;
+    }
     .main_content {
         height: 100%;
         padding: 10px;
