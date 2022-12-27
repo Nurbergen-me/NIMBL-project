@@ -88,14 +88,12 @@ export default {
   z-index: 10;
   cursor: pointer;
   color: #fff;
-  position: fixed;
   bottom: 0;
   width: 100%;
   height: 86px;
   background: #000000;
   display: flex;
   align-items: center;
-  bottom: 5px;
   .list_buttons {
     width: 25%;
     height: 100%;

@@ -67,9 +67,9 @@ export default {
     display: flex;
     align-items: flex-start;
     // - header - bottom 
-    height: calc(100vh - 78px -  86px);
+    height: calc(100vh - 78px - 86px);
     overflow-y: hidden;
-    
+
 
     &_feed {
         height: 100%;
@@ -79,7 +79,7 @@ export default {
         backdrop-filter: blur(51.863px);
 
         &_comments {
-           height: 100%;
+            height: 100%;
         }
 
         .name {
@@ -92,6 +92,7 @@ export default {
         }
     }
     &_content {
+        position: relative;
         width: 60%;
         height: 100%;
         &_body {
@@ -222,9 +223,9 @@ export default {
 
 @media (max-width: 2000px) {
     .community {
-        height: calc(100vh - 70px -  60px);
+        height: calc(100vh - 70px - 60px);
         &_feed {
-            
+
             .name {
                 font-size: 20px;
                 line-height: 27px;
@@ -243,11 +244,11 @@ export default {
             }
         }
         &_content {
-        &_body {
-            height: calc(100vh - 70px - 60px - 132px - 113px)
+            &_body {
+                height: calc(100vh - 70px - 60px - 132px - 109px)
+            }
         }
-    }
-        
+
         .channel {
             padding-left: 28px;
 
@@ -296,6 +297,18 @@ export default {
                     font-size: 16px;
                     color: #EA00D5;
                 }
+            }
+        }
+    }
+}
+@media (max-width: 1600px) {
+    .community {
+        height: calc(100vh - 60px - 60px);
+
+
+        &_content {
+            &_body {
+                height: calc(100vh - 60px - 60px - 132px - 109px)
             }
         }
     }

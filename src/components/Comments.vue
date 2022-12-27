@@ -289,7 +289,10 @@ export default {
         padding: 21px 32px;
         display: flex;
         align-items: center;
-        position: relative;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
         .emojies {
             width: 36px;
@@ -354,7 +357,6 @@ export default {
                     margin-bottom: 10px;
 
                     .comment_controls {
-
 
                         .controls_icon {
                             width: 20px;
@@ -454,7 +456,7 @@ export default {
 @media (max-width: 1600px) {
     .comments {
         &_body {
-            height: calc(100% - 60px);
+            height: calc(100% - 65px);
         }
         .comment {
             padding: 12px 24px;
