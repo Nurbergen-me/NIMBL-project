@@ -1,6 +1,6 @@
 <template>
-  <div class="navbar">
-        <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" @click="$router.push({'name': 'home'})" />
+    <div class="navbar">
+        <img class="navbar_logo" src="@/assets/icons/logo.svg" alt="" @click="$router.push({ 'name': 'home' })" />
         <div class="navigators">
             <div class="navigator" @click="$router.back()">
                 <img class="nav_icon" src="@/assets/icons/back.svg" alt="">
@@ -57,11 +57,11 @@
                     </div>
                     <div class="line"></div>
                 </div>
-            </div> 
+            </div>
         </div>
         <div class="navbar_content">
             <div class="navbar_dropdown" @click="toggleWallet()">
-                <div class="name" :class="{'active': walletBox === true}">Wallet</div>
+                <div class="name" :class="{ 'active': walletBox === true }">Wallet</div>
                 <img v-if="!walletBox" class="icon" src="@/assets/icons/arrow_down.svg" alt="" />
                 <img v-else class="icon" src="@/assets/navbar/color_down.svg" alt="" />
             </div>
@@ -104,7 +104,7 @@
             </div>
             <img class="icon person_icon" src="@/assets/icons/profile.svg" alt="" />
         </div>
-  </div>
+    </div>
 </template>
   
 <script>
@@ -132,19 +132,16 @@ export default {
     font-family: "Octosquares-Regular";
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 82px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     // backdrop-filter: blur(6px);
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(13, 7, 7, 0.4) 100%
-    );
-    background-clip: padding-box; /* !importanté */
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(13, 7, 7, 0.4) 100%);
+    background-clip: padding-box;
+    /* !importanté */
     border: solid 2px transparent;
     position: relative;
-    padding: 0 32px 0 7px;
 
     &:before {
         content: "";
@@ -154,14 +151,14 @@ export default {
         bottom: 0;
         left: 0;
         z-index: -2;
-        margin: -2px; /* !importanté */
-        border-radius: inherit; /* !importanté */
-        background: linear-gradient(
-        to right,
-        rgba(3, 230, 243, 0.6),
-        rgba(52, 118, 254, 0.6),
-        rgba(191, 25, 224, 0.6)
-        );
+        margin: -2px;
+        /* !importanté */
+        border-radius: inherit;
+        /* !importanté */
+        background: linear-gradient(to right,
+                rgba(3, 230, 243, 0.6),
+                rgba(52, 118, 254, 0.6),
+                rgba(191, 25, 224, 0.6));
     }
 
     &:after {
@@ -176,22 +173,25 @@ export default {
     }
 }
 .navbar_logo {
-    height: 63px;
+    height: 100%;
     cursor: pointer;
+    margin-right: 70px;
 }
 
 .navigators {
     display: flex;
+    overflow: hidden;
+    gap: 20px;
+    height: 100%;
+    margin-right: 140px;
     .navigator {
-        width: 60px;
-        height: 60px;
+        width: 75px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: rgba(255, 255, 255, 0.05);
         box-shadow: inset 4px 4px 27px rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(51.863px);
-        margin-left: 10px;
         cursor: pointer;
         .nav_icon {
             display: flex;
@@ -206,18 +206,50 @@ export default {
 }
 
 .navbar_search {
+    height: 80%;
     font-family: "Octosquares-Regular";
     position: relative;
     border: 1px solid rgba(0, 0, 0, 0.35);
     box-shadow: inset 4px 4px 27px rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(23.5px);
 
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -2;
+        margin: -1px;
+        /* !importanté */
+        border-radius: inherit;
+        /* !importanté */
+        background: linear-gradient(to right,
+                rgba(3, 230, 243, 0.6),
+                rgba(52, 118, 254, 0.6),
+                rgba(191, 25, 224, 0.6));
+    }
+    &::before {
+        content: '';
+        background: url("../assets/icons/search.svg") no-repeat center / contain;
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        left: 31px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+
     .search {
+        display: block;
         background: #0A0E20;
         padding-left: 80px;
         color: #ffffff;
         width: 660px;
-        height: 52px;
+        height: 100%;
         z-index: 2;
         font-weight: 400;
         font-size: 18px;
@@ -249,7 +281,8 @@ export default {
             img {
                 margin-right: 10px;
             }
-            &.active, &:hover {
+            &.active,
+            &:hover {
                 background: linear-gradient(273.52deg, rgba(0, 234, 242, 0.2) -54.44%, rgba(234, 0, 213, 0.2) 110.67%);
                 backdrop-filter: blur(10px);
             }
@@ -286,35 +319,7 @@ export default {
         }
     }
 
-    &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -2;
-        margin: -2px; /* !importanté */
-        border-radius: inherit; /* !importanté */
-        background: linear-gradient(
-        to right,
-        rgba(3, 230, 243, 0.6),
-        rgba(52, 118, 254, 0.6),
-        rgba(191, 25, 224, 0.6)
-        );
-    }
-    &:before {
-        content: '';
-        background: url("../assets/icons/search.svg") no-repeat center / contain;
-        position: absolute;
-        display: block;
-        width: 30px;
-        height: 30px;
-        left: 31px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1;
-    }
+
 }
 
 .back_main {
@@ -328,13 +333,15 @@ export default {
 }
 
 .navbar_content {
+    height: 100%;
+    margin-left: auto;
     position: relative;
     display: flex;
-    align-items: center;
     .navbar_dropdown {
         display: flex;
         margin-right: 60px;
         cursor: pointer;
+        align-items: center;
         .name {
             text-transform: uppercase;
             font-family: "Octosquares-Bold";
@@ -346,8 +353,12 @@ export default {
                 color: #EA00D5;
             }
         }
+        .icon {
+            height: 13px;
+            transform: translateY(5%);
+        }
     }
-    &.activee {
+    &.active {
         color: #EA00D5;
     }
     .navbar_body {
@@ -386,7 +397,8 @@ export default {
                     text-align: center;
                     font-size: 16px;
                     margin-bottom: 20px;
-                    &.active, &:hover {
+                    &.active,
+                    &:hover {
                         background: linear-gradient(90.24deg, #01EAF2 0.21%, #3B65FF 56.69%, #D70BDA 102.91%);
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
@@ -430,8 +442,9 @@ export default {
 
 .chat {
     &_wrap {
+        align-self: center;
         position: relative;
-        margin-right: 47px;
+        margin-right: 27px;
         &.active {
 
             &:after {
@@ -448,93 +461,150 @@ export default {
             }
         }
     }
+    &_icon {
+        width: 34px;
+    }
+}
+.person_icon {
+    width: 41px;
+    margin-right: 32px;
+    align-self: center;
 }
 
 @media (max-width: 2000px) {
-  .navbar {
-    height: 70px;
-  }
-  .search {
-    height: 44px;
-    line-height: 44px;
-    font-size: 20px;
-  }
-  .navbar_search::before {
-    width: 24px;
-    height: 24px;
-  }
-  .navbar_dropdown {
-    margin-right: 40px;
-    .name {
-      font-size: 18px;
+    .navbar {
+        height: 55px;
     }
-    img {
-      width: 18px;
+    .navbar_logo {
+        margin-right: 50px;
     }
-  }
-  .chat_wrap {
-    margin-right: 20px;
-    height: 30px;
-  }
-  .chat_icon {
-    width: 30px;
-  }
-  .person_icon {
-    width: 35px;
-  }
+    .navigators {
+        gap: 13px;
+        margin-right: 90px;
+        .navigator {
+            width: 53px;
+        }
+    }
+
+    .navbar_search {
+        &::before {
+            width: 20px;
+            height: 20px;
+            left: 18px;
+        }
+        .search {
+            font-size: 17px;
+            line-height: 25px;
+            width: 540px;
+            padding-left: 50px;
+        }
+    }
+    .navbar_content {
+
+        .navbar_dropdown {
+
+            margin-right: 30px;
+            .name {
+
+                font-size: 14px;
+                margin-right: 10px;
+                line-height: 17px;
+            }
+            .icon {
+                height: 9px;
+            }
+
+        }
+
+    }
+    .chat {
+        &_wrap {
+            margin-right: 18px;
+            &.active {
+                &:after {
+
+                    width: 7px;
+                    height: 7px;
+
+                }
+            }
+        }
+        &_icon {
+            width: 22px
+        }
+    }
+    .person_icon {
+        width: 32px;
+        margin-right: 21px;
+    }
 }
 @media (max-width: 1600px) {
-  .navbar {
-    height: 60px;
-    &_logo {
-      height: 50px;
+    .navbar {
+        height: 50px;
     }
-    &_search {
+    .navbar_logo {
+        margin-right: 45px;
+    }
+    .navigators {
+        gap: 10px;
+        margin-right: 80px;
+        .navigator {
+            width: 45px;
+        }
+    }
 
-      &:before {
-        left: 16px;
-        width: 20px;
-        height: 20px;
-      }
+    .navbar_search {
+        &::before {
+            width: 15px;
+            height: 15px;
+            left: 15px;
+        }
+        .search {
+            font-size: 15px;
+            line-height: 22px;
+            width: 500px;
+            padding-left: 40px;
+        }
     }
-    .search {
-      width: 550px;
-      font-size: 16px;
-      height: 38px;
-      line-height: 40px;
-      padding-left: 50px;
+    .navbar_content {
+
+        .navbar_dropdown {
+
+            margin-right: 30px;
+            .name {
+
+                font-size: 14px;
+                margin-right: 10px;
+                line-height: 17px;
+            }
+            .icon {
+                height: 9px;
+            }
+
+        }
+
     }
-  }
-  .navbar_dropdown {
-    margin-right: 36px;
-    .name {
-      font-size: 16px;
+    .chat {
+        &_wrap {
+            margin-right: 18px;
+            &.active {
+                &:after {
+
+                    width: 7px;
+                    height: 7px;
+
+                }
+            }
+        }
+        &_icon {
+            width: 22px
+        }
     }
-    img {
-      width: 16px;
+    .person_icon {
+        width: 32px;
+        margin-right: 21px;
     }
-  }
 }
-@media (max-width: 1600px) { 
-  .navbar {
-    &_logo {
-      height: 45px;
-    }
-    .search {
-      max-width: 460px;
-    }
-    &_dropdown {
-      margin-right: 26px;
 
-      .name {
-        font-size: 14px;
-      }
-
-      img {
-        width: 14px;
-      }
-    }
-  }
-}
 </style>
   

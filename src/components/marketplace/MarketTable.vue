@@ -159,7 +159,7 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 5000px) {
     .table_content {
-        height: calc(100vh - var(--h-header-footer-2000) - 186px);
+        height: calc(100vh - var(--h-header-footer) - 186px);
         overflow-y: hidden;
         position: relative;
         padding-bottom: 100px;

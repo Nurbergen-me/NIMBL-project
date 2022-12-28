@@ -66,8 +66,7 @@ export default {
 .community {
     display: flex;
     align-items: flex-start;
-    // - header - bottom 
-    height: calc(100vh - 78px - 86px);
+    height: calc(100vh - var(--h-header-footer));
     overflow-y: hidden;
 
 
@@ -96,7 +95,7 @@ export default {
         width: 60%;
         height: 100%;
         &_body {
-            height: calc(100vh - 78px - 86px - 166px - 143px)
+            height: calc(100vh - var(--h-header-footer) - 166px - 143px)
         }
     }
     &_channels {
@@ -223,7 +222,7 @@ export default {
 
 @media (max-width: 2000px) {
     .community {
-        height: calc(100vh - 70px - 60px);
+        height: calc(100vh - var(--h-header-footer));
         &_feed {
 
             .name {
@@ -245,7 +244,7 @@ export default {
         }
         &_content {
             &_body {
-                height: calc(100vh - 70px - 60px - 132px - 109px)
+                height: calc(100vh - var(--h-header-footer) - 132px - 109px)
             }
         }
 
@@ -303,12 +302,12 @@ export default {
 }
 @media (max-width: 1600px) {
     .community {
-        height: calc(100vh - 60px - 60px);
+        height: calc(100vh - var(--h-header-footer));
 
 
         &_content {
             &_body {
-                height: calc(100vh - 60px - 60px - 132px - 109px)
+                height: calc(100vh - var(--h-header-footer) - 132px - 109px)
             }
         }
     }

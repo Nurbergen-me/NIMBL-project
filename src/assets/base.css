@@ -1,9 +1,16 @@
 :root {
-  --h-header-footer-3000: 168px;
-  --h-header-footer-2000: 130px;
-  --h-header-footer-1600: 120px;
+  --h-header-footer: 168px;
 }
-
+@media (max-width: 2000px) {
+  :root {
+    --h-header-footer: 115px;
+  }
+}
+@media (max-width: 1600px) {
+  :root {
+    --h-header-footer: 110px;
+  }
+}
 /* color palette from <https://github.com/vuejs/theme> */
 /* :root {
   --vt-c-white: #ffffff;
@@ -29,7 +36,6 @@
 
 /* semantic color variables for this project */
 
-
 /* *,
 *::before,
 *::after {
@@ -45,48 +51,50 @@
 }
 
 @font-face {
-  font-family: "Octosquares-Regular";
-  src: url("@/fonts/TTOctosquares-Regular.eot");
-  src: url("@/fonts/TTOctosquares-Regular.eot?#iefix") format("embedded-opentype"),
-    url("@/fonts/TTOctosquares-Regular.woff2") format("woff2"),
-    url("@/fonts/TTOctosquares-Regular.woff") format("woff"),
-    url("@/fonts/TTOctosquares-Regular.ttf") format("truetype")
+  font-family: 'Octosquares-Regular';
+  src: url('@/fonts/TTOctosquares-Regular.eot');
+  src: url('@/fonts/TTOctosquares-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('@/fonts/TTOctosquares-Regular.woff2') format('woff2'),
+    url('@/fonts/TTOctosquares-Regular.woff') format('woff'),
+    url('@/fonts/TTOctosquares-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Octosquares-Medium";
-  src: url("@/fonts/TTOctosquares-Medium.eot");
-  src: url("@/fonts/TTOctosquares-Medium.eot?#iefix") format("embedded-opentype"),
-    url("@/fonts/TTOctosquares-Medium.woff2") format("woff2"),
-    url("@/fonts/TTOctosquares-Medium.woff") format("woff"),
-    url("@/fonts/TTOctosquares-Medium.ttf") format("truetype")
+  font-family: 'Octosquares-Medium';
+  src: url('@/fonts/TTOctosquares-Medium.eot');
+  src: url('@/fonts/TTOctosquares-Medium.eot?#iefix')
+      format('embedded-opentype'),
+    url('@/fonts/TTOctosquares-Medium.woff2') format('woff2'),
+    url('@/fonts/TTOctosquares-Medium.woff') format('woff'),
+    url('@/fonts/TTOctosquares-Medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Octosquares-Light";
-  src: url("@/fonts/TTOctosquares-Light.eot");
-  src: url("@/fonts/TTOctosquares-Light.eot?#iefix") format("embedded-opentype"),
-    url("@/fonts/TTOctosquares-Light.woff2") format("woff2"),
-    url("@/fonts/TTOctosquares-Light.woff") format("woff"),
-    url("@/fonts/TTOctosquares-Light.ttf") format("truetype")
+  font-family: 'Octosquares-Light';
+  src: url('@/fonts/TTOctosquares-Light.eot');
+  src: url('@/fonts/TTOctosquares-Light.eot?#iefix') format('embedded-opentype'),
+    url('@/fonts/TTOctosquares-Light.woff2') format('woff2'),
+    url('@/fonts/TTOctosquares-Light.woff') format('woff'),
+    url('@/fonts/TTOctosquares-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Octosquares-Bold";
-  src: url("@/fonts/TTOctosquares-Bold.eot");
-  src: url("@/fonts/TTOctosquares-Bold.eot?#iefix") format("embedded-opentype"),
-    url("@/fonts/TTOctosquares-Bold.woff2") format("woff2"),
-    url("@/fonts/TTOctosquares-Bold.woff") format("woff"),
-    url("@/fonts/TTOctosquares-Bold.ttf") format("truetype")
+  font-family: 'Octosquares-Bold';
+  src: url('@/fonts/TTOctosquares-Bold.eot');
+  src: url('@/fonts/TTOctosquares-Bold.eot?#iefix') format('embedded-opentype'),
+    url('@/fonts/TTOctosquares-Bold.woff2') format('woff2'),
+    url('@/fonts/TTOctosquares-Bold.woff') format('woff'),
+    url('@/fonts/TTOctosquares-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Octosquares-DBold";
-  src: url("@/fonts/TTOctosquares-DBold.eot");
-  src: url("@/fonts/TTOctosquares-DBold.eot?#iefix") format("embedded-opentype"),
-    url("@/fonts/TTOctosquares-DBold.woff2") format("woff2"),
-    url("@/fonts/TTOctosquares-DBold.woff") format("woff"),
-    url("@/fonts/TTOctosquares-DBold.ttf") format("truetype")
+  font-family: 'Octosquares-DBold';
+  src: url('@/fonts/TTOctosquares-DBold.eot');
+  src: url('@/fonts/TTOctosquares-DBold.eot?#iefix') format('embedded-opentype'),
+    url('@/fonts/TTOctosquares-DBold.woff2') format('woff2'),
+    url('@/fonts/TTOctosquares-DBold.woff') format('woff'),
+    url('@/fonts/TTOctosquares-DBold.ttf') format('truetype');
 }
 
 body {
@@ -94,41 +102,44 @@ body {
   min-height: 100vh;
   /* width: 2540px; */
   width: 100%;
-  font-family: "Octosquares-Regular";
+  font-family: 'Octosquares-Regular';
   color: #fff;
 }
 
 #app {
-    position: relative;
-    height: 100%;
-    outline: none;
-    max-width: 3000px;
-    margin: 0 auto;
+  position: relative;
+  height: 100%;
+  outline: none;
+  max-width: 3000px;
+  margin: 0 auto;
 }
 
 .navbar {
-    position: relative;
-    z-index: 99;
+  position: relative;
+  z-index: 99;
 }
 
 .app {
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 }
 
 button {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
-input, a, select, button {
+input,
+a,
+select,
+button {
   background: transparent;
-  font-family: "Octosquares-Medium";
+  font-family: 'Octosquares-Medium';
   cursor: pointer;
   border: none;
   color: #fff;
@@ -136,8 +147,8 @@ input, a, select, button {
 }
 
 .gradient-number {
-  font-family: "Octosquares-Bold";
-  background: linear-gradient(90.24deg, #03E9F2, #D90CDA);
+  font-family: 'Octosquares-Bold';
+  background: linear-gradient(90.24deg, #03e9f2, #d90cda);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: fit-content;
@@ -163,8 +174,10 @@ input, a, select, button {
 ::-webkit-scrollbar-thumb {
   background: red;
   border-radius: 4px;
-  background: linear-gradient(180deg,
-      rgba(33, 141, 159, 1) 0%,
-      rgba(92, 99, 163, 1) 50%,
-      rgba(131, 40, 150, 0.8) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(33, 141, 159, 1) 0%,
+    rgba(92, 99, 163, 1) 50%,
+    rgba(131, 40, 150, 0.8) 100%
+  );
 }

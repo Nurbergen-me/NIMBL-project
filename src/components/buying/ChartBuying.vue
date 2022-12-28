@@ -1,7 +1,7 @@
 <template>
-    <div style="padding: 10px;">
-        <ChartHistory></ChartHistory>
-    </div>
+
+    <ChartHistory></ChartHistory>
+
 </template>
 
 <script>
@@ -18,13 +18,13 @@ export default {
     methods: {
         initChartHistory() {
             console.log('history')
-            const graph = [20, 55, 20, 45, 50, 20, 58, 60, 40,50, 20, 68, 60, 40, 20, 25, 30, 20, 50, 51]
+            const graph = [20, 55, 20, 45, 50, 20, 58, 60, 40, 50, 20, 68, 60, 40, 20, 25, 30, 20, 50, 51]
             Chart.defaults.font.size = 25
             const ctx = document.getElementById("chart_history");
             this.chartHistory = new Chart(ctx.getContext("2d"), {
                 type: "line",
                 data: {
-                    labels: [2020,2021,2023,2021,2023,2021,2023,2021,2023,2021,2023],
+                    labels: [2020, 2021, 2023, 2021, 2023, 2021, 2023, 2021, 2023, 2021, 2023],
                     datasets: [
                         {
                             data: graph,
@@ -32,7 +32,7 @@ export default {
                             tension: 0.1,
                             borderColor: (context) => {
                                 const chart = context.chart
-                                const { ctx, chartArea } = chart
+                                const {ctx, chartArea} = chart
 
                                 if (!chartArea) {
                                     return
@@ -41,7 +41,7 @@ export default {
                             },
                             backgroundColor: (context) => {
                                 const chart = context.chart
-                                const { ctx, chartArea } = chart
+                                const {ctx, chartArea} = chart
 
                                 if (!chartArea) {
                                     return
@@ -66,7 +66,7 @@ export default {
                                 drawBorder: false,
                             },
                             ticks: {
-                                callback: function(val, index) {
+                                callback: function (val, index) {
                                     return index % 5 === 0 ? this.getLabelForValue(val) : '';
                                 },
                                 color: '#8F8F8F',
@@ -77,7 +77,7 @@ export default {
                             stacked: true,
                             beginAtZero: true,
                             ticks: {
-                                callback: function(val, index) {
+                                callback: function (val, index) {
                                     return index % 2 === 0 ? this.getLabelForValue(val) : '';
                                 },
                                 color: '#8F8F8F',
@@ -98,10 +98,10 @@ export default {
             let width, height, gradient;
             const chartWidth = chartArea.right - chartArea.left;
             const chartHeight = chartArea.bottom - chartArea.top;
-            if ( !gradient || width !== chartWidth || height !== chartHeight) {
+            if (!gradient || width !== chartWidth || height !== chartHeight) {
                 width = chartWidth
                 height = chartHeight
-                gradient = ctx.createLinearGradient( 0, chartArea.bottom, 0, chartArea.top )
+                gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top)
                 gradient.addColorStop(0, "#00EAF2")
                 gradient.addColorStop(0.5, "#00EAF2")
                 gradient.addColorStop(1, "#EA00D5")
@@ -129,11 +129,11 @@ export default {
             let width, height, gradient;
             const chartWidth = chartArea.right - chartArea.left;
             const chartHeight = chartArea.bottom - chartArea.top;
-            if ( !gradient || width !== chartWidth || height !== chartHeight) {
+            if (!gradient || width !== chartWidth || height !== chartHeight) {
                 width = chartWidth
                 height = chartHeight
-                gradient = ctx.createLinearGradient( 0, chartArea.bottom, 0, chartArea.top )
-                
+                gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top)
+
                 gradient.addColorStop(1, colors.purple.half);
                 gradient.addColorStop(0.5, colors.purple.own1);
                 gradient.addColorStop(0, colors.purple.own2);

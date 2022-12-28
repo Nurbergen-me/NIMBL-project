@@ -206,6 +206,7 @@ export default {
     .chart_history_body {
         // width: 100%;
         height: 500px;
+        font-size: 16px;
         canvas {
             width: 0
         }

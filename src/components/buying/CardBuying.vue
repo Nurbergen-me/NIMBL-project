@@ -18,22 +18,28 @@
                         <img class="video_box_logo" v-if="index === 3" src="@/assets/community/com4-logo.svg" alt="" />
                         <img class="video_box_logo" v-if="index === 4" src="@/assets/community/com5-logo.svg" alt="" />
                         <img class="video_box_logo" v-if="index === 5" src="@/assets/community/com6-logo.svg" alt="" />
-                        <div class="content_title">@{{item.name}}</div>
+                        <div class="content_title">@{{ item.name }}</div>
                     </div>
                     <div class="content_money">
                         <div class="content_price">floor price</div>
-                        <div class="content_value">{{item.price}}</div>
+                        <div class="content_value">{{ item.price }}</div>
                     </div>
                 </div>
             </div>
             <div class="content_line"></div>
-            <div class="content_button">BUY NOW</div>
+           <app-button>BUY NOW</app-button>
         </div>
     </div>
 </template>
 
 <script>
+import AppButton from '../AppButton.vue';
+
+
 export default {
+    components: {
+        AppButton,
+    },
     name: 'CardBuying',
     data() {
         return {
@@ -53,22 +59,25 @@ export default {
 
 <style lang="scss" scoped>
 .content_main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 30px;
-    padding: 0 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     .content_box {
+        border-radius: 5px;
         cursor: pointer;
         border: 1px solid rgba(61, 94, 255, 0.7);
-        border-radius: 6px;
-        padding: 10px;
+        padding: 10px 10px 17px;
         transition: all 0.3s ease;
         .content_box_header {
             margin-bottom: 10px;
             .content_logo {
-                height: 400px;
-                width: 100%;
+                display: block;
+                border: solid;
+                box-sizing: content-box;
+                border-image-slice: 1;
+                border-width: 1px;
+                border-image-source: linear-gradient(90deg, #D375FF 0%, #FFC240 16.43%, #649BFF 34.14%, #FFC240 48.72%, #ABDD42 62.78%, #07FFFF 77.37%, #0F50C7 91.43%, #D375FF 100%);
+                width: 300px;
                 object-fit: cover;
                 aspect-ratio: 1/1;
             }
@@ -84,10 +93,10 @@ export default {
                     align-items: center;
                     .video_box_logo {
                         object-fit: cover;
-                        width: 36px;
-                        height: 36px;
+                        width: 31px;
+                        height: 31px;
                         border-radius: 50%;
-                        margin-right: 5px;
+                        margin-right: 10px;
                     }
                     .content_title {
                         font-size: 16px;
@@ -100,13 +109,11 @@ export default {
                     }
                     .content_value {
                         font-size: 16px;
-
-                        background: linear-gradient(
-                            270deg,
-                            #ea00d5 -6.27%,
-                            #3d5eff 60.51%,
-                            #00eaf2 109.84%
-                        );
+                        font-weight: 600;
+                        background: linear-gradient(270deg,
+                                #ea00d5 -6.27%,
+                                #3d5eff 60.51%,
+                                #00eaf2 109.84%);
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         background-clip: text;
@@ -118,43 +125,64 @@ export default {
             margin: 0 auto 15px auto;
             height: 1px;
             width: 50px;
-            background: linear-gradient(
-                270deg,
-                #ea00d5 -6.27%,
-                #3d5eff 60.51%,
-                #00eaf2 109.84%
-            );
+            background: linear-gradient(270deg,
+                    #ea00d5 -6.27%,
+                    #3d5eff 60.51%,
+                    #00eaf2 109.84%);
         }
-        .content_button {
-            cursor: pointer;
-            font-family: "Octosquares-Bold";
-            clip-path: polygon(
-                10% 0,
-                100% 0,
-                100% 60%,
-                89.8% 100%,
-                0 100%,
-                0 40%
-            );
-            font-size: 16px;
-            text-align: center;
-            padding: 10px 25px;
-            background: linear-gradient(
-                106.95deg,
-                rgba(1, 167, 255, 0.8) 0.4%,
-                rgba(255, 0, 245, 0.8) 103.58%
-            );
-            box-shadow: inset 6.43931px 9.36627px 19.3179px
-                rgba(255, 255, 255, 0.11);
-            backdrop-filter: blur(54.4415px);
-            border: 5px solid rgba(13, 20, 41, 0.44);
-            opacity: 0.85;
-            &:hover {
-                opacity: 1;
-            }
-        }
+       
+
         &:hover {
             transform: scale(1.05);
+        }
+    }
+}
+
+@media (max-width: 2000px) {
+    .content_main {
+        gap: 30px;
+        .content_box {
+            padding: 7px 7px 12px;
+            .content_box_header {
+                .content_logo {
+                    width: 240px;
+                }
+            }
+            .content_box_body {
+                margin-bottom: 10px;
+                .content_titles {
+
+                    .content_title_left {
+
+                        .video_box_logo {
+
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 7px;
+                        }
+                        .content_title {
+                            font-size: 14px;
+                        }
+                    }
+                    .content_money {
+                        white-space: nowrap;
+                        .content_price {
+                            font-size: 13px;
+                        }
+                        .content_value {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+            .content_line {
+                margin: 0 auto 10px auto;
+
+            }
+          
+            &:hover {
+                transform: scale(1.05);
+            }
         }
     }
 }
