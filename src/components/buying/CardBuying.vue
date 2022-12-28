@@ -8,6 +8,7 @@
                 <img v-if="index === 3" class="content_logo" src="@/assets/buypage/buy4-logo.svg" alt="" />
                 <img v-if="index === 4" class="content_logo" src="@/assets/buypage/buy5-logo.svg" alt="" />
                 <img v-if="index === 5" class="content_logo" src="@/assets/buypage/buy6-logo.svg" alt="" />
+            
             </div>
             <div class="content_box_body">
                 <div class="content_titles">
@@ -50,7 +51,7 @@ export default {
                 {bg: '@/assets/buypage/buy3-logo.svg', name: 'DentGreen', price: '157 NMBL', logo: 'com2-logo.svg'},
                 {bg: '@/assets/buypage/buy4-logo.svg', name: 'Kira Branch', price: '162 NMBL', logo: 'com3-logo.svg'},
                 {bg: '@/assets/buypage/buy5-logo.svg', name: 'Liberly Carney', price: '177 NMBL', logo: 'com4-logo.svg'},
-                {bg: '@/assets/buypage/buy1-logo.svg', name: 'Charly Kent', price: '186 NMBL', logo: 'com5-logo.svg'}
+                {bg: '@/assets/buypage/buy6-logo.svg', name: 'Charly Kent', price: '186 NMBL', logo: 'com5-logo.svg'}
             ]
         };
     },
@@ -86,8 +87,8 @@ export default {
             align-items: center;
             margin-bottom: 10px;
             .content_titles {
-                display: grid;
-                grid-template-columns: 2.5fr 1fr;
+                display: flex;
+               justify-content: space-between;
                 .content_title_left {
                     display: flex;
                     align-items: center;
