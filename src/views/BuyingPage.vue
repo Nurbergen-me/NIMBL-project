@@ -92,16 +92,18 @@ input {
             width: 100%;
             position: relative;
             background: url("@/assets/marketplace/detail/navbar_market.png") no-repeat;
-            background-position: center;
+            background-position: 100%;
             background-size: cover;
             .head_content {
                 width: fit-content;
-                padding: 0px 15px 30px;
+                padding: 0px 15% 30px 15px;
                 height: 100%;
                 background: rgba(0, 0, 0, 0.21);
                 box-shadow: inset 3.5875px 3.5875px 24.2156px rgba(255, 255, 255, 0.04);
                 backdrop-filter: blur(46.5146px);
                 overflow: hidden;
+                clip-path: circle(80.8% at 18% 50%);
+
                 .head_first {
                     display: flex;
                     align-items: flex-start;
@@ -297,7 +299,7 @@ input {
     .marketplace_detail {
         .header {
             .head_content {
-                padding: 0px 15px 25px;
+                padding: 0px 15% 25px 15px;
                 .head_first {
                     margin-bottom: 25px;
                     gap: 22px;
