@@ -9,24 +9,24 @@
                         <img class="byCategory_icon" src="@/assets/icons/arrow_down.svg" alt="" />
                     </div>
                     <div class="sort_byDate">
-                        <div class="date" :class="{'active': sort === 1}" @click="changeSort(1)">1d</div>
-                        <div class="date" :class="{'active': sort === 2}" @click="changeSort(2)">1w</div>
-                        <div class="date" :class="{'active': sort === 3}" @click="changeSort(3)">1m</div>
-                        <div class="date" :class="{'active': sort === 4}" @click="changeSort(4)">1y</div>
-                        <div class="date" :class="{'active': sort === 5}" @click="changeSort(5)">All</div>
+                        <div class="date" :class="{ 'active': sort === 1 }" @click="changeSort(1)">1d</div>
+                        <div class="date" :class="{ 'active': sort === 2 }" @click="changeSort(2)">1w</div>
+                        <div class="date" :class="{ 'active': sort === 3 }" @click="changeSort(3)">1m</div>
+                        <div class="date" :class="{ 'active': sort === 4 }" @click="changeSort(4)">1y</div>
+                        <div class="date" :class="{ 'active': sort === 5 }" @click="changeSort(5)">All</div>
                     </div>
                     <div class="sort_byCategory">
                         <div class="byCategory_text">All Categories</div>
                         <img class="byCategory_icon" src="@/assets/icons/arrow_down.svg" alt="" />
                     </div>
                     <div class="header_tabs">
-                        <div class="header_tab" :class="{'active': view === 1}" @click="view = 1">View as List</div>
-                        <div class="header_tab" :class="{'active': view === 2}" @click="view = 2">View as Grid</div>
+                        <div class="header_tab" :class="{ 'active': view === 1 }" @click="view = 1">View as Grid</div>
+                        <div class="header_tab" :class="{ 'active': view === 2 }" @click="view = 2">View as List</div>
                     </div>
                 </div>
             </div>
 
-            <div class="tables" v-if="view === 1">
+            <div class="tables" v-if="view === 2">
                 <div class="table header">
                     <div class="table_img"></div>
                     <div class="title_content">Ranking</div>
@@ -37,29 +37,68 @@
                     <div class="community_content">Community Size</div>
                     <div class="total_content">Total Volume</div>
                 </div>
-                <div class="table table_body" v-for="(item, index) in tables" :key="index" @click="$router.push({name: 'card-buying'})">
+                <div class="table table_body" v-for="(item, index) in tables" :key="index" @click="$router.push({ name: 'card-buying' })">
                     <img class="table_img" src="@/assets/marketplace/chanel_logo.svg" alt="">
                     <div class="title_content">
-                        <div class="rang">{{item.rank}}</div>
-                        <div class="nike">@{{item.name}}</div>
+                        <div class="rang">{{ item.rank }}</div>
+                        <div class="nike">@{{ item.name }}</div>
                     </div>
-                    <div class="level_content">{{item.level}} creator</div>
+                    <div class="level_content">{{ item.level }} creator</div>
                     <div class="tag_content">
-                        <div class="tag" v-for="(tag, indexTag) in item.tags" :key="indexTag">{{tag}}</div>
+                        <div class="tag" v-for="(tag, indexTag) in item.tags" :key="indexTag">{{ tag }}</div>
                     </div>
-                    <div class="listing_content">{{item.list}}</div>
-                    <div class="price_content">{{item.price}}</div>
-                    <div class="listing_content">{{item.size}}</div>
-                    <div class="price_content">1{{item.volume}}</div>
+                    <div class="listing_content">{{ item.list }}</div>
+                    <div class="price_content">{{ item.price }}</div>
+                    <div class="listing_content">{{ item.size }}</div>
+                    <div class="price_content">1{{ item.volume }}</div>
                 </div>
             </div>
 
-            <div class="ranking_boxs" v-if="view === 2">
-                <div class="simple" v-for="item in 10" :key="item">
+            <div class="ranking_boxs" v-if="view === 1">
+                <div class="card_loop" v-for="item in 10" :key="item">
+                    <div class="card_box">
+                        <div class="video_header">
+                            <img class="video_header_logo" src="@/assets/icons/video-path-clip.svg" alt="">
+                            <!-- <img class="video_header_logo" src="@/assets/marketplace/denziel-icon.svg" alt=""> -->
+                            <div class="video_pause">
+                                <img class="video_box_pause" src="@/assets/marketplace/pause_2.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="video_body">
+                            <div class="box_title">@BlueWard2</div>
+                            <div class="box_buttons">
+                                <div class="box_button">
+                                    <div class="box_button_header">
+                                        <img class="member_icon" src="@/assets/marketplace/members.svg" alt="">
+                                        <div class="count">500K</div>
+                                    </div>
+                                    <div class="box_button_footer">members</div>
+                                </div>
+                                <div class="box_button">
+                                    <div class="box_button_title">134 NMBL</div>
+                                    <div class="box_button_footer">floor price</div>
+                                </div>
+                            </div>
+
+                            <div class="box_footer">
+                                <div class="footer_dates">
+                                    <div class="date_text">Mint date</div>
+                                    <div class="date_value">01.01.23</div>
+                                </div>
+                                <div class="tag_content">
+                                    <div class="tag">#ETH-NFT</div>
+                                    <div class="tag">#NFT-Trading</div>
+                                    <div class="tag">#NFT-Trading</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="simple" v-for="item in 10" :key="item">
                     <div class="second">
                         <div class="box_header">
                             <img class="video_box_img" src="@/assets/icons/video-path-clip.svg" alt="">
-                            <!-- <img class="video_box_img" src="@/assets/marketplace/denziel-icon.svg" alt=""> -->
+                            <img class="video_box_img" src="@/assets/marketplace/denziel-icon.svg" alt="">
                             <div class="video_pause">
                                 <img class="video_box_pause" src="@/assets/marketplace/pause_2.svg" alt="">
                             </div>
@@ -80,11 +119,11 @@
                                 <div class="tag">#ETH-NFT</div>
                                 <div class="tag">#NFT-Trading</div>
                             </div>
-                        </div>
+div>
                     </div>
-                </div> 
+                </div>  -->
             </div>
-        
+
         </div>
     </div>
 </template>
@@ -120,11 +159,14 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 5000px) {
     .table_content {
+        height: calc(100vh - var(--h-header-footer-2000) - 186px);
+        overflow-y: hidden;
         position: relative;
-        margin-bottom: 100px;
+        padding-bottom: 100px;
     }
 
     .table_inner {
+        height: 100%;
         .table_content_inner {
             .sidebar_sort {
                 display: flex;
@@ -132,7 +174,7 @@ export default {
                 height: 63px;
                 margin-bottom: 30px;
                 cursor: pointer;
-                    
+
                 .sort_byDate {
                     background: #141C25;
                     margin-right: 30px;
@@ -140,7 +182,7 @@ export default {
                     display: flex;
                     align-items: center;
                     border: 1px solid rgba(234, 0, 213, 0.5);
-                    .date {    
+                    .date {
                         padding: 10px 20px;
                         width: 60%;
                         font-size: 16px;
@@ -196,6 +238,8 @@ export default {
         }
 
         .tables {
+            overflow-y: scroll;
+            height: 100%;
             .table {
                 cursor: pointer;
                 display: grid;
@@ -213,7 +257,7 @@ export default {
                         object-fit: cover;
                     }
                 }
-                
+
                 &_body {
                     gap: 10px;
                     .table_img {
@@ -296,7 +340,7 @@ export default {
                             }
                         }
                     }
-                    & > *:not(:last-child) {
+                    &>*:not(:last-child) {
                         margin-bottom: 10px;
                     }
                     &:hover {
@@ -310,11 +354,13 @@ export default {
 
         .ranking_boxs {
             width: 100%;
-            height: 100%;
+            max-height: 100%;
+            overflow-y: scroll;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            grid-auto-rows: auto;
+            gap: 30px 40px;
+            padding-top: 10px;
             .simple {
                 cursor: pointer;
                 clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
@@ -351,7 +397,7 @@ export default {
                             top: 50%;
                             left: 50%;
                             transform: translate(-50%, -50%);
-                            
+
                             padding: 35px;
                             .video_box_pause {
                                 width: 20px;
@@ -440,6 +486,167 @@ export default {
                     background: linear-gradient(95deg, rgba(1, 167, 255, 0.8) 0.4%, rgba(255, 0, 245, 0.8) 103.58%);
                 }
             }
+
+            // box from Launchpad
+            .card_loop {
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                &:hover {
+                    transform: scale(1.01);
+                }
+            }
+            .card_box {
+                width: 100%;
+                padding: 2px;
+                overflow: hidden;
+                .video_header {
+                    cursor: pointer;
+                    position: relative;
+                    .video_header_logo {
+                        width: 100%;
+                        height: 150px;
+                        object-fit: cover;
+                    }
+                    .video_pause {
+                        border-radius: 50%;
+                        background: #000000;
+                        box-shadow: 0px 3.63217px 39.9538px rgba(0, 0, 0, 0.44);
+                        backdrop-filter: blur(7px);
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        padding: 30px;
+                        .video_box_pause {
+                            width: 30px;
+                            height: 30px;
+                            position: absolute;
+                            top: 50%;
+                            left: 55%;
+                            transform: translate(-55%, -50%);
+                        }
+                    }
+                }
+                .video_body {
+                    position: relative;
+                    padding: 0 10px;
+                    margin-top: -35px;
+                    background: #141B22;
+                    .box_title {
+                        margin-top: 30px;
+                        text-align: center;
+                        font-weight: 400;
+                        font-size: 16px;
+                        margin-bottom: 25px;
+                        padding-top: 10px;
+                    }
+                    .box_buttons {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 10px;
+                        margin-bottom: 20px;
+                        .box_button {
+                            flex-grow: 1;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px 20px;
+                            background: rgba(0, 0, 0, 0.23);
+                            backdrop-filter: blur(47.6218px);
+                            &_header {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                .count {
+                                    font-family: "Octosquares-Bold";
+                                    font-weight: 400;
+                                    font-size: 16px;
+                                }
+                                .member_icon {
+                                    width: 30px;
+                                    height: 30px;
+                                    margin-right: 10px;
+                                }
+                            }
+                            &_title {
+                                font-family: "Octosquares-Bold";
+                                font-weight: 400;
+                                font-size: 16px;
+                                background: linear-gradient(270deg, #EA00D5 -6.27%, #3D5EFF 60.51%, #00EAF2 109.84%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                            }
+                            &_footer {
+                                white-space: nowrap;
+                                font-weight: 400;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    .box_text {
+                        text-align: center;
+                        font-weight: 400;
+                        font-size: 16px;
+                        margin-bottom: 20px;
+                        padding: 0 10px;
+                    }
+                    .box_footer {
+                        padding: 0 5px;
+                        display: flex;
+                        justify-content: space-between;
+                        padding-bottom: 10px;
+                        .footer_dates {
+                            .date_text {
+                                font-size: 16px;
+                            }
+                            .date_value {
+                                font-size: 16px;
+                            }
+                        }
+                        .tag_content {
+                            .tag {
+                                width: fit-content;
+                                padding: 3px 7px;
+                                background: #131217;
+                                font-weight: 400;
+                                font-size: 16px;
+                                color: #6BB8FF;
+                                &:not(:last-child) {
+                                    margin-bottom: 5px;
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        width: 1000px;
+                        height: 100%;
+                        background: linear-gradient(106.95deg, rgba(1, 167, 255, 0.8) 0.4%, rgba(255, 0, 245, 0.8) 103.58%, rgba(255, 0, 245, 0.8) 103.58%);
+                        animation: animate 5s linear infinite;
+                    }
+                    @keyframes animate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            transform: rotate(360deg);
+                        }
+
+                    }
+                }
+            }
         }
 
     }
@@ -481,7 +688,7 @@ export default {
                     .nike {
                         font-size: 16px;
                     }
-                    
+
                 }
                 .level_content {
                     padding: 8px 20px;
@@ -494,10 +701,10 @@ export default {
                     }
                 }
                 .listing_content {
-                        font-size: 16px;
+                    font-size: 16px;
                 }
                 .price_content {
-                        font-size: 16px;
+                    font-size: 16px;
                 }
                 &:hover {
                     background: #14161E;
@@ -508,12 +715,6 @@ export default {
         }
 
         .ranking_boxs {
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 10px;
             .simple {
                 cursor: pointer;
                 clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
@@ -583,9 +784,9 @@ export default {
                         font-size: 16px;
                     }
                 }
-                .level_content {    
+                .level_content {
                     padding: 8px 10px;
-                        font-size: 16px;
+                    font-size: 16px;
                 }
                 .tag_content {
                     display: flex;
@@ -610,12 +811,7 @@ export default {
         }
 
         .ranking_boxs {
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(4, 1fr);
             .simple {
                 cursor: pointer;
                 clip-path: polygon(50% 7%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
@@ -666,7 +862,7 @@ export default {
                         font-size: 16px;
                     }
                 }
-                .level_content {    
+                .level_content {
                     padding: 8px 10px;
                     font-size: 16px;
                 }
