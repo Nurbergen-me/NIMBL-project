@@ -34,9 +34,10 @@ const router = createRouter({
         component: Home
     },
     {
-        path: '/detail',
+        path: '/detail/:idVideo?',
         name: 'detail',
-        component: DetailVideo
+        component: DetailVideo,
+        props: true
     },
     {
         path: '/community',

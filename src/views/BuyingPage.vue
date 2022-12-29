@@ -23,7 +23,7 @@
                             <div class="head_social_title">Socials</div>
                             <div class="head_social_content">
                                 <img src="@/assets/buy/doknow-logo.svg" alt="">
-                                <img src="@/assets/buy/twitter-logo.svg" alt="">
+                                <img src="@/assets/buy/twitter.svg" alt="">
                                 <img src="@/assets/buy/unknown-logo.svg" alt="">
                             </div>
                         </div>

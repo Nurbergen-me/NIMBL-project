@@ -3,13 +3,16 @@
     <div class="videos_content">
       <div class="video_content">
         <div class="video_box">
-          <video-player />
+          <!--      <video-player /> -->
           <!-- <video :src="video" :poster="thumbnail" ref="video" controls v-on:playing="onPlay" v-on:pause="onPause" v-on:timeupdate="onTimeUpdate" v-bind:autoplay="isAutoPlay" /> -->
           <!-- <iframe
             width="100%"
             height="100%"
             src="https://static.videezy.com/system/resources/previews/000/000/417/original/100_0126.mp4"
           ></iframe> -->
+          <iframe class="video" :src="`https://www.youtube.com/embed/${srcVideo}?autoplay=1&controls=0&mute=1&showinfo=0&loop=1`"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="headers_content">
             <div class="video_left_side">
               <div class="video_views_box">
@@ -48,21 +51,13 @@
               <div class="comment_name">
                 WOW ... well said man. Great video. 🔥🔥🔥
               </div>
-              <img
-                class="comment_icon"
-                src="../assets/video/comments.svg"
-                alt=""
-              />
+              <img class="comment_icon" src="../assets/video/comments.svg" alt="" />
             </div>
             <div class="comment_box">
               <div class="comment_name">
                 WOW ... well said man. Great video. 🔥🔥🔥
               </div>
-              <img
-                class="comment_icon"
-                src="../assets/video/comments.svg"
-                alt=""
-              />
+              <img class="comment_icon" src="../assets/video/comments.svg" alt="" />
             </div>
           </div>
           <!-- <div class="timeline_content">
@@ -101,8 +96,7 @@
           </div>
           <div class="video_titles">
             <div class="video_main_name">
-              Figma Tutorial: Setup a Responsive Grid Layout for UI & Web Design
-              (IN 11 MINUTES)
+              {{idVideo ? "120 - Marc Andreessen & Chris Dixon of a16z | Reinventing the Internet" : "Figma Tutorial: Setup a Responsive Grid Layout for UI & Web Design (IN 11 MINUTES)" }}
             </div>
             <div class="video_views_box">
               <div class="video_views">
@@ -148,21 +142,21 @@
 
       <div class="playlist_content">
         <div class="lines_content">
-          <div class="line_btn" :class="{'active': currentTab === 1}" @click="currentTab = 1">
+          <div class="line_btn" :class="{ 'active': currentTab === 1 }" @click="currentTab = 1">
             <img src="../assets/lines/videos-icon.svg" alt="" />
             <div class="line_title">Videos</div>
           </div>
-          <div class="line_btn" :class="{'active': currentTab === 2}" @click="currentTab = 2">
+          <div class="line_btn" :class="{ 'active': currentTab === 2 }" @click="currentTab = 2">
             <img src="../assets/lines/commments-icon.svg" alt="" />
             <div class="line_title">Comments</div>
           </div>
-          <div class="line_btn" :class="{'active': currentTab === 3}" @click="currentTab = 3">
+          <div class="line_btn" :class="{ 'active': currentTab === 3 }" @click="currentTab = 3">
             <img src="../assets/lines/clips-icon.svg" alt="" />
             <div class="line_title">Clips</div>
           </div>
         </div>
         <div class="recomends_video_wrap" v-if="currentTab === 1">
-          <div class="recomends_video" v-for="item in 10" :key="item">
+          <div @click="idVideo ? $router.push('/detail') : $router.push('/detail/2')" class="recomends_video" v-for="item in 10" :key="item">
             <img src="../assets/icons/video1.svg" alt="" />
             <div class="recomends_video_info">
               <div class="recomend_title">
@@ -184,7 +178,7 @@
           </div>
         </div>
         <div class="comments comments_main" v-if="currentTab === 2">
-          <Comments/>
+          <Comments />
         </div>
       </div>
     </div>
@@ -200,46 +194,68 @@ export default {
     Comments,
     VideoPlayer
   },
+  props: ['idVideo'],
   data() {
     return {
       currentTab: 1,
     };
   },
   methods: {
-    
+
   },
+  computed: {
+    srcVideo() {
+      return this.idVideo ? "RXHITeaGB8Q" : "G7OWIorSgwU"
+    }
+  }
 };
 </script>
   
-  <style scoped lang="scss">
+<style scoped lang="scss">
 .detail {
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
+  height: calc(100vh - var(--h-header-footer));
+  overflow: hidden;
 }
 .videos_content {
+  height: 100%;
   display: flex;
   align-items: flex-start;
-  /* height: 80vh; */
-  overflow-y: scroll;
 }
 /* Video Content */
 .video_content {
-  height: calc(100vh - 200px);
-  width: 60%;
+  height: 100%;
+  flex-basis: 60%;
+  flex-grow: 3;
   position: relative;
   overflow: scroll;
+  .video_box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 42px;
+    aspect-ratio: 16/9;
+    width: 100%;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    .video {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+    }
+  }
 }
 
 /* 1 - Video Box */
-.video_box {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 42px;
-  aspect-ratio: 16/9;
-  width: 100%;
-}
+
 .headers_content {
   position: absolute;
   width: 100%;
@@ -435,12 +451,10 @@ export default {
 .channel_subscribe {
   font-weight: 400;
   font-size: 23px;
-  background: linear-gradient(
-    182.53deg,
-    rgba(234, 0, 213, 0.3) 3.75%,
-    rgba(61, 94, 255, 0.3) 56.09%,
-    rgba(0, 234, 242, 0.3) 102.36%
-  );
+  background: linear-gradient(182.53deg,
+      rgba(234, 0, 213, 0.3) 3.75%,
+      rgba(61, 94, 255, 0.3) 56.09%,
+      rgba(0, 234, 242, 0.3) 102.36%);
   border-radius: 6.0058px;
   padding: 12px;
   text-transform: uppercase;
@@ -466,7 +480,10 @@ export default {
   font-size: 18px;
 }
 .playlist_content {
-  width: 40%;
+  height: 100%;
+  flex-basis: 40%;
+  flex-shrink: 0;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   background: rgba(0, 0, 0, 0.35);
@@ -490,11 +507,9 @@ export default {
   border: 1px solid rgba(85, 85, 85, 0.14);
 }
 .active {
-  background: linear-gradient(
-    273.52deg,
-    rgba(0, 234, 242, 0.2) -54.44%,
-    rgba(234, 0, 213, 0.2) 110.67%
-  );
+  background: linear-gradient(273.52deg,
+      rgba(0, 234, 242, 0.2) -54.44%,
+      rgba(234, 0, 213, 0.2) 110.67%);
   backdrop-filter: blur(10px);
 }
 .line_title {
@@ -506,9 +521,10 @@ export default {
 .recomends_video {
   display: flex;
   margin-bottom: 25px;
+  cursor: pointer;
 
   &_wrap {
-    height: calc(100vh - 300px);
+    height: 100%;
     overflow-x: scroll;
   }
 
@@ -543,7 +559,7 @@ export default {
     overflow: hidden;
   }
 }
-@media (max-width: 2400px) {
+@media (max-width: 2000px) {
   .video_name {
     font-size: 24px;
   }
@@ -595,70 +611,8 @@ export default {
   }
 }
 @media (max-width: 2000px) {
-  .video_name {
-    font-size: 20px;
-  }
-  .headers_content {
-    padding: 40px 20px 0 20px;
-  }
-  .lines_content {
-    height: 60px;
-    // margin-bottom: 30px;
-
-    img {
-      width: 20px;
-    }
-  }
-  .line_title {
-    font-size: 20px;
-  }
-  .recomend_title {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  .recomends_video_info {
-    margin-left: 12px;
-  }
-  .video_box {
-    margin-bottom: 24px;
-  }
-  .video_info_box {
-    padding-left: 24px;
-  }
-  .comment_content {
-    bottom: 20px;
-    right: 16px;
-  }
-  .comment_name {
-    font-size: 14px;
-    padding: 8px 20px;
-  }
-  .recomends_video_wrap {
-    height: calc(100vh - 260px);
-  }
-  .recomends_video img {
-    max-width: 220px;
-  }
-  .recomend_author {
-    font-size: 18px;
-  }
-  .video_views_count {
-    font-size: 16px;
-  }
-  .comments {
-    &_main {
-      height: calc(100vh - 290px);
-    }
-  }
-}
-@media (max-width: 2000px) {
-  .video_content {
-    width: 55%;
-    height: calc(100vh - 160px);
-  }
-  .playlist_content {
-    width: 45%;
-  }
+  .video_content {}
+  .playlist_content {}
   .recomends_video img {
     max-width: 180px;
   }
@@ -724,26 +678,20 @@ export default {
   .comments {
     font-size: 14px;
   }
-  .recomends_video_wrap{
-    height: calc(100vh - 215px);
-  }
+  .recomends_video_wrap {}
   .comments {
-    &_main {
-      height: calc(100vh - 205px);
-    }
+    &_main {}
   }
 }
 @media (max-width: 1600px) {
-  .recomends_video_wrap{
-    height: calc(100vh - 200px);
+  .recomends_video_wrap {}
+  .playlist_content {
+    flex-grow: 2;
+
   }
-  .video_content {
-    height: calc(100vh - 150px);
-  }
+  .video_content {}
   .comments {
-    &_main {
-      height: calc(100vh - 190px);
-    }
+    &_main {}
   }
 }
 </style>
