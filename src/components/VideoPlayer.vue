@@ -1,12 +1,17 @@
 <template>
-    <div class="video-player" @mousedown="mouseEnter" @mousemove="mouseMove" @mouseup="mouseLeave" :style="{'right': videoRigth + 'px', 'bottom': videoBottom + 'px'}">
+    <div class="video-player" @mousedown="mouseEnter" @mousemove="mouseMove" @mouseup="mouseLeave"
+        :style="{'right': videoRigth + 'px', 'bottom': videoBottom + 'px'}">
         <!-- using html5 video element, and add some dom like onPlaying onPause ... -->
-        <video :src="video" :poster="thumbnail" ref="video" controls v-on:playing="onPlay" v-on:pause="onPause" v-on:timeupdate="onTimeUpdate" v-bind:autoplay="isAutoPlay" />
+        <video :src="video" :poster="thumbnail || poster" ref="video" controls v-on:playing="onPlay" v-on:pause="onPause"
+            v-on:timeupdate="onTimeUpdate" v-bind:autoplay="isAutoPlay" />
     </div>
 </template>
 
 <script>
 export default {
+    props: {
+        poster: String
+    },
     data() {
         // some needed data
         return {
@@ -22,13 +27,13 @@ export default {
             videoRigth: 0,
             videoBottom: 0,
         };
-    }, 
-    
+    },
+
     created() {
         // this one cannot be checked on mounted
         this.realTimeToContinue = this.$store.state.timeToContinue;
     },
-    
+
     mounted() {
         // this data get from videoPlayer State
         this.onMove = false
@@ -42,24 +47,24 @@ export default {
             this.isAutoPlay = this.$store.state.isPlaying;
         }
     },
-    
+
     unmounted() {
         // when the component destroyed it will store the current time of the playing video
         // to video player store
         // this will be the "key" to continue or not the video in another components
-        this.$store.dispatch("setTimeToContinue", { timeToContinue: this.currentTime });
+        this.$store.dispatch("setTimeToContinue", {timeToContinue: this.currentTime});
     },
-    
+
     methods: {
         // some needed methods
         onPlay() {
             this.$store.dispatch("play");
         },
-        
+
         onPause() {
             this.$store.dispatch("pause");
         },
-        
+
         onTimeUpdate(e) {
             // console.log(e.target.currentTime)
             this.currentTime = e.target.currentTime;
@@ -74,7 +79,7 @@ export default {
         mouseMove(event) {
             if (this.onMove) {
                 this.videoRigth = Math.max(this.clientX - event.clientX, 0)
-                this.videoBottom = Math.max(this.clientY - event.clientY, 0) 
+                this.videoBottom = Math.max(this.clientY - event.clientY, 0)
             }
         },
         mouseLeave(event) {
@@ -92,11 +97,15 @@ export default {
     z-index: 112;
     border-radius: 16px;
     overflow: hidden;
+    aspect-ratio: 16/9;
 }
+
 .video-player video {
+    display: block;
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 16px;
+    aspect-ratio: 16/9;
 }
 </style>

@@ -1,12 +1,13 @@
 <template>
     <div class="comments" @click="currentCommentIndex = -1">
-        <div class="comments_body" :style="{ 'height': !canComment && '100%' }">
-            <div class="comments_comment comment" v-for="(comment, index) in 10" :key="index" :class="{ 'active': index === currentCommentIndex }">
-                <img src="../assets/comment-1.png" alt="comment" :class="canComment ? 'comment_img' : 'comment_img-small'">
+        <div ref="commentsElem" class="comments_body" :style="{ 'height': !canComment && '100%' }">
+            <div class="comments_comment comment" v-for="(comment, index) in comments" :key="comment.id"
+                :class="{ 'active': index === currentCommentIndex, 'line': !canComment }">
+                <img :src="comment.avatar" alt="comment" :class="canComment ? 'comment_img' : 'comment_img-small'">
                 <div class="comment_info">
                     <div class="comment_info_header">
                         <div class="comment_name">
-                            Gornacho
+                            {{ comment.user }}
                         </div>
                         <span class="comment_date">
                             4 days ago
@@ -32,24 +33,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="comment_text">
-                        Hahaha. Don’t worry mate he’s figuringit out. He’s getting confused too
+                    <div v-if="comment.attachImg && canComment" class="attach">
+                        <img :src="comment.attachImg" alt="">
                     </div>
-                    <div class="comment_info_footer">
-                        <div class="comment_reactions">
+                    <div class="comment_text">
+                        {{ comment.text }}
+                    </div>
+                    <div v-if="!canComment" class="comment_info_footer">
+
+                        <div class="reactions">
                             <div class="reaction">
-                                😂 189
+                                <img src="@/assets/community/like.svg" alt=""> <span>{{ comment.likeCount }}</span>
                             </div>
                             <div class="reaction">
-                                😢 76
-                            </div>
-                            <div class="reaction">
-                                😂 189
+                                <img src="@/assets/community/dislike.svg" alt="">
                             </div>
                         </div>
-                        <div class="reply">
-                            <img src="../assets/icons/reply_icon.svg" alt="reply">
-                            40 replies
+
+                        <div v-if="comment.attachImg" class="attach">
+                            <img :src="comment.attachImg" alt="">
                         </div>
                     </div>
                 </div>
@@ -57,8 +59,8 @@
         </div>
         <div class="comments_create" v-if="canComment">
             <img class="emojies" src="../assets/icons/emoji_create_icon.svg" alt="reply" @click.stop="toggleEmojiPicker(1000)">
-            <input v-model="message" type="text" class="comments_input" placeholder="Enter text">
-            <button class="comments_button">
+            <input v-model="message" type="text" class="comments_input" placeholder="Enter text" @keydown.enter="submitNewComment">
+            <button class="comments_button" @click="submitNewComment">
                 <img src="../assets/icons/arrow_send_icon.svg" alt="send">
             </button>
             <div id="picker" class="picker" @click.stop="" v-if="currentCommentIndex === 1000 && emojiPicker">
@@ -75,8 +77,12 @@ export default {
         canComment: {
             type: Boolean,
             default: true
-        }
+        },
+        comments: Array,
+        newComment: String,
+
     },
+    emits: ['update:newComment', 'submit-comment'],
     data() {
         return {
             currentCommentIndex: -1,
@@ -113,6 +119,17 @@ export default {
             this.controls = this.currentCommentIndex !== index ? true : !this.controls
             this.currentCommentIndex = index
             this.emojiPicker = false
+        },
+        submitNewComment() {
+            this.$emit('submit-comment', this.message)
+            this.message = ''
+            setTimeout(() => {
+                this.$refs.commentsElem.scrollTo({
+                    top: this.$refs.commentsElem.scrollHeight,
+                    behavior: "smooth"
+                })
+            }, 0)
+
         }
     }
 }
@@ -142,7 +159,7 @@ export default {
         padding: 28px 20px;
         position: relative;
 
-        &:not(:last-child)::after {
+        &.line:not(:last-child)::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -154,7 +171,8 @@ export default {
 
         &.active,
         &:hover {
-            background: #14161E;
+            background: linear-gradient(90.26deg, rgba(3, 230, 243, 0.17) 2.73%, rgba(48, 127, 253, 0.23) 53.67%, rgba(194, 24, 223, 0.44) 96.23%);
+            ;
 
             .comment_controls {
                 display: flex;
@@ -222,31 +240,49 @@ export default {
                     }
                 }
             }
+            .attach {
+                margin-bottom: 26px;
+                img {
+                    max-height: 190px;
+                }
+            }
             &_footer {
-                margin-top: 24px;
-                display: flex;
-                align-items: center;
-                font-family: 'Inter', sans-serif;
+                .reactions {
+                    margin-top: 24px;
+                    display: flex;
+                    font-family: 'TT Octosquares', 'Inter', sans-serif;
 
-                .reply {
-                    font-size: 18px;
-                    padding: 8px 14px;
-                    border-radius: 50px;
-                    cursor: pointer;
-                    transition: 0.3s ease;
-
-                    &:hover {
-                        background: rgba(85, 85, 85, 0.34);
+                    .reaction {
+                        font-size: 18px;
+                        line-height: 26px;
+                        padding: 8px 14px;
+                        border-radius: 50px;
+                        cursor: pointer;
+                        transition: 0.3s ease;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        color: #8E8E8E;
+                        &:hover {
+                            background: rgba(85, 85, 85, 0.34);
+                        }
+                        img {
+                            width: 20px;
+                        }
                     }
+                }
 
+                .attach {
+                    margin-top: 28px;
                     img {
-                        width: 15px;
-                        margin-right: 8px;
+                        max-height: 190px;
                     }
                 }
             }
         }
         &_text {
+            font-weight: 400;
             font-size: 23px;
             line-height: 32px;
         }
@@ -261,23 +297,7 @@ export default {
             color: #82868D;
             font-size: 16px;
         }
-        &_reactions {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
 
-            .reaction {
-                white-space: nowrap;
-                padding: 7px 14px;
-                font-size: 18px;
-                color: #ACACAC;
-                background: rgba(85, 85, 85, 0.34);
-                backdrop-filter: blur(13px);
-                border-radius: 50px;
-                margin-right: 26px;
-                cursor: pointer;
-            }
-        }
     }
 
     &_comment {
@@ -384,22 +404,38 @@ export default {
                         }
                     }
                 }
+                .attach {
+                    margin-bottom: 17px;
+                    img {
+                        max-height: 135px
+                    }
+                }
                 &_footer {
-                    margin-top: 16px;
+                    .reactions {
+                        margin-top: 16px;
 
-                    .reply {
-                        font-size: 14px;
-                        padding: 5px 10px;
+                        .reaction {
+                            font-size: 14px;
+                            line-height: 18px;
+                            padding: 4px 8px;
+                            border-radius: 20px;
+                            gap: 6px;
 
+                            img {
+                                width: 18px;
+                            }
+                        }
+                    }
+                    .attach {
+                        margin-top: 20px;
                         img {
-                            width: 12px;
-                            margin-right: 5px;
+                            max-height: 130px
                         }
                     }
                 }
             }
             &_text {
-                font-size: 17px;
+                font-size: 18px;
                 line-height: 24px;
             }
             &_name {
@@ -412,15 +448,7 @@ export default {
                 line-height: 17px;
 
             }
-            &_reactions {
 
-                .reaction {
-                    padding: 5px 10px;
-                    font-size: 14px;
-                    border-radius: 50px;
-                    margin-right: 20px;
-                }
-            }
         }
 
         &_create {
@@ -480,20 +508,8 @@ export default {
                     }
                 }
             }
-            &_info_footer {
-                align-items: flex-start;
-                .reply {
-                    padding: 4px 12px;
-                    font-size: 16px;
-                }
-            }
-            &_reactions {
-                .reaction {
-                    padding: 4px 12px;
-                    margin-right: 12px;
-                    font-size: 14px;
-                }
-            }
+            &_info_footer {}
+
         }
 
         &_create {
